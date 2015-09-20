@@ -1,0 +1,6 @@
+framework module Pods_Brilliant_Tests {
+  umbrella header "Pods-Brilliant_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

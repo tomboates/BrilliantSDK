@@ -1,0 +1,14 @@
+PODS:
+  - Brilliant (0.1.0)
+
+DEPENDENCIES:
+  - Brilliant (from `../`)
+
+EXTERNAL SOURCES:
+  Brilliant:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Brilliant: 0c0f62f88eea04c1173b86c2cef7ee8fce196a13
+
+COCOAPODS: 0.38.2

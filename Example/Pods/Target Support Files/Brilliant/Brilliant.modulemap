@@ -1,0 +1,6 @@
+framework module Brilliant {
+  umbrella header "Brilliant-umbrella.h"
+
+  export *
+  module * { export * }
+}
