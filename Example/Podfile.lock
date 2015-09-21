@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Brilliant: 0c0f62f88eea04c1173b86c2cef7ee8fce196a13
+  Brilliant: 18d42080b94c3f701c1dbc6baf6fc06c74e633f2
 
 COCOAPODS: 0.38.2

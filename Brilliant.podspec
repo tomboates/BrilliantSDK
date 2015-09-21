@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
                           This is a placeholder description that needs to be updated. Brilliant is a library for in-app user surveys
                        DESC
 
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/Brilliant"
+  s.homepage         = "https://github.com/pdbthefifth/BrilliantSDK"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "Paul Berry" => "pdbthefifth@gmail.com" }
