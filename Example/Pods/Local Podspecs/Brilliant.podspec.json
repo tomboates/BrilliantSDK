@@ -21,5 +21,10 @@
     "Brilliant": [
       "Pod/Assets/*.png"
     ]
+  },
+  "dependencies": {
+    "Alamofire": [
+      "~> 2.0"
+    ]
   }
 }

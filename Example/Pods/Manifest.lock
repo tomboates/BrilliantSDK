@@ -1,5 +1,7 @@
 PODS:
-  - Brilliant (0.1.0)
+  - Alamofire (2.0.2)
+  - Brilliant (0.1.0):
+    - Alamofire (~> 2.0)
 
 DEPENDENCIES:
   - Brilliant (from `../`)
@@ -9,6 +11,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Brilliant: 18d42080b94c3f701c1dbc6baf6fc06c74e633f2
+  Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
+  Brilliant: 131444f4b1e8a675eef07b69fc9e4245a8b0c03d
 
 COCOAPODS: 0.38.2
