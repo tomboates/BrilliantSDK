@@ -31,15 +31,16 @@ class ViewController: UIViewController {
   }
 
   @IBAction func surveyButtonPressed(sender: AnyObject) {
-    let attributes: Dictionary<String, String> =
-    ["triggerTimestamp": String(NSDate().timeIntervalSince1970),
-      "completedTimestamp": String(NSDate().timeIntervalSince1970),
-      "npsRating": "10",
-      "comments": "This is amazing!",
-      "dismissAction": "ThanksXButton",
-      "event": "buttonPressed"]
-    
-    Brilliant.sharedInstance.sendCompletedSurvey(attributes)
+    Brilliant.sharedInstance.showNpsSurvey(self)
+    //    let attributes: Dictionary<String, String> =
+//    ["triggerTimestamp": String(NSDate().timeIntervalSince1970),
+//      "completedTimestamp": String(NSDate().timeIntervalSince1970),
+//      "npsRating": "10",
+//      "comments": "This is amazing!",
+//      "dismissAction": "ThanksXButton",
+//      "event": "buttonPressed"]
+//    
+//    Brilliant.sharedInstance.sendCompletedSurvey(attributes)
   }
 }
 

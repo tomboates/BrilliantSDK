@@ -30,8 +30,12 @@ public class Brilliant {
   }
 
   // show the Nps Survey to user
-  public func showNpsSurvey() {
+  public func showNpsSurvey(rootVc: UIViewController) {
     // TODO needs completion handler?
+//    let appDelegate  = UIApplication.sharedApplication().delegate as AppDelegate
+//    let viewController = appDelegate.window!.rootViewController as UIViewController
+    let vc = SurveyViewController(nibName: nil, bundle: nil)
+    rootVc.presentViewController(vc, animated: false, completion: nil)
     
   }
   
