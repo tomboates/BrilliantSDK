@@ -31,6 +31,7 @@ public class Brilliant {
 
   // show the Nps Survey to user
   public func showNpsSurvey(rootVc: UIViewController) {
+    
     // TODO needs completion handler?
 //    let appDelegate  = UIApplication.sharedApplication().delegate as AppDelegate
 //    let viewController = appDelegate.window!.rootViewController as UIViewController

@@ -19,7 +19,7 @@
   "source_files": "Pod/Classes/**/*",
   "resource_bundles": {
     "Brilliant": [
-      "Pod/Assets/*.png"
+      "Assets/*.png"
     ]
   },
   "dependencies": {

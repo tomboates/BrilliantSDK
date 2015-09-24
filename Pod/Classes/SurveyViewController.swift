@@ -26,7 +26,7 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
   var npsNumber = Int()
   
   let npsLabel: UILabel = UILabel()
-  let closeImage = UIImage(named: "brilliant-icon-close") as UIImage?
+  var closeImage = UIImage(named: "brilliant-icon-close") as UIImage?
   let closeButton   = UIButton(type: UIButtonType.System);
   
   let submitNPS = UIButton(type: UIButtonType.System);
@@ -39,8 +39,8 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
   
   let npsDone = UIButton(type: UIButtonType.System);
   
-  let commentsImage = UIImage(named: "commentBubble") as UIImage?
-  let ratingsImage = UIImage(named: "ratingStars") as UIImage?
+  var commentsImage = UIImage(named: "commentBubble") as UIImage?
+  var ratingsImage = UIImage(named: "ratingStars") as UIImage?
   
   var commentBubble = UIImageView()
   var ratingStar = UIButton(type: UIButtonType.System);
@@ -55,6 +55,9 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    let bundleURL = NSBundle(forClass: Brilliant.self).URLForResource("Brilliant", withExtension: "bundle")
+    let bundle = NSBundle(URL: bundleURL!)
+    closeImage = UIImage(named: "brilliant-icon-close", inBundle: bundle, compatibleWithTraitCollection: nil)
     // Do any additional setup after loading the view, typically from a nib.
     
     comments.delegate = self
