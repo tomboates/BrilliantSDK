@@ -88,7 +88,6 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
       closeButton.setImage(closeImage, forState: .Normal)
       closeButton.tintColor = UIColor.whiteColor()
       closeButton.addTarget(self, action: "closeBlurView:", forControlEvents:.TouchUpInside)
-      closeButton.backgroundColor = UIColor.redColor()
       self.npsView.addSubview(closeButton)
       
       npsLabel.textColor = UIColor.whiteColor()
@@ -270,6 +269,7 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
           self.npsRatingView.removeFromSuperview()
           self.npsButtonView.removeFromSuperview()
           self.npsView.removeFromSuperview()
+          self.dismissViewControllerAnimated(true, completion: nil)
           
           }, completion: nil)
     })
