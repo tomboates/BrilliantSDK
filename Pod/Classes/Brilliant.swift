@@ -54,7 +54,6 @@ public class Brilliant {
     attributes["userType"] = self.userType
     
     let params = ["nps_survey": attributes]
-    print(params)
     
     // now send data
     Alamofire.request(.POST, "\(kBaseURL)surveys", headers: headers, parameters: params, encoding: .JSON)
