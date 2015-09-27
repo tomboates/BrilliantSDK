@@ -30,13 +30,13 @@ public class Brilliant {
   }
 
   // show the Nps Survey to user
-  public func showNpsSurvey(rootVc: UIViewController) {
+  public func showNpsSurvey(event:String) {
+    let rootVC = UIApplication.sharedApplication().delegate?.window?!.rootViewController
+    let surveyVC = SurveyViewController(nibName: nil, bundle: nil)
+    surveyVC.event = event
+    rootVC!.presentViewController(surveyVC, animated: false, completion: nil)
     
     // TODO needs completion handler?
-//    let appDelegate  = UIApplication.sharedApplication().delegate as AppDelegate
-//    let viewController = appDelegate.window!.rootViewController as UIViewController
-    let vc = SurveyViewController(nibName: nil, bundle: nil)
-    rootVc.presentViewController(vc, animated: false, completion: nil)
     
   }
   

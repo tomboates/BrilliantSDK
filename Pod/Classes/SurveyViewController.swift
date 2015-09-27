@@ -53,14 +53,23 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
   
   let shadowColor = UIColor(red: 0.211, green: 0.660, blue: 0.324, alpha: 1)
   
+  // this dictionary holds survey data to be sent to server
+  var attributes = [String: String]()
+  var event: String! // name of event that triggered survey (developer supplied)
+  var state: Int! // keep track of what screen is showing for analytics
+  var kDEBUG = true
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    self.state = 0
     let bundleURL = NSBundle(forClass: Brilliant.self).URLForResource("Brilliant", withExtension: "bundle")
     let bundle = NSBundle(URL: bundleURL!)
     closeImage = UIImage(named: "brilliant-icon-close", inBundle: bundle, compatibleWithTraitCollection: nil)
     commentsImage = UIImage(named: "commentBubble", inBundle: bundle, compatibleWithTraitCollection: nil)
     ratingsImage = UIImage(named: "ratingStars", inBundle: bundle, compatibleWithTraitCollection: nil)
+    
+    self.attributes["triggerTimestamp"] = String(NSDate().timeIntervalSince1970)
+    self.attributes["event"] = self.event
     
     comments.delegate = self
     
@@ -257,6 +266,35 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
   }
   
   func closeBlurView(sender: UIButton!) {
+    // determine dismissAction NOTE: this would be much easier if each view was in it's own viewcontroller
+    var dismissAction: String!
+    switch (self.state) {
+    case (0): // rating screen
+      dismissAction = "x_npsscreen"
+    case (1): // comment screen
+      if (sender == self.closeButton) {
+        dismissAction = "x_comments"
+      }else {
+        dismissAction = "nothanks_comments"
+      }
+    case (2): // feedback screen
+      if (sender == self.closeButton) {
+        dismissAction = "x_feedback"
+      } else {
+        dismissAction = "done_feedback"
+      }
+    case (3): // rate the app screen
+      if (sender == self.closeButton) {
+      dismissAction = "x_rateapp"
+      } else if (sender == self.npsReview) {
+        dismissAction = "sure_rateapp"
+      } else {
+      dismissAction = "nothanks_rateapp"
+      }
+    default:
+      dismissAction = "other_action"
+    }
+    self.attributes["dismissAction"] = dismissAction
     
     comments.text = nil
     
@@ -276,7 +314,14 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
           self.npsView.removeFromSuperview()
           self.dismissViewControllerAnimated(true, completion: nil)
           
-          }, completion: nil)
+          }, completion: {_ in
+            // SEND SURVEY DATA
+            self.attributes["completedTimestamp"] = String(NSDate().timeIntervalSince1970)
+            if (self.kDEBUG) {
+              print(self.attributes)
+            }
+            Brilliant.sharedInstance.sendCompletedSurvey(self.attributes)
+        })
     })
     
   }
@@ -284,12 +329,13 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
   func submitNPS(sender: UIButton!) {
     
     npsNumber = sender.tag
+    self.attributes["npsRating"] = String(npsNumber)
     
     UIView.animateWithDuration(0.2, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
       self.npsNumbersView.alpha = 0
       
       }, completion: {(finished:Bool) in
-        
+        self.state = 1
         self.npsView.addSubview(self.npsCommentsView)
         self.npsCommentsView.alpha = 0
         
@@ -418,6 +464,7 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
   
   
   func submitComments(sender: UIButton!) {
+    self.attributes["comments"] = self.comments.text
     
     if self.npsNumber == 9 || self.npsNumber == 10 {
       
@@ -426,7 +473,7 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
         self.npsCommentsView.alpha = 0
         
         }, completion: {(finished:Bool) in
-          
+          self.state = 3
           self.npsView.addSubview(self.npsRatingView)
           self.npsRatingView.alpha = 0
           
@@ -527,7 +574,7 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
         self.npsCommentsView.alpha = 0
         
         }, completion: {(finished:Bool) in
-          
+          self.state = 2
           self.commentBubble = UIImageView(image: self.commentsImage)
           
           self.npsView.addSubview(self.npsThanksView)
@@ -633,21 +680,7 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
     
     UIApplication.sharedApplication().openURL(NSURL(string: "itms://itunes.apple.com/us/app/apple-store/id300235330?mt=8")!)
     
-    comments.text = nil
-    
-    UIView.animateWithDuration(0.2, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-      
-      self.blurEffectView.alpha = 0
-      self.npsView.alpha = 0
-      
-      }, completion: nil)
-    
-    self.npsNumbersView.removeFromSuperview()
-    self.npsCommentsView.removeFromSuperview()
-    self.npsThanksView.removeFromSuperview()
-    self.npsRatingView.removeFromSuperview()
-    self.npsButton.removeFromSuperview()
-    self.npsView.removeFromSuperview()
+   self.closeBlurView(self.npsReview)
     
   }
   

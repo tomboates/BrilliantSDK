@@ -17,30 +17,17 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
-    Brilliant.sharedInstance.initWithAppKey("IFTwNt01zgAG1IgO6GkcOAQNjvvHr/izpfcTUZ1aNP8xQNgl233oh/al9doLpTFa75SpgWahya4sgKIHF9Q8kA==")
-    // Now set defaults
+    Brilliant.sharedInstance.initWithAppKey("mV4q8M7SUP9nXY41rronwvRbDpIH7t61WWiDkRQNDv2bXsh1lblsNg9E29cZh2plPMpsTh0GjZHfXmk2oxgoog==")
+
+    // Now set user values
     Brilliant.sharedInstance.userEmail = "paul@me.com"
-//    Brilliant.sharedInstance.userAcctCreationDate = NSDate().timeIntervalSince1970
+    Brilliant.sharedInstance.userAcctCreationDate = NSDate().timeIntervalSince1970
     Brilliant.sharedInstance.userType = "Premium"
     
   }
   
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
-
   @IBAction func surveyButtonPressed(sender: AnyObject) {
-    Brilliant.sharedInstance.showNpsSurvey(self)
-    //    let attributes: Dictionary<String, String> =
-//    ["triggerTimestamp": String(NSDate().timeIntervalSince1970),
-//      "completedTimestamp": String(NSDate().timeIntervalSince1970),
-//      "npsRating": "10",
-//      "comments": "This is amazing!",
-//      "dismissAction": "ThanksXButton",
-//      "event": "buttonPressed"]
-//    
-//    Brilliant.sharedInstance.sendCompletedSurvey(attributes)
+    Brilliant.sharedInstance.showNpsSurvey("activity completed")
   }
 }
 
