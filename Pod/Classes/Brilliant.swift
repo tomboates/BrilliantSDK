@@ -19,8 +19,10 @@ public class Brilliant {
   public var userAcctCreationDate: Double?
   public var userType: String?
   
-  // initialize date to time in distant past (Jan 9, 2007 iphone reveal)
+  
+  // (Jan 9, 2007 iphone reveal) default value so survey shows first time
   private var lastSurveyShownTime = NSDate(timeIntervalSinceReferenceDate: 190_058_400.0)
+  private var SURVEY_INTERVAL = 14 // days between seeing surveys
   
   private init() {}
   
@@ -31,42 +33,44 @@ public class Brilliant {
 
   // show the Nps Survey to user
   public func showNpsSurvey(event:String) {
-    let rootVC = UIApplication.sharedApplication().delegate?.window?!.rootViewController
-    let surveyVC = SurveyViewController(nibName: nil, bundle: nil)
-    surveyVC.event = event
-    rootVC!.presentViewController(surveyVC, animated: false, completion: nil)
-    
-    // TODO needs completion handler?
-    
+    if daysSinceLastSurvey() > self.SURVEY_INTERVAL {
+      let rootVC = UIApplication.sharedApplication().delegate?.window?!.rootViewController
+      let surveyVC = SurveyViewController(nibName: nil, bundle: nil)
+      surveyVC.event = event
+      rootVC!.presentViewController(surveyVC, animated: false, completion: nil)
+    }else {
+      
+    }
   }
   
   // send NPS Survey to Brilliant Server
   public func sendCompletedSurvey(var attributes:Dictionary<String, String>) {
-    // set headers for auth and JSON content-type
-    let headers = [
-      "X-App-Key": self.appKey!,
-      "Content-Type": "application/json"
-    ]
-    
-    // add user details to attributes
-    attributes["userEmail"] = self.userEmail
-    attributes["userAcctCreation"] = String(self.userAcctCreationDate)
-    attributes["userType"] = self.userType
-    
-    let params = ["nps_survey": attributes]
-    
-    // now send data
-    Alamofire.request(.POST, "\(kBaseURL)surveys", headers: headers, parameters: params, encoding: .JSON)
-      .responseString { _, _, result in
-        print("Success: \(result.isSuccess)")
-        print("Response String: \(result.value)")
-        
+      // set headers for auth and JSON content-type
+      let headers = [
+        "X-App-Key": self.appKey!,
+        "Content-Type": "application/json"
+      ]
+      
+      // add user details to attributes
+      attributes["userEmail"] = self.userEmail
+      attributes["userAcctCreation"] = String(self.userAcctCreationDate)
+      attributes["userType"] = self.userType
+      
+      let params = ["nps_survey": attributes]
+      
+      // now send data
+      Alamofire.request(.POST, "\(kBaseURL)surveys", headers: headers, parameters: params, encoding: .JSON)
+        .responseString { _, _, result in
+          print("Success: \(result.isSuccess)")
+          print("Response String: \(result.value)")
+          
+      }
     }
   }
   
   //# MARK: - Helpers
   
-  private func daysBetween(date1:NSDate, date2:NSDate) -> Int {
-    return NSCalendar.currentCalendar().components(.Day, fromDate: date1, toDate: date2, options: []).day
+  private func daysSinceLastSurvey() -> Int {
+    return NSCalendar.currentCalendar().components(.Day, fromDate: self.lastSurveyShownTime, toDate: NSDate(), options: []).day
   }
 }

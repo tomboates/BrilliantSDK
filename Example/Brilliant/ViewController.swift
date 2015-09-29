@@ -16,18 +16,16 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
     Brilliant.sharedInstance.initWithAppKey("mV4q8M7SUP9nXY41rronwvRbDpIH7t61WWiDkRQNDv2bXsh1lblsNg9E29cZh2plPMpsTh0GjZHfXmk2oxgoog==")
 
-    // Now set user values
-    Brilliant.sharedInstance.userEmail = "paul@me.com"
+    // Setup User Info
+    Brilliant.sharedInstance.userEmail = "USER_EMAIL"
     Brilliant.sharedInstance.userAcctCreationDate = NSDate().timeIntervalSince1970
-    Brilliant.sharedInstance.userType = "Premium"
-    
+    Brilliant.sharedInstance.userType = "USER_TYPE (OPTIONAL)"
   }
   
   @IBAction func surveyButtonPressed(sender: AnyObject) {
-    Brilliant.sharedInstance.showNpsSurvey("activity completed")
+    Brilliant.sharedInstance.showNpsSurvey("EVENT_NAME")
   }
 }
 
