@@ -9,16 +9,16 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-1. After installing the pod in your project, 'import Brilliant' in the AppDelegate
+1. After installing the pod in your project, `import Brilliant` in the AppDelegate
 2. Get APP_KEY from web dashboard: brilliantapp.com/settings
 3. in the didFinishLaunchingWithOptions method of the AppDelegate, add initialization with APP_KEY:
-     Brilliant.sharedInstance.initWithAppKey("YOUR_APP_KEY_HERE")
+     `Brilliant.sharedInstance.initWithAppKey("YOUR_APP_KEY_HERE")`
 4. following the initialization, set User info:
-    Brilliant.sharedInstance.userEmail = "USER_EMAIL"
+    `Brilliant.sharedInstance.userEmail = "USER_EMAIL"
     Brilliant.sharedInstance.userAcctCreationDate = "USER_ACCOUNT_CREATION_DATE"
-    Brilliant.sharedInstance.userType = "USER_TYPE (OPTIONAL)" // can be any metric you want (i.e. free, paid, premium, driver, etc)
+    Brilliant.sharedInstance.userType = "USER_TYPE (OPTIONAL)" // can be any metric you want (i.e. free, paid, premium, driver, etc)`
 
-5. add Brilliant.sharedInstance.showNpsSurvey("EVENT_NAME_HERE") wherever you'd like to show the NPS survey
+5. add `Brilliant.sharedInstance.showNpsSurvey("EVENT_NAME_HERE")` wherever you'd like to show the NPS survey
 
 ## Requirements
 
