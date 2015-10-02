@@ -12,6 +12,7 @@ import Alamofire
 public class Brilliant {
   
   public static let sharedInstance = Brilliant()
+//  private let kBaseURL = "http://brilliantapp.com/api/"
   private let kBaseURL = "http://localhost:3000/api/"
   
   public var appKey: String?
@@ -19,9 +20,12 @@ public class Brilliant {
   public var userAcctCreationDate: Double?
   public var userType: String?
   
-  
-  // (Jan 9, 2007 iphone reveal) default value so survey shows first time
-  private var lastSurveyShownTime = NSDate(timeIntervalSinceReferenceDate: 190_058_400.0)
+  private var lastSurveyShownTime: NSDate! {
+    
+    willSet(date) {
+      NSUserDefaults.standardUserDefaults().setObject(date, forKey: "lastSurveyShownTime")
+    }
+  }
   private var SURVEY_INTERVAL = 14 // days between seeing surveys
   
   private init() {}
@@ -29,6 +33,18 @@ public class Brilliant {
   // initialization function, as of right now just sets the app key for web requests
   public func initWithAppKey(key:String) {
     self.appKey = key
+    
+    // pull saved data from disk
+    if let lastDate = NSUserDefaults.standardUserDefaults().objectForKey("lastSurveyShownTime") as? NSDate
+    {
+      self.lastSurveyShownTime = lastDate
+    }else {
+      // (Jan 9, 2007 iphone reveal, always will trigger survey at first)
+      self.lastSurveyShownTime =  NSDate(timeIntervalSinceReferenceDate: 190_058_400.0)
+    }
+    
+    // if outstanding survey needs to be sent, schedule it
+    
   }
 
   // show the Nps Survey to user
@@ -39,7 +55,7 @@ public class Brilliant {
       surveyVC.event = event
       rootVC!.presentViewController(surveyVC, animated: false, completion: nil)
     }else {
-      
+      print("Not showing survey: \(daysSinceLastSurvey()) days since last survey, but interval is \(self.SURVEY_INTERVAL)")
     }
   }
   
@@ -60,10 +76,16 @@ public class Brilliant {
     
     // now send data
     Alamofire.request(.POST, "\(kBaseURL)surveys", headers: headers, parameters: params, encoding: .JSON)
-      .responseString { _, _, result in
-        print("Success: \(result.isSuccess)")
-        print("Response String: \(result.value)")
-        
+      .responseString { _, response, result in
+        // 201 means survey was created on server
+        if response?.statusCode == 201 {
+          print("Success: \(result)")
+          self.lastSurveyShownTime = NSDate()
+        }
+        else {
+          print("Response String: \(response?.statusCode)")
+          // if failure, save survey in sharedPrefs and schedule for sending
+        }
     }
   }
 
