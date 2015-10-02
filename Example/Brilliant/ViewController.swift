@@ -16,7 +16,7 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    Brilliant.sharedInstance.initWithAppKey("mV4q8M7SUP9nXY41rronwvRbDpIH7t61WWiDkRQNDv2bXsh1lblsNg9E29cZh2plPMpsTh0GjZHfXmk2oxgoog==")
+    Brilliant.sharedInstance.initWithAppKey("X8bZbhepqjAmg+GgF1607S4BtUmj3hN0oz8WKWK2AmgixYyqHy/s4ZSBfeHfA5mDnuKK+HcrfhE3AN59vf08lg==")
 
     // Setup User Info
     Brilliant.sharedInstance.userEmail = "USER_EMAIL"

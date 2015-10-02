@@ -54,8 +54,10 @@ code_sign_if_enabled() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Pods-Brilliant_Example/Alamofire.framework'
   install_framework 'Pods-Brilliant_Example/Brilliant.framework'
+  install_framework 'Pods-Brilliant_Example/ReachabilitySwift.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Pods-Brilliant_Example/Alamofire.framework'
   install_framework 'Pods-Brilliant_Example/Brilliant.framework'
+  install_framework 'Pods-Brilliant_Example/ReachabilitySwift.framework'
 fi

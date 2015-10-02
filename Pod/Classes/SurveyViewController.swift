@@ -53,11 +53,7 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
   
   let shadowColor = UIColor(red: 0.211, green: 0.660, blue: 0.324, alpha: 1)
   
-  // this dictionary holds survey data to be sent to server
-  var attributes = [String: String]()
-  var event: String! // name of event that triggered survey (developer supplied)
   var state: Int! // keep track of what screen is showing for analytics
-  var kDEBUG = true
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -68,8 +64,7 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
     commentsImage = UIImage(named: "commentBubble", inBundle: bundle, compatibleWithTraitCollection: nil)
     ratingsImage = UIImage(named: "ratingStars", inBundle: bundle, compatibleWithTraitCollection: nil)
     
-    self.attributes["triggerTimestamp"] = String(NSDate().timeIntervalSince1970)
-    self.attributes["event"] = self.event
+    Brilliant.sharedInstance.completedSurvey!["triggerTimestamp"] = String(NSDate().timeIntervalSince1970)
     
     comments.delegate = self
     
@@ -294,7 +289,7 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
     default:
       dismissAction = "other_action"
     }
-    self.attributes["dismissAction"] = dismissAction
+    Brilliant.sharedInstance.completedSurvey!["dismissAction"] = dismissAction
     
     comments.text = nil
     
@@ -316,11 +311,8 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
           
           }, completion: {_ in
             // SEND SURVEY DATA
-            self.attributes["completedTimestamp"] = String(NSDate().timeIntervalSince1970)
-            if (self.kDEBUG) {
-              print(self.attributes)
-            }
-            Brilliant.sharedInstance.sendCompletedSurvey(self.attributes)
+            Brilliant.sharedInstance.completedSurvey!["completedTimestamp"] = String(NSDate().timeIntervalSince1970)
+            Brilliant.sharedInstance.sendCompletedSurvey()
         })
     })
     
@@ -329,7 +321,7 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
   func submitNPS(sender: UIButton!) {
     
     npsNumber = sender.tag
-    self.attributes["npsRating"] = String(npsNumber)
+    Brilliant.sharedInstance.completedSurvey!["npsRating"] = String(npsNumber)
     
     UIView.animateWithDuration(0.2, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
       self.npsNumbersView.alpha = 0
@@ -464,7 +456,7 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
   
   
   func submitComments(sender: UIButton!) {
-    self.attributes["comments"] = self.comments.text
+    Brilliant.sharedInstance.completedSurvey!["comments"] = self.comments.text
     
     if self.npsNumber == 9 || self.npsNumber == 10 {
       

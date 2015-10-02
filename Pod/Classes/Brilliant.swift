@@ -8,12 +8,13 @@
 
 import Foundation
 import Alamofire
+import ReachabilitySwift
 
 public class Brilliant {
   
   public static let sharedInstance = Brilliant()
-//  private let kBaseURL = "http://brilliantapp.com/api/"
-  private let kBaseURL = "http://localhost:3000/api/"
+  private let kBaseURL = "http://brilliant-app.herokuapp.com/api/"
+//  private let kBaseURL = "http://localhost:3000/api/"
   
   public var appKey: String?
   public var userEmail: String?
@@ -26,15 +27,28 @@ public class Brilliant {
       NSUserDefaults.standardUserDefaults().setObject(date, forKey: "lastSurveyShownTime")
     }
   }
-  private var SURVEY_INTERVAL = 14 // days between seeing surveys
+  
+  // is there a survey that needs to be sent to server?
+  private var pendingSurvey = false
+  
+  // survey data to be sent to server or saved to disk
+  public var completedSurvey: Dictionary<String, String>? {
+    willSet(survey) {
+      NSUserDefaults.standardUserDefaults().setObject(survey, forKey: "completedSurvey")
+    }
+  }
+
+  // days between seeing surveys
+  private var SURVEY_INTERVAL = 14
+  
+  private static var kDEBUG = false
   
   private init() {}
   
-  // initialization function, as of right now just sets the app key for web requests
+  // initialization on app open. Sets api key, checks for pending surveys
   public func initWithAppKey(key:String) {
     self.appKey = key
     
-    // pull saved data from disk
     if let lastDate = NSUserDefaults.standardUserDefaults().objectForKey("lastSurveyShownTime") as? NSDate
     {
       self.lastSurveyShownTime = lastDate
@@ -43,24 +57,36 @@ public class Brilliant {
       self.lastSurveyShownTime =  NSDate(timeIntervalSinceReferenceDate: 190_058_400.0)
     }
     
-    // if outstanding survey needs to be sent, schedule it
-    
+    if let survey = NSUserDefaults.standardUserDefaults().objectForKey("completedSurvey") as? Dictionary<String, String>
+    {
+      self.completedSurvey = survey
+      self.pendingSurvey = true
+      printDebug("loaded survey from disk, attempting to send")
+      self.sendCompletedSurvey()
+    }else {
+      self.pendingSurvey = false
+      printDebug("no pending survey on disk: \(self.completedSurvey)")
+    }
   }
 
   // show the Nps Survey to user
   public func showNpsSurvey(event:String) {
-    if daysSinceLastSurvey() > self.SURVEY_INTERVAL {
+    // only show survey if enough time has passed and no pendingSurvey to be sent
+    if (daysSinceLastSurvey() > self.SURVEY_INTERVAL) && self.pendingSurvey == false {
+      self.completedSurvey = ["event": event]
       let rootVC = UIApplication.sharedApplication().delegate?.window?!.rootViewController
       let surveyVC = SurveyViewController(nibName: nil, bundle: nil)
-      surveyVC.event = event
       rootVC!.presentViewController(surveyVC, animated: false, completion: nil)
     }else {
-      print("Not showing survey: \(daysSinceLastSurvey()) days since last survey, but interval is \(self.SURVEY_INTERVAL)")
+      printDebug("Not showing survey: \(daysSinceLastSurvey()) days since last survey, but interval is \(self.SURVEY_INTERVAL)")
     }
   }
   
   // send NPS Survey to Brilliant Server
-  public func sendCompletedSurvey(var attributes:Dictionary<String, String>) {
+  public func sendCompletedSurvey() {
+
+    var attributes = self.completedSurvey!
+    
     // set headers for auth and JSON content-type
     let headers = [
       "X-App-Key": self.appKey!,
@@ -77,21 +103,61 @@ public class Brilliant {
     // now send data
     Alamofire.request(.POST, "\(kBaseURL)surveys", headers: headers, parameters: params, encoding: .JSON)
       .responseString { _, response, result in
-        // 201 means survey was created on server
-        if response?.statusCode == 201 {
-          print("Success: \(result)")
+        if response?.statusCode == 201 {          // 201 means survey was created on server
+          self.printDebug("Successfully saved to server.")
           self.lastSurveyShownTime = NSDate()
+          
+          // no need to listen for internet connection change anymore
+          let reachability = Reachability.reachabilityForInternetConnection()
+          NSNotificationCenter.defaultCenter().removeObserver(self,
+            name: ReachabilityChangedNotification,
+            object: reachability)
+          
+          self.completedSurvey = nil
+          self.pendingSurvey = false
         }
         else {
-          print("Response String: \(response?.statusCode)")
-          // if failure, save survey in sharedPrefs and schedule for sending
+          self.printDebug("Saving Survey failed.")
+          self.pendingSurvey = true
+
+          // start listening for internet connection changes
+          let reachability = Reachability.reachabilityForInternetConnection()
+          
+          NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "reachabilityChanged:",
+            name: ReachabilityChangedNotification,
+            object: reachability)
+          
+          reachability!.startNotifier()
+          self.printDebug("listening for network change")
         }
     }
   }
 
+  //# MARK: - Network Connection
+  
+  func reachabilityChanged(note: NSNotification) {
+    
+    let reachability = note.object as! Reachability
+    
+    if reachability.isReachable() {
+      if self.pendingSurvey == true {
+        self.sendCompletedSurvey()
+        printDebug("Network reconnected, attempting to send survey.")
+      }
+    }
+  }
+  
   //# MARK: - Helpers
 
   private func daysSinceLastSurvey() -> Int {
     return NSCalendar.currentCalendar().components(.Day, fromDate: self.lastSurveyShownTime, toDate: NSDate(), options: []).day
+  }
+  
+  // only print if debug flag is set
+  private func printDebug(string: String) {
+    if Brilliant.kDEBUG {
+      print(string)
+    }
   }
 }

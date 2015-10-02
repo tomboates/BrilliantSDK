@@ -25,6 +25,9 @@
   "dependencies": {
     "Alamofire": [
       "~> 2.0"
+    ],
+    "ReachabilitySwift": [
+
     ]
   }
 }
