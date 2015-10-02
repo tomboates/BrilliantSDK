@@ -11,8 +11,8 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 1. After installing the pod in your project, `import Brilliant` in the AppDelegate
 2. Get APP_KEY from web dashboard: brilliantapp.com/settings
-3. in the didFinishLaunchingWithOptions method of the AppDelegate, add initialization with APP_KEY:
-     `Brilliant.sharedInstance.initWithAppKey("YOUR_APP_KEY_HERE")`
+3. in the `didFinishLaunchingWithOptions` method of the AppDelegate, add initialization with APP_KEY:
+    `Brilliant.sharedInstance.initWithAppKey("YOUR_APP_KEY_HERE")`
 4. following the initialization, set User info:
     `Brilliant.sharedInstance.userEmail = "USER_EMAIL"
     Brilliant.sharedInstance.userAcctCreationDate = "USER_ACCOUNT_CREATION_DATE"
