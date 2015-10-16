@@ -16,12 +16,13 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    Brilliant.sharedInstance.initWithAppKey("X8bZbhepqjAmg+GgF1607S4BtUmj3hN0oz8WKWK2AmgixYyqHy/s4ZSBfeHfA5mDnuKK+HcrfhE3AN59vf08lg==")
-
     // Setup User Info
     Brilliant.sharedInstance.userEmail = "USER_EMAIL"
     Brilliant.sharedInstance.userAcctCreationDate = NSDate().timeIntervalSince1970
     Brilliant.sharedInstance.userType = "USER_TYPE (OPTIONAL)"
+    
+    // Always init after setting user info
+    Brilliant.sharedInstance.initWithAppKey("wd5vTAb9JXprZ52RxiSO/8g8nnpyLG5llQpH8QOFSsP12+imFKMuX1IhdCWLFQ1wKrhsSMtpyJ/aIK2zMvXdUw==")
   }
   
   @IBAction func surveyButtonPressed(sender: AnyObject) {

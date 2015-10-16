@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "519E691266DB31B135044662"
+               BlueprintIdentifier = "D84ADC03F32D0853FCE3A8F4"
                BuildableName = "Brilliant.framework"
                BlueprintName = "Brilliant"
                ReferencedContainer = "container:Pods.xcodeproj">

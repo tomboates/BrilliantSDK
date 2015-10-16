@@ -108,7 +108,12 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
       if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
         npsLabel.font = UIFont(name: npsLabel.font.fontName, size: 23)
       }
-      npsLabel.text = "How likely are you to recommend [appName] to a friend or colleague?"
+      var appName = "this app"
+      if (Brilliant.sharedInstance.appName != nil) {
+        appName = Brilliant.sharedInstance.appName!
+      }
+      
+      npsLabel.text = "How likely are you to recommend \(appName) to a friend or colleague?"
       self.npsNumbersView.addSubview(npsLabel)
       
       self.npsNumbersView.addSubview(npsButtonView)

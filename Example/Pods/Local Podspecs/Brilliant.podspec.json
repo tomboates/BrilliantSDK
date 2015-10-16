@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "summary": "A library for in-app User Surveys",
   "description": "This is a placeholder description that needs to be updated. Brilliant is a library for in-app user surveys",
-  "homepage": "https://github.com/pdbthefifth/BrilliantSDK",
+  "homepage": "https://github.com/tomboates/BrilliantSDK",
   "license": "MIT",
   "authors": {
     "Paul Berry": "pdbthefifth@gmail.com"
   },
   "source": {
-    "git": "https://github.com/pdbthefifth/BrilliantSDK.git",
+    "git": "https://github.com/tomboates/BrilliantSDK.git",
     "tag": "0.1.0"
   },
   "platforms": {

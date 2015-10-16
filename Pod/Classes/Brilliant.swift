@@ -13,13 +13,14 @@ import ReachabilitySwift
 public class Brilliant {
   
   public static let sharedInstance = Brilliant()
-  private let kBaseURL = "http://brilliant-app.herokuapp.com/api/"
-//  private let kBaseURL = "http://localhost:3000/api/"
+//  private let kBaseURL = "http://brilliantapp.com/api/"
+  private let kBaseURL = "http://localhost:3000/api/"
   
   public var appKey: String?
   public var userEmail: String?
   public var userAcctCreationDate: Double?
   public var userType: String?
+  public var appName: String?
   
   private var lastSurveyShownTime: NSDate! {
     
@@ -41,7 +42,7 @@ public class Brilliant {
   // days between seeing surveys
   private var SURVEY_INTERVAL = 14
   
-  private static var kDEBUG = false
+  private static var kDEBUG = true
   
   private init() {}
   
@@ -49,6 +50,7 @@ public class Brilliant {
   public func initWithAppKey(key:String) {
     self.appKey = key
     
+    // set or initalize lastSurveyShownTime
     if let lastDate = NSUserDefaults.standardUserDefaults().objectForKey("lastSurveyShownTime") as? NSDate
     {
       self.lastSurveyShownTime = lastDate
@@ -57,6 +59,7 @@ public class Brilliant {
       self.lastSurveyShownTime =  NSDate(timeIntervalSinceReferenceDate: 190_058_400.0)
     }
     
+    // if a pending survey is saved, load and attempt to resend
     if let survey = NSUserDefaults.standardUserDefaults().objectForKey("completedSurvey") as? Dictionary<String, String>
     {
       self.completedSurvey = survey
@@ -67,6 +70,9 @@ public class Brilliant {
       self.pendingSurvey = false
       printDebug("no pending survey on disk: \(self.completedSurvey)")
     }
+    
+    // pull data from server (for now just app name to display)
+    self.getInitialSurveyData()
   }
 
   // show the Nps Survey to user
@@ -82,6 +88,8 @@ public class Brilliant {
     }
   }
   
+  //# MARK: - Server Calls
+  
   // send NPS Survey to Brilliant Server
   public func sendCompletedSurvey() {
 
@@ -93,19 +101,19 @@ public class Brilliant {
       "Content-Type": "application/json"
     ]
     
-    // add user details to attributes
+    // add user data
     attributes["userEmail"] = self.userEmail
     attributes["userAcctCreation"] = String(self.userAcctCreationDate)
     attributes["userType"] = self.userType
     
     let params = ["nps_survey": attributes]
     
-    // now send data
+    // now send data to server
     Alamofire.request(.POST, "\(kBaseURL)surveys", headers: headers, parameters: params, encoding: .JSON)
       .responseString { _, response, result in
         if response?.statusCode == 201 {          // 201 means survey was created on server
           self.printDebug("Successfully saved to server.")
-          self.lastSurveyShownTime = NSDate()
+//          self.lastSurveyShownTime = NSDate()
           
           // no need to listen for internet connection change anymore
           let reachability = Reachability.reachabilityForInternetConnection()
@@ -134,6 +142,28 @@ public class Brilliant {
     }
   }
 
+  private func getInitialSurveyData() {
+    // set headers for auth and JSON content-type
+    let headers = [
+      "X-App-Key": self.appKey!,
+      "Content-Type": "application/json"
+    ]
+    
+    Alamofire.request(.GET, "\(kBaseURL)initWithAppKey", headers: headers)
+      .responseJSON { request, response, result in
+        switch result {
+        case .Success(let JSON):
+          self.appName = JSON["name"] as? String
+          self.printDebug("initialization server call success. Setting app name to: \(self.appName)")
+
+        case .Failure(_,_):
+          // default to app bundle name
+          self.appName = NSBundle.mainBundle().infoDictionary!["CFBundleName"] as? String
+          self.printDebug("initialization server call failure. Setting app name to: \(self.appName)")
+        }
+    }
+  }
+  
   //# MARK: - Network Connection
   
   func reachabilityChanged(note: NSNotification) {

@@ -17,14 +17,14 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!  
   s.description      = <<-DESC
-                          This is a placeholder description that needs to be updated. Brilliant is a library for in-app user surveys
+                         Brilliant is a library for in-app user surveys
                        DESC
 
-  s.homepage         = "https://github.com/pdbthefifth/BrilliantSDK"
+  s.homepage         = "https://github.com/tomboates/BrilliantSDK"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "Paul Berry" => "pdbthefifth@gmail.com" }
-  s.source           = { :git => "https://github.com/pdbthefifth/BrilliantSDK.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/tomboates/BrilliantSDK.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform     = :ios, '8.0'
