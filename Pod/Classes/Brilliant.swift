@@ -46,7 +46,7 @@ import ReachabilitySwift
   // days between seeing surveys
   private var SURVEY_INTERVAL = 14
   
-  private static var kDEBUG = true
+  private static var kDEBUG = false
   
   // initialization on app open. Sets api key, checks for pending surveys
   public func createWithAppKey(key:String) {

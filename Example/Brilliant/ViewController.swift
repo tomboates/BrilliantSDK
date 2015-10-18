@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     Brilliant.sharedInstance.userDate = NSNumber(double: NSDate().timeIntervalSince1970)
     Brilliant.sharedInstance.userType = "USER_TYPE (OPTIONAL)"
     
-    Brilliant.sharedInstance.createWithAppKey("mXtWtlLBSV+bT7flkEOgDhzE2FjU8Ln96Vf+DrYzNjNRMb1XTDqIP2/I4PS+UMNpYvS2zRb5bq/MYmZJtW06EA==")
+    Brilliant.sharedInstance.createWithAppKey("APP_KEY")
     
   }
   
