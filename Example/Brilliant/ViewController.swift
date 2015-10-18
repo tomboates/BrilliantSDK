@@ -18,11 +18,11 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     // Setup User Info
     Brilliant.sharedInstance.userEmail = "USER_EMAIL"
-    Brilliant.sharedInstance.userAcctCreationDate = NSDate().timeIntervalSince1970
+    Brilliant.sharedInstance.userDate = NSNumber(double: NSDate().timeIntervalSince1970)
     Brilliant.sharedInstance.userType = "USER_TYPE (OPTIONAL)"
     
-    // Always init after setting user info
-    Brilliant.sharedInstance.initWithAppKey("wd5vTAb9JXprZ52RxiSO/8g8nnpyLG5llQpH8QOFSsP12+imFKMuX1IhdCWLFQ1wKrhsSMtpyJ/aIK2zMvXdUw==")
+    Brilliant.sharedInstance.createWithAppKey("mXtWtlLBSV+bT7flkEOgDhzE2FjU8Ln96Vf+DrYzNjNRMb1XTDqIP2/I4PS+UMNpYvS2zRb5bq/MYmZJtW06EA==")
+    
   }
   
   @IBAction func surveyButtonPressed(sender: AnyObject) {

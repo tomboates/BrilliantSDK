@@ -8,17 +8,29 @@
 ## Usage
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
+Make sure your project podfile has the line: use_framworks!
 
+## Swift Getting Started
 1. After installing the pod in your project, `import Brilliant` in the AppDelegate
 2. Get APP_KEY from web dashboard: brilliantapp.com/settings
-3. in the `didFinishLaunchingWithOptions` method of the AppDelegate, add initialization with APP_KEY:
-    `Brilliant.sharedInstance.initWithAppKey("YOUR_APP_KEY_HERE")`
-4. following the initialization, set User info:
+3. following the initialization, set User info:
     `Brilliant.sharedInstance.userEmail = "USER_EMAIL"
-    Brilliant.sharedInstance.userAcctCreationDate = "USER_ACCOUNT_CREATION_DATE"
+    Brilliant.sharedInstance.userDate = "USER_ACCOUNT_CREATION_DATE_AS_NSNUMBER"
     Brilliant.sharedInstance.userType = "USER_TYPE (OPTIONAL)" // can be any metric you want (i.e. free, paid, premium, driver, etc)`
+4. in the `didFinishLaunchingWithOptions` method of the AppDelegate, add initialization with APP_KEY:
+    `Brilliant.sharedInstance.initWithAppKey("YOUR_APP_KEY")`
+5. add `Brilliant.sharedInstance.showNpsSurvey("EVENT_NAME")` wherever you'd like to show the NPS survey
 
-5. add `Brilliant.sharedInstance.showNpsSurvey("EVENT_NAME_HERE")` wherever you'd like to show the NPS survey
+## Objective-C Getting Started
+1. After installing the pod in your project, `@import Brilliant;` in the AppDelegate
+2. Get APP_KEY from web dashboard: brilliantapp.com/settings
+3. before the singleton initialization, set User info:
+    `Brilliant.sharedInstance.userEmail = "USER_EMAIL";
+    Brilliant.sharedInstance.userDate = "USER_ACCOUNT_CREATION_DATE_AS_NSNUMBER";
+    Brilliant.sharedInstance.userType = "USER_TYPE (OPTIONAL)"; // can be any metric you want (i.e. free, paid, premium, driver, etc)`
+4. in the `didFinishLaunchingWithOptions` method of the AppDelegate, add initialization with APP_KEY:
+    `Brilliant.sharedInstance.initWithAppKey("YOUR_APP_KEY")
+5. add `[Brilliant.sharedInstance showNpsSurvey:@"EVENT_NAME"];` wherever you'd like to show the NPS survey
 
 ## Requirements
 
@@ -31,6 +43,7 @@ it, simply add the following line to your Podfile:
 pod "Brilliant"
 ```
 
+NOTE: if project is in Objective-C, make sure the line use_frameworks! is added to your podfile.
 ## License
 
 Brilliant is available under the MIT license. See the LICENSE file for more info.

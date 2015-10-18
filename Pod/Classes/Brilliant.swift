@@ -10,17 +10,21 @@ import Foundation
 import Alamofire
 import ReachabilitySwift
 
-public class Brilliant {
+@objc public class Brilliant: NSObject {
   
   public static let sharedInstance = Brilliant()
-//  private let kBaseURL = "http://brilliantapp.com/api/"
-  private let kBaseURL = "http://localhost:3000/api/"
+  
+  private override init(){}
+  
+  //  need to use herokuapp subdomain in order have insecure POST requests (https solves this)
+  private let kBaseURL = "http://brilliant-app.herokuapp.com/api/"
+//  private let kBaseURL = "http://localhost:3000/api/"
   
   public var appKey: String?
-  public var userEmail: String?
-  public var userAcctCreationDate: Double?
-  public var userType: String?
   public var appName: String?
+  public var userEmail: String?
+  public var userType: String?
+  public var userDate: NSNumber?
   
   private var lastSurveyShownTime: NSDate! {
     
@@ -44,10 +48,8 @@ public class Brilliant {
   
   private static var kDEBUG = true
   
-  private init() {}
-  
   // initialization on app open. Sets api key, checks for pending surveys
-  public func initWithAppKey(key:String) {
+  public func createWithAppKey(key:String) {
     self.appKey = key
     
     // set or initalize lastSurveyShownTime
@@ -103,7 +105,7 @@ public class Brilliant {
     
     // add user data
     attributes["userEmail"] = self.userEmail
-    attributes["userAcctCreation"] = String(self.userAcctCreationDate)
+    attributes["userAcctCreation"] = String(format:"%f", (self.userDate!.doubleValue))
     attributes["userType"] = self.userType
     
     let params = ["nps_survey": attributes]
@@ -113,7 +115,10 @@ public class Brilliant {
       .responseString { _, response, result in
         if response?.statusCode == 201 {          // 201 means survey was created on server
           self.printDebug("Successfully saved to server.")
-//          self.lastSurveyShownTime = NSDate()
+
+          if !Brilliant.kDEBUG {
+            self.lastSurveyShownTime = NSDate()
+          }
           
           // no need to listen for internet connection change anymore
           let reachability = Reachability.reachabilityForInternetConnection()
