@@ -17,8 +17,8 @@ import ReachabilitySwift
   private override init(){}
   
   //  need to use herokuapp subdomain in order have insecure POST requests (https solves this)
-  private let kBaseURL = "https://brilliant-app.herokuapp.com/api/"
-//  private let kBaseURL = "http://localhost:3000/api/"
+//  private let kBaseURL = "https://brilliantapp.com/api/"
+  private let kBaseURL = "http://localhost:3000/api/"
   
   public var appKey: String?
   public var appName: String?
@@ -86,7 +86,12 @@ import ReachabilitySwift
       let surveyVC = SurveyViewController(nibName: nil, bundle: nil)
       rootVC!.presentViewController(surveyVC, animated: false, completion: nil)
     }else {
-      printDebug("Not showing survey: \(daysSinceLastSurvey()) days since last survey, but interval is \(self.SURVEY_INTERVAL)")
+      if self.pendingSurvey {
+        self.sendCompletedSurvey()
+        printDebug("Not showing survey, attempting to send pending survey")
+      }else {
+        printDebug("Not showing survey: \(daysSinceLastSurvey()) days since last survey, but interval is \(self.SURVEY_INTERVAL)")
+      }
     }
   }
   
@@ -105,7 +110,9 @@ import ReachabilitySwift
     
     // add user data
     attributes["userEmail"] = self.userEmail
-    attributes["userAcctCreation"] = String(format:"%f", (self.userDate!.doubleValue))
+    if let acctCreationDate = self.userDate {
+      attributes["userAcctCreation"] = String(format:"%f", (acctCreationDate.doubleValue))
+    }
     attributes["userType"] = self.userType
     
     let params = ["nps_survey": attributes]
