@@ -17,7 +17,7 @@ import ReachabilitySwift
   private override init(){}
   
   //  need to use herokuapp subdomain in order have insecure POST requests (https solves this)
-  private let kBaseURL = "http://brilliant-app.herokuapp.com/api/"
+  private let kBaseURL = "https://brilliant-app.herokuapp.com/api/"
 //  private let kBaseURL = "http://localhost:3000/api/"
   
   public var appKey: String?
@@ -46,7 +46,7 @@ import ReachabilitySwift
   // days between seeing surveys
   private var SURVEY_INTERVAL = 14
   
-  private static var kDEBUG = false
+  private static var kDEBUG = true
   
   // initialization on app open. Sets api key, checks for pending surveys
   public func createWithAppKey(key:String) {
@@ -117,7 +117,7 @@ import ReachabilitySwift
           self.printDebug("Successfully saved to server.")
 
           if !Brilliant.kDEBUG {
-            self.lastSurveyShownTime = NSDate()
+            self.lastSurveyShownTime = NSDate() 
           }
           
           // no need to listen for internet connection change anymore

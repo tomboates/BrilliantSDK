@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0828CB18F16F9754A0EBDF91 /* Pods_Brilliant_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 621B3F262810A9AF86581188 /* Pods_Brilliant_Example.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0828CB18F16F9754A0EBDF91 /* Pods_Brilliant_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 621B3F262810A9AF86581188 /* Pods_Brilliant_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		A2164F36557343D50A4A8C15 /* Pods_Brilliant_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F4CC680F43BC50DE253220 /* Pods_Brilliant_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		A2164F36557343D50A4A8C15 /* Pods_Brilliant_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F4CC680F43BC50DE253220 /* Pods_Brilliant_Tests.framework */; };
 		DAD016BE1BB233B100E79A6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
