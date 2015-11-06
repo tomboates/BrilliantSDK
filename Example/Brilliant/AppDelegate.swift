@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Brilliant
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+
+      // Setup User Info
+      Brilliant.sharedInstance.userEmail = "INSERT EMAIL"
+      Brilliant.sharedInstance.userDate = NSNumber(double: NSDate().timeIntervalSince1970)
+      Brilliant.sharedInstance.userType = "INSERT USER TYPE"
+      
+      // Initialize
+      Brilliant.sharedInstance.appStoreId = "INSERT 9 DIGIT APP STORE ID"
+      Brilliant.sharedInstance.createWithAppKey("INSERT APP KEY FROM WEB")
         return true
     }
 

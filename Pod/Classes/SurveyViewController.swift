@@ -463,7 +463,7 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
   func submitComments(sender: UIButton!) {
     Brilliant.sharedInstance.completedSurvey!["comments"] = self.comments.text
     
-    if self.npsNumber == 9 || self.npsNumber == 10 {
+    if (self.npsNumber == 9 || self.npsNumber == 10) && Brilliant.sharedInstance.appStoreId != nil {
       
       UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
         
@@ -675,7 +675,9 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
   
   func npsReview(sender: UIButton!) {
     
-    UIApplication.sharedApplication().openURL(NSURL(string: "itms://itunes.apple.com/us/app/apple-store/id300235330?mt=8")!)
+    let url = "itms-apps://itunes.apple.com/app/id\(Brilliant.sharedInstance.appStoreId!)"
+    print(url)
+    UIApplication.sharedApplication().openURL(NSURL(string: url)!)
     
    self.closeBlurView(self.npsReview)
     
