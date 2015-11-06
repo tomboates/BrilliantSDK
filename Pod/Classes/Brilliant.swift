@@ -84,7 +84,10 @@ import ReachabilitySwift
       self.completedSurvey = ["event": event]
       let rootVC = UIApplication.sharedApplication().delegate?.window?!.rootViewController
       let surveyVC = SurveyViewController(nibName: nil, bundle: nil)
-      rootVC!.presentViewController(surveyVC, animated: false, completion: nil)
+      let modalStyle = UIModalTransitionStyle.CrossDissolve
+      surveyVC.modalTransitionStyle = modalStyle
+      surveyVC.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+      rootVC!.presentViewController(surveyVC, animated: true, completion: nil)
     }else {
       if self.pendingSurvey {
         self.sendCompletedSurvey()
