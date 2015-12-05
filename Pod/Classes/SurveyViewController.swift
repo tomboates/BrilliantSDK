@@ -199,6 +199,7 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
     npsNumbersView.translatesAutoresizingMaskIntoConstraints = false
     npsLabel.translatesAutoresizingMaskIntoConstraints = false
     npsButtonView.translatesAutoresizingMaskIntoConstraints = false
+    blurEffectView.translatesAutoresizingMaskIntoConstraints = false
     
     if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
       
@@ -400,6 +401,8 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
         self.npsCommentsButtonView.translatesAutoresizingMaskIntoConstraints = false
         self.noThanks.translatesAutoresizingMaskIntoConstraints = false
         self.submitComments.translatesAutoresizingMaskIntoConstraints = false
+        self.closeButton.translatesAutoresizingMaskIntoConstraints = false
+        self.npsLabel.translatesAutoresizingMaskIntoConstraints = false
         
         let npsCommentsViewDictionary = ["closeButton": self.closeButton, "npsCommentsView": self.npsCommentsView, "npsCommentsButtonView": self.npsCommentsButtonView, "npsLabel": self.npsLabel, "comments": self.comments, "noThanks": self.noThanks, "submitComments": self.submitComments]
         
@@ -423,16 +426,7 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
           attribute: NSLayoutAttribute.CenterX,
           multiplier: 1,
           constant: 0)
-        self.npsView.addConstraint(npsCommentsViewCenter)
-        
-        let npsCommentsViewMiddle = NSLayoutConstraint(item: self.npsCommentsView,
-          attribute: NSLayoutAttribute.CenterY,
-          relatedBy: NSLayoutRelation.Equal,
-          toItem: self.npsView,
-          attribute: NSLayoutAttribute.CenterY,
-          multiplier: 1,
-          constant: 0)
-        self.npsView.addConstraint(npsCommentsViewMiddle)
+        self.npsView.addConstraint(npsCommentsViewCenter)    
         
         if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
           
