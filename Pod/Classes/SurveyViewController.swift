@@ -11,60 +11,77 @@ import UIKit
 
 class SurveyViewController: UIViewController, UITextViewDelegate {
   
-  var blurEffect = UIBlurEffect();
-  var blurEffectView = UIVisualEffectView();
-  var npsView = UIScrollView();
+  var blurEffect = UIBlurEffect()
+  var blurEffectView = UIVisualEffectView()
+  var npsView = UIScrollView()
   
-  var originalOffset = CGPoint();
+  var originalOffset = CGPoint()
   
-  var npsNumbersView = UIView();
-  var npsCommentsView = UIView();
-  var npsThanksView = UIView();
-  var npsRatingView = UIView();
-  var npsButtonView = UIView();
-  var npsCommentsButtonView = UIView();
+  var npsNumbersView = UIView()
+  var npsCommentsView = UIView()
+  var npsThanksView = UIView()
+  var npsRatingView = UIView()
+  var npsButtonView = UIView()
+  var npsCommentsButtonView = UIView()
   var npsNumber = Int()
   
   let npsLabel: UILabel = UILabel()
   var closeImage: UIImage!
-  let closeButton   = UIButton(type: UIButtonType.System);
+  let closeButton   = UIButton(type: UIButtonType.System)
   
-  let submitNPS = UIButton(type: UIButtonType.System);
+  let submitNPS = UIButton(type: UIButtonType.System)
   let valueLabel: UILabel = UILabel()
   let npsValue: UILabel = UILabel()
   
   var comments: UITextView = UITextView()
-  let noThanks = UIButton(type: UIButtonType.System);
-  let submitComments = UIButton(type: UIButtonType.System);
+  let noThanks = UIButton(type: UIButtonType.System)
+  let submitComments = UIButton(type: UIButtonType.System)
   
-  let npsDone = UIButton(type: UIButtonType.System);
+  let npsDone = UIButton(type: UIButtonType.System)
   
   var commentsImage: UIImage!
   var ratingsImage: UIImage!
   
   var commentBubble = UIImageView()
-  var ratingStar = UIButton(type: UIButtonType.System);
+  var ratingStar = UIButton(type: UIButtonType.System)
   
-  var npsButton = UIButton(type: UIButtonType.System);
+  var npsButton = UIButton(type: UIButtonType.System)
   
-  var npsButtonsDictionary = Dictionary<String, AnyObject>()
+    var npsButtonsDictionary = [String: AnyObject]()
   
-  let npsReview = UIButton(type: UIButtonType.System);
+  let npsReview = UIButton(type: UIButtonType.System)
   
   let shadowColor = UIColor(red: 0.211, green: 0.660, blue: 0.324, alpha: 1)
   
-  var state: Int! // keep track of what screen is showing for analytics
+  var state: SurveyViewControllerState // keep track of what screen is showing for analytics
+    
+    //Colors
+    static let NPSButtonColor = UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
+    static let noThanksButtonColor = UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
+    static let submitCommentsColor = UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
+    static let npsReviewColor = UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
+    static let npsDoneColor = UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.state = .RatingScreen
+        super.init(coder: aDecoder)
+    }
+    
+    override init(nibName nibNameOrNil: String!, bundle: NSBundle!) {
+        self.state = .RatingScreen
+        super.init(nibName: nibNameOrNil, bundle: bundle)
+    }
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.state = 0
     let bundleURL = NSBundle(forClass: Brilliant.self).URLForResource("Brilliant", withExtension: "bundle")
     let bundle = NSBundle(URL: bundleURL!)
     closeImage = UIImage(named: "brilliant-icon-close", inBundle: bundle, compatibleWithTraitCollection: nil)
     commentsImage = UIImage(named: "commentBubble", inBundle: bundle, compatibleWithTraitCollection: nil)
     ratingsImage = UIImage(named: "ratingStars", inBundle: bundle, compatibleWithTraitCollection: nil)
     
-    Brilliant.sharedInstance.completedSurvey!["triggerTimestamp"] = String(NSDate().timeIntervalSince1970)
+    Brilliant.sharedInstance().completedSurvey?.triggerTimestamp = NSDate()
     
     comments.delegate = self
     
@@ -109,8 +126,8 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
         npsLabel.font = UIFont(name: npsLabel.font.fontName, size: 23)
       }
       var appName = "this app"
-      if (Brilliant.sharedInstance.appName != nil) {
-        appName = Brilliant.sharedInstance.appName!
+      if (Brilliant.sharedInstance().appName != nil) {
+        appName = Brilliant.sharedInstance().appName!
       }
       
       npsLabel.text = "How likely are you to recommend \(appName) to a friend or colleague?"
@@ -128,7 +145,7 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
         let x = CGFloat(i * 28)
         npsButton.frame = CGRectMake(x, 150, 28, 28)
         npsButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
-        npsButton.tintColor = UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
+        npsButton.tintColor = SurveyViewController.NPSButtonColor
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
           npsButton.titleLabel!.font =  UIFont(name: npsLabel.font.fontName, size: 40)
         }
@@ -268,22 +285,24 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
   func closeBlurView(sender: UIButton!) {
     // determine dismissAction NOTE: this would be much easier if each view was in it's own viewcontroller
     var dismissAction: String!
-    switch (self.state) {
-    case (0): // rating screen
+    switch self.state
+    {
+    case .RatingScreen: // rating screen
       dismissAction = "x_npsscreen"
-    case (1): // comment screen
+        break
+    case .CommentScreen: // comment screen
       if (sender == self.closeButton) {
         dismissAction = "x_comments"
       }else {
         dismissAction = "nothanks_comments"
       }
-    case (2): // feedback screen
+    case .FeedbackScreen: // feedback screen
       if (sender == self.closeButton) {
         dismissAction = "x_feedback"
       } else {
         dismissAction = "done_feedback"
       }
-    case (3): // rate the app screen
+    case .RateAppScreen: // rate the app screen
       if (sender == self.closeButton) {
       dismissAction = "x_rateapp"
       } else if (sender == self.npsReview) {
@@ -291,10 +310,8 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
       } else {
       dismissAction = "nothanks_rateapp"
       }
-    default:
-      dismissAction = "other_action"
     }
-    Brilliant.sharedInstance.completedSurvey!["dismissAction"] = dismissAction
+    Brilliant.sharedInstance().completedSurvey!.dismissAction = dismissAction
     
     comments.text = nil
     
@@ -316,8 +333,8 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
           
           }, completion: {_ in
             // SEND SURVEY DATA
-            Brilliant.sharedInstance.completedSurvey!["completedTimestamp"] = String(NSDate().timeIntervalSince1970)
-            Brilliant.sharedInstance.sendCompletedSurvey()
+            Brilliant.sharedInstance().completedSurvey!.completedTimestamp = NSDate()
+            Brilliant.sharedInstance().sendCompletedSurvey()
         })
     })
     
@@ -326,13 +343,13 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
   func submitNPS(sender: UIButton!) {
     
     npsNumber = sender.tag
-    Brilliant.sharedInstance.completedSurvey!["npsRating"] = String(npsNumber)
+    Brilliant.sharedInstance().completedSurvey!.npsRating = npsNumber
     
     UIView.animateWithDuration(0.2, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
       self.npsNumbersView.alpha = 0
       
       }, completion: {(finished:Bool) in
-        self.state = 1
+        self.state = .CommentScreen
         self.npsView.addSubview(self.npsCommentsView)
         self.npsCommentsView.alpha = 0
         
@@ -350,7 +367,7 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
         
         self.noThanks.alpha = 1
         self.noThanks.setTitle("No Thanks", forState: UIControlState.Normal)
-        self.noThanks.tintColor = UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
+        self.noThanks.tintColor = SurveyViewController.noThanksButtonColor
         self.noThanks.addTarget(self, action: "closeBlurView:", forControlEvents:.TouchUpInside)
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
           self.noThanks.titleLabel!.font =  UIFont(name: self.npsLabel.font.fontName, size: 26)
@@ -367,7 +384,7 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
         self.submitComments.layer.shadowOffset = CGSizeMake(0, 2)
         self.submitComments.layer.shadowRadius = 0
         self.submitComments.layer.shadowOpacity = 1.0
-        self.submitComments.backgroundColor = UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
+        self.submitComments.backgroundColor = SurveyViewController.submitCommentsColor
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
           self.submitComments.titleLabel!.font =  UIFont(name: self.npsLabel.font.fontName, size: 26)
         }
@@ -461,16 +478,17 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
   
   
   func submitComments(sender: UIButton!) {
-    Brilliant.sharedInstance.completedSurvey!["comments"] = self.comments.text
+    Brilliant.sharedInstance().completedSurvey!.comment = self.comments.text
     
-    if (self.npsNumber == 9 || self.npsNumber == 10) && Brilliant.sharedInstance.appStoreId != nil {
+    if (self.npsNumber == 9 || self.npsNumber == 10)
+    {
       
       UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
         
         self.npsCommentsView.alpha = 0
         
         }, completion: {(finished:Bool) in
-          self.state = 3
+          self.state = .RateAppScreen
           self.npsView.addSubview(self.npsRatingView)
           self.npsRatingView.alpha = 0
           
@@ -484,7 +502,7 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
           self.npsReview.layer.shadowOffset = CGSizeMake(0, 2)
           self.npsReview.layer.shadowRadius = 0
           self.npsReview.layer.shadowOpacity = 1.0
-          self.npsReview.backgroundColor = UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
+          self.npsReview.backgroundColor = SurveyViewController.npsReviewColor
           if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
             self.npsReview.titleLabel!.font =  UIFont(name: self.npsLabel.font.fontName, size: 26)
           }
@@ -571,7 +589,7 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
         self.npsCommentsView.alpha = 0
         
         }, completion: {(finished:Bool) in
-          self.state = 2
+          self.state = .FeedbackScreen
           self.commentBubble = UIImageView(image: self.commentsImage)
           
           self.npsView.addSubview(self.npsThanksView)
@@ -585,7 +603,7 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
           self.npsDone.layer.shadowOffset = CGSizeMake(0, 2)
           self.npsDone.layer.shadowRadius = 0
           self.npsDone.layer.shadowOpacity = 1.0
-          self.npsDone.backgroundColor = UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
+          self.npsDone.backgroundColor = SurveyViewController.npsDoneColor
           self.npsDone.titleLabel!.font =  UIFont.boldSystemFontOfSize(22)
           self.npsDone.setTitle("Done", forState: UIControlState.Normal)
           self.npsDone.addTarget(self, action: "closeBlurView:", forControlEvents:.TouchUpInside)
@@ -675,7 +693,7 @@ class SurveyViewController: UIViewController, UITextViewDelegate {
   
   func npsReview(sender: UIButton!) {
     
-    let url = "itms-apps://itunes.apple.com/app/id\(Brilliant.sharedInstance.appStoreId!)"
+    let url = "itms-apps://itunes.apple.com/app/id\(Brilliant.sharedInstance().appStoreId)"
     print(url)
     UIApplication.sharedApplication().openURL(NSURL(string: url)!)
     

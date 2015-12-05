@@ -19,7 +19,7 @@ class ViewController: UIViewController {
   }
   
   @IBAction func surveyButtonPressed(sender: AnyObject) {
-    Brilliant.sharedInstance.showNpsSurvey("INSERT EVENT NAME")
+    Brilliant.sharedInstance().showNpsSurvey("INSERT EVENT NAME")
   }
 }
 

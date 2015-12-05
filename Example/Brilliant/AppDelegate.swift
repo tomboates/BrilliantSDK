@@ -18,13 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
       // Setup User Info
-      Brilliant.sharedInstance.userEmail = "INSERT EMAIL"
-      Brilliant.sharedInstance.userDate = NSNumber(double: NSDate().timeIntervalSince1970)
-      Brilliant.sharedInstance.userType = "INSERT USER TYPE"
-      
-      // Initialize
-      Brilliant.sharedInstance.appStoreId = "INSERT 9 DIGIT APP STORE ID"
-      Brilliant.sharedInstance.createWithAppKey("INSERT APP KEY FROM WEB")
+//        createInstance(key: String, appStoreId: String, userEmail: String?, userType: String?, userDate: NSDate?)
+        Brilliant.createInstance("INSERT APP KEY FROM WEB", appStoreId: "INSERT 9 DIGIT APP STORE ID", userEmail: "INSERT EMAIL", userType: "INSERT USER TYPE", userDate: NSDate.distantPast())
         return true
     }
 
