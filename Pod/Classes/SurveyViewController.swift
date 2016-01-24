@@ -75,6 +75,18 @@ class SurveyViewController: UIViewController, NPSScoreViewControllerDelegate, Co
         self.view.addConstraints(vConstraints)
     }
     
+    func viewControllerTransition(oldVC: UIViewController?, newVC: UIViewController)
+    {
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
+            oldVC?.view.alpha = 0
+            newVC.view.alpha = 1
+            }) { (success) -> Void in
+                oldVC?.removeFromParentViewController()
+                oldVC?.view.removeFromSuperview()
+        }
+    }
+
+
     
     //NPSScoreViewControllerDelegate
     func closePressed(state: SurveyViewControllerState)
@@ -122,31 +134,31 @@ class SurveyViewController: UIViewController, NPSScoreViewControllerDelegate, Co
 
     func npsScorePressed(npsScore: Int)
     {
-        self.npsScoreVC?.removeFromParentViewController()
-        self.npsScoreVC?.view.removeFromSuperview()
-        
         self.commentsVC = CommentsViewController(nibName: "CommentsViewController", bundle: Brilliant.xibBundle())
         self.commentsVC!.delegate = self
+        self.commentsVC!.view.alpha = 0
         self.addFullScreenSubViewController(self.commentsVC!)
+        
+        self.viewControllerTransition(self.npsScoreVC, newVC: self.commentsVC!)
     }
     
     //CommentsViewControllerDelegate
     func submitFeedbackPressed()
     {
-        self.commentsVC?.removeFromParentViewController()
-        self.commentsVC?.view.removeFromSuperview()
-        
         if(Brilliant.sharedInstance().completedSurvey!.npsRating >= 7)
         {
             self.rateAppVC = RateAppViewController(nibName: "RateAppViewController", bundle: Brilliant.xibBundle())
             self.rateAppVC?.delegate = self
+            self.rateAppVC!.view.alpha = 0
             self.addFullScreenSubViewController(self.rateAppVC!)
+            self.viewControllerTransition(self.commentsVC, newVC: self.rateAppVC!)
         }
         else
         {
             self.negativeFeedbackVC = NegativeFeedbackCompleteViewController(nibName: "NegativeFeedbackCompleteViewController", bundle: Brilliant.xibBundle())
             self.negativeFeedbackVC!.delegate = self
             self.addFullScreenSubViewController(self.negativeFeedbackVC!)
+            self.viewControllerTransition(self.commentsVC, newVC: self.negativeFeedbackVC!)
         }
     }
     
