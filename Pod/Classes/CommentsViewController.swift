@@ -134,6 +134,7 @@ class CommentsViewController: UIViewController
     }
     
     @IBAction func submitPressed(sender: AnyObject) {
+        Brilliant.sharedInstance().completedSurvey!.comment = self.comments.text
         self.delegate?.submitFeedbackPressed()
     }
     

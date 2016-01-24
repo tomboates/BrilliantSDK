@@ -58,11 +58,6 @@ class SurveyViewController: UIViewController, NPSScoreViewControllerDelegate, Co
         
     }
     
-    
-    func submitComments(sender: UIButton!) {
-//        Brilliant.sharedInstance().completedSurvey!.comment = self.comments.text        
-    }
-    
     func addFullScreenSubViewController(subViewController: UIViewController)
     {
         self.addChildViewController(subViewController)
