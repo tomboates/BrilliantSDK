@@ -85,8 +85,6 @@ class SurveyViewController: UIViewController, NPSScoreViewControllerDelegate, Co
                 oldVC?.view.removeFromSuperview()
         }
     }
-
-
     
     //NPSScoreViewControllerDelegate
     func closePressed(state: SurveyViewControllerState)
@@ -164,7 +162,7 @@ class SurveyViewController: UIViewController, NPSScoreViewControllerDelegate, Co
     
     func doNotSubmitFeedbackPressed()
     {
-        //TODO: Log the write stuff to the survey
+        Brilliant.sharedInstance().completedSurvey!.dismissAction =  "nothanks_comments"
         self.close()
     }
     
@@ -174,19 +172,21 @@ class SurveyViewController: UIViewController, NPSScoreViewControllerDelegate, Co
     {
         let url = "itms-apps://itunes.apple.com/app/id\(Brilliant.sharedInstance().appStoreId)"
         UIApplication.sharedApplication().openURL(NSURL(string: url)!)
-
+        
+        Brilliant.sharedInstance().completedSurvey!.dismissAction =  "sure_rateapp"
         self.close()
     }
     
     func doNotRateAppPressed()
     {
-        //TODO: Log the write stuff to the survey
+        Brilliant.sharedInstance().completedSurvey!.dismissAction = "nothanks_rateapp"
         self.close()
     }
     
     //NegativeFeedbackCompleteViewControllerDelegate
     func doneWithFeedbackPressed()
     {
+        Brilliant.sharedInstance().completedSurvey!.dismissAction = "done_feedback"
         self.close()
     }
 }
