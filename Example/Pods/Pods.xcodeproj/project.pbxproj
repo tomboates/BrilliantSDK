@@ -18,7 +18,15 @@
 		3D2D45671C13490B00CED2C5 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D45661C13490B00CED2C5 /* Survey.swift */; };
 		3D8428291C55019D00CC9D93 /* BrilliantWebClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8428281C55019D00CC9D93 /* BrilliantWebClient.swift */; };
 		3D84282C1C55049500CC9D93 /* LogUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D84282B1C55049500CC9D93 /* LogUtil.swift */; };
-		3D84282E1C550B0600CC9D93 /* SurveyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D84282D1C550B0600CC9D93 /* SurveyViewController.xib */; };
+		3D84282E1C550B0600CC9D93 /* NPSScoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D84282D1C550B0600CC9D93 /* NPSScoreViewController.xib */; };
+		3D8428301C550EE900CC9D93 /* NPSScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D84282F1C550EE900CC9D93 /* NPSScoreViewController.swift */; };
+		3D8428321C55173400CC9D93 /* SurveyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D8428311C55173400CC9D93 /* SurveyViewController.xib */; };
+		3D8428341C551C2500CC9D93 /* CommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D8428331C551C2500CC9D93 /* CommentsViewController.xib */; };
+		3D8428361C551C3400CC9D93 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8428351C551C3400CC9D93 /* CommentsViewController.swift */; };
+		3D8428381C553FBE00CC9D93 /* RateAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8428371C553FBE00CC9D93 /* RateAppViewController.swift */; };
+		3D84283A1C553FD000CC9D93 /* RateAppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D8428391C553FD000CC9D93 /* RateAppViewController.xib */; };
+		3D84283C1C55442800CC9D93 /* NegativeFeedbackCompleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D84283B1C55442800CC9D93 /* NegativeFeedbackCompleteViewController.xib */; };
+		3D84283E1C55443400CC9D93 /* NegativeFeedbackCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D84283D1C55443400CC9D93 /* NegativeFeedbackCompleteViewController.swift */; };
 		3DF03BA7503376737F9B568DA137A3B8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF5DCC562D1A423D15246E8931E09C00 /* Alamofire.framework */; };
 		3F53D346E1F37F4C792B59BAB93FFBFC /* Pods-Brilliant_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CCC83FFE94546B6507FD38D61D9DD73 /* Pods-Brilliant_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		50CB3873CE44B09068C6650F7BC1B62E /* ReachabilitySwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BA696D0257C0C38DB22F4F7C0B3024 /* ReachabilitySwift-dummy.m */; };
@@ -139,7 +147,15 @@
 		3D2D45661C13490B00CED2C5 /* Survey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
 		3D8428281C55019D00CC9D93 /* BrilliantWebClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrilliantWebClient.swift; sourceTree = "<group>"; };
 		3D84282B1C55049500CC9D93 /* LogUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogUtil.swift; sourceTree = "<group>"; };
-		3D84282D1C550B0600CC9D93 /* SurveyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SurveyViewController.xib; sourceTree = "<group>"; };
+		3D84282D1C550B0600CC9D93 /* NPSScoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPSScoreViewController.xib; sourceTree = "<group>"; };
+		3D84282F1C550EE900CC9D93 /* NPSScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NPSScoreViewController.swift; sourceTree = "<group>"; };
+		3D8428311C55173400CC9D93 /* SurveyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SurveyViewController.xib; sourceTree = "<group>"; };
+		3D8428331C551C2500CC9D93 /* CommentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommentsViewController.xib; path = ../Pod/Classes/CommentsViewController.xib; sourceTree = "<group>"; };
+		3D8428351C551C3400CC9D93 /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		3D8428371C553FBE00CC9D93 /* RateAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateAppViewController.swift; sourceTree = "<group>"; };
+		3D8428391C553FD000CC9D93 /* RateAppViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RateAppViewController.xib; sourceTree = "<group>"; };
+		3D84283B1C55442800CC9D93 /* NegativeFeedbackCompleteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NegativeFeedbackCompleteViewController.xib; path = ../Pod/Classes/NegativeFeedbackCompleteViewController.xib; sourceTree = "<group>"; };
+		3D84283D1C55443400CC9D93 /* NegativeFeedbackCompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NegativeFeedbackCompleteViewController.swift; sourceTree = "<group>"; };
 		40BA696D0257C0C38DB22F4F7C0B3024 /* ReachabilitySwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ReachabilitySwift-dummy.m"; sourceTree = "<group>"; };
 		42443BE4CFDB3686DCE7BD49A7251FBD /* ReachabilitySwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ReachabilitySwift-umbrella.h"; sourceTree = "<group>"; };
 		42946073B5660BA41E66795D39245479 /* Download.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Download.swift; path = Source/Download.swift; sourceTree = "<group>"; };
@@ -255,11 +271,15 @@
 			isa = PBXGroup;
 			children = (
 				E8188345667EA4160E854C9E5F8B6EB2 /* Brilliant.swift */,
-				27FD2D1EC199516BB34810DDE66A0E6F /* SurveyViewController.swift */,
-				38F185083AC7FD824832F3C650D25D9A /* SurveyViewControllerState.swift */,
 				3D2D45661C13490B00CED2C5 /* Survey.swift */,
 				3D8428281C55019D00CC9D93 /* BrilliantWebClient.swift */,
 				3D84282B1C55049500CC9D93 /* LogUtil.swift */,
+				38F185083AC7FD824832F3C650D25D9A /* SurveyViewControllerState.swift */,
+				27FD2D1EC199516BB34810DDE66A0E6F /* SurveyViewController.swift */,
+				3D84282F1C550EE900CC9D93 /* NPSScoreViewController.swift */,
+				3D8428351C551C3400CC9D93 /* CommentsViewController.swift */,
+				3D8428371C553FBE00CC9D93 /* RateAppViewController.swift */,
+				3D84283D1C55443400CC9D93 /* NegativeFeedbackCompleteViewController.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -388,7 +408,11 @@
 				02B1F9E1B4D7156474639082F52E1C7C /* brilliant-icon-close@3x.png */,
 				2D382D26A331528D47775A136575B3F7 /* commentBubble@3x.png */,
 				CA81C12DFE2A3CA9DAF0863779284709 /* ratingStars@3x.png */,
-				3D84282D1C550B0600CC9D93 /* SurveyViewController.xib */,
+				3D84282D1C550B0600CC9D93 /* NPSScoreViewController.xib */,
+				3D8428331C551C2500CC9D93 /* CommentsViewController.xib */,
+				3D8428311C55173400CC9D93 /* SurveyViewController.xib */,
+				3D8428391C553FD000CC9D93 /* RateAppViewController.xib */,
+				3D84283B1C55442800CC9D93 /* NegativeFeedbackCompleteViewController.xib */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -687,8 +711,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D84282E1C550B0600CC9D93 /* SurveyViewController.xib in Resources */,
+				3D8428341C551C2500CC9D93 /* CommentsViewController.xib in Resources */,
+				3D84283A1C553FD000CC9D93 /* RateAppViewController.xib in Resources */,
+				3D84282E1C550B0600CC9D93 /* NPSScoreViewController.xib in Resources */,
+				3D8428321C55173400CC9D93 /* SurveyViewController.xib in Resources */,
 				5874A6AF74169417B2CE204B1BCC4ABF /* Brilliant.bundle in Resources */,
+				3D84283C1C55442800CC9D93 /* NegativeFeedbackCompleteViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -755,10 +783,14 @@
 				F70C91AB878A6C6A9AE6DF78844DA696 /* Brilliant-dummy.m in Sources */,
 				3D8428291C55019D00CC9D93 /* BrilliantWebClient.swift in Sources */,
 				F2625FF7036961C9CA6ED8E493E791FB /* Brilliant.swift in Sources */,
+				3D8428301C550EE900CC9D93 /* NPSScoreViewController.swift in Sources */,
 				3D84282C1C55049500CC9D93 /* LogUtil.swift in Sources */,
 				3D2D45671C13490B00CED2C5 /* Survey.swift in Sources */,
+				3D8428381C553FBE00CC9D93 /* RateAppViewController.swift in Sources */,
 				64784AB0E2A3AFEA7645DF92178279A4 /* SurveyViewController.swift in Sources */,
+				3D84283E1C55443400CC9D93 /* NegativeFeedbackCompleteViewController.swift in Sources */,
 				7AFFD9077882F58137EC98F9D27659D8 /* SurveyViewControllerState.swift in Sources */,
+				3D8428361C551C3400CC9D93 /* CommentsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

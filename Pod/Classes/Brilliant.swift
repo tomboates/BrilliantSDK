@@ -111,8 +111,7 @@ public class Brilliant: NSObject {
             self.completedSurvey?.event = event
             let rootVC = UIApplication.sharedApplication().delegate!.window??.rootViewController
         
-            let bundle = NSBundle(forClass: Brilliant.self)
-            let surveyVC = SurveyViewController(nibName: "SurveyViewController", bundle: bundle)
+            let surveyVC = SurveyViewController(nibName: "SurveyViewController", bundle: Brilliant.xibBundle())
             let modalStyle = UIModalTransitionStyle.CrossDissolve
             surveyVC.modalTransitionStyle = modalStyle
             surveyVC.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
@@ -204,4 +203,94 @@ public class Brilliant: NSObject {
     private func daysSinceLastSurvey() -> Int {
         return NSCalendar.currentCalendar().components(.Day, fromDate: self.lastSurveyShownTime, toDate: NSDate(), options: []).day
     }
+    
+    internal static func xibBundle() -> NSBundle
+    {
+        return NSBundle(forClass: Brilliant.self)
+    }
+    
+    internal static func imageBundle() -> NSBundle
+    {
+        let bundleURL = NSBundle(forClass: Brilliant.self).URLForResource("Brilliant", withExtension: "bundle")
+        return NSBundle(URL: bundleURL!)!
+    }
+    
+    //Texts
+    func positiveFeedbackText(number: Int) -> String
+    {
+        return String(format: "Great can you tell us why you choose a %d?", number)
+    }
+    
+    func negativeFeedbackText(number: Int) -> String
+    {
+        return String(format: "Bummer! Can you tell us why you choose a %d?", number)
+    }
+    
+    
+    //Colors
+    
+    func npsButtonColor() -> UIColor
+    {
+        return UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
+    }
+    
+    func noThanksButtonColor() -> UIColor
+    {
+        return UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
+    }
+    
+    func submitCommentsColor() -> UIColor
+    {
+        return UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
+    }
+    
+    func npsReviewColor() -> UIColor
+    {
+        return UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
+    }
+    func npsDoneColor() -> UIColor
+    {
+        return UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
+    }
+    
+    func shadowColor() -> UIColor
+    {
+        return UIColor(red: 0.211, green: 0.660, blue: 0.324, alpha: 1)
+    }
+    
+    func mainLabelColor() -> UIColor
+    {
+        return UIColor.whiteColor()
+    }
+    
+    //Fonts
+    func mainLabelFont() -> UIFont
+    {
+        
+        switch UIDevice.currentDevice().userInterfaceIdiom
+        {
+        case .Pad:
+            return UIFont.systemFontOfSize(34)
+        case .Phone:
+            return UIFont.systemFontOfSize(23)
+        case .TV:
+            return UIFont.systemFontOfSize(34)
+        case .Unspecified:
+            return UIFont.systemFontOfSize(34)
+        }
+        
+    }
+    
+    //Style Button
+    func styleButton(button: UIButton)
+    {
+        button.layer.cornerRadius = 4
+        button.tintColor = UIColor.whiteColor()
+        button.layer.shadowColor = Brilliant.sharedInstance().shadowColor().CGColor
+        button.layer.shadowOffset = CGSizeMake(0, 2)
+        button.layer.shadowRadius = 0
+        button.layer.shadowOpacity = 1.0
+        button.backgroundColor = UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
+    }
+    
 }
