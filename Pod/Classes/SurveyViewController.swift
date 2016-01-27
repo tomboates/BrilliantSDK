@@ -138,13 +138,17 @@ class SurveyViewController: UIViewController, NPSScoreViewControllerDelegate, Co
     //CommentsViewControllerDelegate
     func submitFeedbackPressed()
     {
-        if(Brilliant.sharedInstance().completedSurvey!.npsRating >= 7)
+        if(Brilliant.sharedInstance().completedSurvey!.npsRating >= 7 && Brilliant.sharedInstance().appStoreId != nil)
         {
             self.rateAppVC = RateAppViewController(nibName: "RateAppViewController", bundle: Brilliant.xibBundle())
             self.rateAppVC?.delegate = self
             self.rateAppVC!.view.alpha = 0
             self.addFullScreenSubViewController(self.rateAppVC!)
             self.viewControllerTransition(self.commentsVC, newVC: self.rateAppVC!)
+        }
+        else if(Brilliant.sharedInstance().completedSurvey!.npsRating >= 7 && Brilliant.sharedInstance().appStoreId != nil)
+        {
+            self.close()
         }
         else
         {

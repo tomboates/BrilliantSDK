@@ -18,9 +18,11 @@ class BrilliantWebClient
     
     static func request(method: Alamofire.Method, appKey: String, path: String, params: [String: AnyObject]?, success: (AnyObject) -> Void, failure: (Void) -> Void)
     {
+        let appVersion = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleVersion") as! String
         // set headers for auth and JSON content-type
         let headers = [
             "X-App-Key": appKey,
+            "X-App-Version": appVersion,
             "Content-Type": "application/json"
         ]
         

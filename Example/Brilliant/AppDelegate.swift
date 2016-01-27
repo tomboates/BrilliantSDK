@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
       // Setup User Info
 //        createInstance(key: String, appStoreId: String, userEmail: String?, userType: String?, userDate: NSDate?)
-        Brilliant.createInstance("12C0FxuKALcTvfcUEzJr1ePcL9EaudrJLn36OtR/a3h/B/PhkSyDhgkHZ11vM9W/3JAKToC/PWu17tHsVYtmSA==", appStoreId: "INSERT 9 DIGIT APP STORE ID", userEmail: "pconno3@gmail.com", userType: "INSERT USER TYPE", userDate: NSDate.distantPast())
+        Brilliant.createInstance("BqWt7WhYVjyKJtbmhIMBBVIiqlNecxHW8m/HHc6J6sbWN6uQqX1JED1C2Jprr1M/BwBPQL3PmryTf2mGP4W8aw==", appStoreId: nil, userEmail: "pconno3@gmail.com", userType: "INSERT USER TYPE", userDate: NSDate.distantPast())
         return true
     }
 

@@ -20,7 +20,7 @@ public class Brilliant: NSObject {
     private static var onceToken: dispatch_once_t = 0
     
     public let appKey: String
-    public let appStoreId: String
+    public let appStoreId: String?
     public let userEmail: String?
     public let userType: String?
     
@@ -28,6 +28,8 @@ public class Brilliant: NSObject {
     
     //These variables are sent down from the server
     public var appName: String?
+    
+    private var eligible: Bool = false
     
     private var lastSurveyShownTime: NSDate! {
         
@@ -47,9 +49,6 @@ public class Brilliant: NSObject {
         }
     }
     
-    // days between seeing surveys
-    private var SURVEY_INTERVAL = 14
-    
     #if DEBUG
     static var kDEBUG: Bool = true
     #else
@@ -61,7 +60,7 @@ public class Brilliant: NSObject {
         return instanceVar!
     }
     
-    public static func createInstance(key: String!, appStoreId: String!, userEmail: String?, userType: String?, userDate: NSDate?)
+    public static func createInstance(key: String!, appStoreId: String?, userEmail: String?, userType: String?, userDate: NSDate?)
     {
         dispatch_once(&onceToken) { () -> Void in
             instanceVar = Brilliant(key: key, appStoreId: appStoreId, userEmail: userEmail, userType: userType, userDate: userDate)
@@ -76,7 +75,7 @@ public class Brilliant: NSObject {
             else
             {
                 Brilliant.sharedInstance().pendingSurvey = false
-                Brilliant.sharedInstance().completedSurvey = Survey()
+                Brilliant.sharedInstance().completedSurvey = Survey(surveyId: NSUUID())
             }
             
             // pull data from server (for now just app name to display)
@@ -84,7 +83,7 @@ public class Brilliant: NSObject {
         }
     }
     
-    private init(key: String, appStoreId: String, userEmail: String?, userType: String?, userDate: NSDate?) {
+    private init(key: String, appStoreId: String?, userEmail: String?, userType: String?, userDate: NSDate?) {
         self.appKey = key
         self.appStoreId = appStoreId
         self.userEmail = userEmail
@@ -106,7 +105,7 @@ public class Brilliant: NSObject {
     public func showNpsSurvey(event: String)
     {
         // only show survey if enough time has passed and no pendingSurvey to be sent
-        if (daysSinceLastSurvey() > self.SURVEY_INTERVAL) && self.pendingSurvey == false && UIApplication.sharedApplication().delegate?.window != nil
+        if eligible && self.pendingSurvey == false && UIApplication.sharedApplication().delegate?.window != nil
         {
             self.completedSurvey?.event = event
             let rootVC = UIApplication.sharedApplication().delegate!.window??.rootViewController
@@ -130,7 +129,7 @@ public class Brilliant: NSObject {
             }
             else
             {
-                LogUtil.printDebug("Not showing survey: \(daysSinceLastSurvey()) days since last survey, but interval is \(self.SURVEY_INTERVAL)")
+                LogUtil.printDebug("Not showing survey: \(daysSinceLastSurvey()) days since last survey, but interval is not eligible")
             }
         }
     }
@@ -177,6 +176,7 @@ public class Brilliant: NSObject {
         weak var weakSelf = self
         BrilliantWebClient.request(.GET, appKey: self.appKey, path: "initWithAppKey", params: nil, success: { (JSON) -> Void in
             weakSelf?.appName = JSON["name"] as? String
+            weakSelf?.eligible = JSON["eligible"] as! Bool
             LogUtil.printDebug("initialization server call success. Setting app name to: \(self.appName)")
             }, failure:  { () -> Void in
                 weakSelf?.appName = NSBundle.mainBundle().infoDictionary!["CFBundleName"] as? String
