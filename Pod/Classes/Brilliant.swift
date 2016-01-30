@@ -28,6 +28,14 @@ public class Brilliant: NSObject {
     
     public let userDate: NSDate?
     
+    internal var npsButtonColorCustom = UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
+    internal var noThanksButtonColorCustom = UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
+    internal var submitCommentsColorCustom = UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
+    internal var npsReviewColorCustom = UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
+    internal var npsDoneColorCustom = UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
+    internal var shadowColorCustom = UIColor(red: 0.211, green: 0.660, blue: 0.324, alpha: 1)
+    internal var mainLabelColorCustom = UIColor.whiteColor()
+    
     
     //These variables are sent down from the server
     public var appName: String?
@@ -245,43 +253,6 @@ public class Brilliant: NSObject {
     func negativeFeedbackText(number: Int) -> String
     {
         return String(format: "Bummer! Can you tell us why you choose a %d?", number)
-    }
-    
-    
-    //Colors
-    
-    func npsButtonColor() -> UIColor
-    {
-        return UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
-    }
-    
-    func noThanksButtonColor() -> UIColor
-    {
-        return UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
-    }
-    
-    func submitCommentsColor() -> UIColor
-    {
-        return UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
-    }
-    
-    func npsReviewColor() -> UIColor
-    {
-        return UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
-    }
-    func npsDoneColor() -> UIColor
-    {
-        return UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
-    }
-    
-    func shadowColor() -> UIColor
-    {
-        return UIColor(red: 0.211, green: 0.660, blue: 0.324, alpha: 1)
-    }
-    
-    func mainLabelColor() -> UIColor
-    {
-        return UIColor.whiteColor()
     }
     
     //Fonts

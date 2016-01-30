@@ -28,6 +28,7 @@
 		3D84283C1C55442800CC9D93 /* NegativeFeedbackCompleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D84283B1C55442800CC9D93 /* NegativeFeedbackCompleteViewController.xib */; };
 		3D84283E1C55443400CC9D93 /* NegativeFeedbackCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D84283D1C55443400CC9D93 /* NegativeFeedbackCompleteViewController.swift */; };
 		3DF03BA7503376737F9B568DA137A3B8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF5DCC562D1A423D15246E8931E09C00 /* Alamofire.framework */; };
+		3DFE884C1C5D79EC008DC6B2 /* Brilliant+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFE884B1C5D79EC008DC6B2 /* Brilliant+Colors.swift */; };
 		3F53D346E1F37F4C792B59BAB93FFBFC /* Pods-Brilliant_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CCC83FFE94546B6507FD38D61D9DD73 /* Pods-Brilliant_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		50CB3873CE44B09068C6650F7BC1B62E /* ReachabilitySwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BA696D0257C0C38DB22F4F7C0B3024 /* ReachabilitySwift-dummy.m */; };
 		5874A6AF74169417B2CE204B1BCC4ABF /* Brilliant.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5262061041C254F026131DB30B434F88 /* Brilliant.bundle */; };
@@ -156,6 +157,7 @@
 		3D8428391C553FD000CC9D93 /* RateAppViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RateAppViewController.xib; sourceTree = "<group>"; };
 		3D84283B1C55442800CC9D93 /* NegativeFeedbackCompleteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NegativeFeedbackCompleteViewController.xib; path = ../Pod/Classes/NegativeFeedbackCompleteViewController.xib; sourceTree = "<group>"; };
 		3D84283D1C55443400CC9D93 /* NegativeFeedbackCompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NegativeFeedbackCompleteViewController.swift; sourceTree = "<group>"; };
+		3DFE884B1C5D79EC008DC6B2 /* Brilliant+Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Brilliant+Colors.swift"; sourceTree = "<group>"; };
 		40BA696D0257C0C38DB22F4F7C0B3024 /* ReachabilitySwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ReachabilitySwift-dummy.m"; sourceTree = "<group>"; };
 		42443BE4CFDB3686DCE7BD49A7251FBD /* ReachabilitySwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ReachabilitySwift-umbrella.h"; sourceTree = "<group>"; };
 		42946073B5660BA41E66795D39245479 /* Download.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Download.swift; path = Source/Download.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				3D8428351C551C3400CC9D93 /* CommentsViewController.swift */,
 				3D8428371C553FBE00CC9D93 /* RateAppViewController.swift */,
 				3D84283D1C55443400CC9D93 /* NegativeFeedbackCompleteViewController.swift */,
+				3DFE884B1C5D79EC008DC6B2 /* Brilliant+Colors.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -783,6 +786,7 @@
 				F70C91AB878A6C6A9AE6DF78844DA696 /* Brilliant-dummy.m in Sources */,
 				3D8428291C55019D00CC9D93 /* BrilliantWebClient.swift in Sources */,
 				F2625FF7036961C9CA6ED8E493E791FB /* Brilliant.swift in Sources */,
+				3DFE884C1C5D79EC008DC6B2 /* Brilliant+Colors.swift in Sources */,
 				3D8428301C550EE900CC9D93 /* NPSScoreViewController.swift in Sources */,
 				3D84282C1C55049500CC9D93 /* LogUtil.swift in Sources */,
 				3D2D45671C13490B00CED2C5 /* Survey.swift in Sources */,
