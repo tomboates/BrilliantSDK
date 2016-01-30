@@ -41,12 +41,12 @@ class BrilliantWebClient
                         object: reachability)
                     success(JSON)
                     break
-                case .Failure(let data, _):
+                case .Failure(_,_):
                     
-                    if(data != nil)
-                    {
-                        LogUtil.printDebug("BrilliantWebClient error " + data!.description)
-                    }
+//                    if(data != nil)
+//                    {
+//                        LogUtil.printDebug("BrilliantWebClient error " + data!.description)
+//                    }
                     
                     // start listening for internet connection changes
                     let reachability = Reachability.reachabilityForInternetConnection()
