@@ -14,6 +14,7 @@ public class Brilliant: NSObject {
     
     private static let lastSurveyShownTimeKey = "lastSurveyShownTime"
     private static let completedSurveyKey = "completedSurvey"
+    private static let userIdKey = "userId"
     
     //  public static let sharedInstance = Brilliant()
     private static var instanceVar: Brilliant?
@@ -23,13 +24,16 @@ public class Brilliant: NSObject {
     public let appStoreId: String?
     public let userEmail: String?
     public let userType: String?
+    public let userId: NSUUID
     
     public let userDate: NSDate?
+    
     
     //These variables are sent down from the server
     public var appName: String?
     
     private var eligible: Bool = false
+    private var npsCompletion: ((success: Bool) -> Void)?
     
     private var lastSurveyShownTime: NSDate! {
         
@@ -90,6 +94,18 @@ public class Brilliant: NSObject {
         self.userType = userType
         self.userDate = userDate
         
+        let userIdStr = NSUserDefaults.standardUserDefaults().stringForKey(Brilliant.userIdKey)
+        
+        if(userIdStr == nil)
+        {
+            self.userId = NSUUID()
+            NSUserDefaults.standardUserDefaults().setObject(self.userId.UUIDString, forKey: Brilliant.userIdKey)
+        }
+        else
+        {
+            self.userId = NSUUID(UUIDString: userIdStr!)!
+        }
+        
         // set or initalize lastSurveyShownTime
         if let lastDate = NSUserDefaults.standardUserDefaults().objectForKey(Brilliant.lastSurveyShownTimeKey) as? NSDate
         {
@@ -102,7 +118,7 @@ public class Brilliant: NSObject {
     }
     
     // show the Nps Survey to user
-    public func showNpsSurvey(event: String)
+    public func showNpsSurvey(event: String, completed: (Bool) -> Void)
     {
         // only show survey if enough time has passed and no pendingSurvey to be sent
         if eligible && self.pendingSurvey == false && UIApplication.sharedApplication().delegate?.window != nil
@@ -138,7 +154,6 @@ public class Brilliant: NSObject {
     
     // send NPS Survey to Brilliant Server
     public func sendCompletedSurvey() {
-        
         if(completedSurvey == nil)
         {
             LogUtil.printDebug("Survey was not filled out")
@@ -155,7 +170,7 @@ public class Brilliant: NSObject {
         
         weak var weakSelf = self
         // now send data to server
-        BrilliantWebClient.request(.POST, appKey: self.appKey, path: "surveys", params: ["nps_survey": self.completedSurvey!.serializeForSurvey()], success: { (JSON) -> Void in
+        BrilliantWebClient.request(.POST, appKey: self.appKey, userId: self.userId, path: "surveys", params: ["nps_survey": self.completedSurvey!.serializeForSurvey()], success: { (JSON) -> Void in
             LogUtil.printDebug("Successfully saved to server.")
             
             if !Brilliant.kDEBUG {
@@ -174,9 +189,15 @@ public class Brilliant: NSObject {
     
     private func getInitialSurveyData() {
         weak var weakSelf = self
-        BrilliantWebClient.request(.GET, appKey: self.appKey, path: "initWithAppKey", params: nil, success: { (JSON) -> Void in
+        //TODO: Change to userId
+//        ["userEmail" : self.userEmail!]
+        BrilliantWebClient.request(.GET, appKey: self.appKey, userId: self.userId, path: "initWithAppKey", params: nil, success: { (JSON) -> Void in
             weakSelf?.appName = JSON["name"] as? String
-            weakSelf?.eligible = JSON["eligible"] as! Bool
+            
+            if let eligible = JSON["eligible"] as? Bool {
+                weakSelf?.eligible = eligible
+            }
+            
             LogUtil.printDebug("initialization server call success. Setting app name to: \(self.appName)")
             }, failure:  { () -> Void in
                 weakSelf?.appName = NSBundle.mainBundle().infoDictionary!["CFBundleName"] as? String

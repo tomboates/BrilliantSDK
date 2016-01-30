@@ -39,13 +39,13 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How likely are you to recommend \(appName) to a friend or colleague?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOf-xa-Sly">
-                    <rect key="frame" x="31" y="80" width="537.5" height="20.5"/>
+                    <rect key="frame" x="31" y="80" width="538" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8b0-MA-hjD">
-                    <rect key="frame" x="127.5" y="120" width="345" height="30"/>
+                    <rect key="frame" x="128" y="120" width="345" height="30"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oqY-TW-Z0o">
                             <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>

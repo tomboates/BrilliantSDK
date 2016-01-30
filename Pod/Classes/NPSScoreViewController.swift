@@ -40,6 +40,15 @@ class NPSScoreViewController : UIViewController
         self.questionLabel.textColor = Brilliant.sharedInstance().mainLabelColor()
         self.questionLabel.font = Brilliant.sharedInstance().mainLabelFont()
         
+        if (Brilliant.sharedInstance().appName != nil)
+        {
+            self.questionLabel.text = String(format: "How likely are you to recommend %@ to a friend or colleague?", Brilliant.sharedInstance().appName!)
+        }
+        else
+        {
+            self.questionLabel.text = "How likely are you to recommend this app to a friend or colleague?"
+        }
+        
         self.button1.tintColor = Brilliant.sharedInstance().npsButtonColor()
         self.button2.tintColor = Brilliant.sharedInstance().npsButtonColor()
         self.button3.tintColor = Brilliant.sharedInstance().npsButtonColor()
