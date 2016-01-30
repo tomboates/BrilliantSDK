@@ -18,41 +18,22 @@ NOTE: if project is in Objective-C, make sure the line `use_frameworks!` is adde
 
 ## Swift Getting Started
 1. After installing the pod in your project, `import Brilliant` in the AppDelegate
-2. Set user info in the `didFinishLaunchingWithOptions` method of the AppDelegate (MUST DO BEFORE SINGLETON INITIALIZATION):  
+2. Configure Brilliant in the `didFinishLaunchingWithOptions` method of the AppDelegate:  
+    
+    `[Brilliant createInstance:{appId} appStoreId: {INSERT APP STORE ID}, userEmail: {INSERT EMAIL}, userType: {INSERT UESR TYPE}, userDate: {USER CREATION DATE}]`
 
-    `Brilliant.sharedInstance.userEmail = "INSERT EMAIL STRING"`
-    `Brilliant.sharedInstance.userDate = "INSERT USER ACCOUNT CREATION DATE AS NSNUMBER"`  
-    `Brilliant.sharedInstance.userType = "INSERT USER TYPE STRING"` (it can be any metric you want (i.e. free, paid, premium, etc)  
-
-    userDate is a timestamp wrapped in NSNumber() i.e. `NSNumber(double: NSDate().timeIntervalSince1970)`)  
-
-
-3. In order to create a Rate The App link at the end of the survey for those who choose 9 or 10, get the 9 digit apple store id from itunes connect. In the `didFinishLaunchingWithOptions` method of the AppDelegate, add the app store id:  
-    `Brilliant.sharedInstance.appStoreId = "INSERT 9 DIGIT APP STORE ID"`
-4. Get your private app key from the web dashboard: brilliantapp.com/settings  
-5. In the `didFinishLaunchingWithOptions` method of the AppDelegate, add the initialization with APP_KEY  
-    `Brilliant.sharedInstance.createWithAppKey("INSERT APP KEY FROM WEB")`  
-6. `import Brilliant` in the view controller you'd like the show the NPS Survey  
-7. Add `Brilliant.sharedInstance.showNpsSurvey("INSERT EVENT NAME")` to pop up the modal, supply an event name for analytics (i.e. "Friend Request Accepted")
+3. Get your private app key from the web dashboard: brilliantapp.com/settings  
+4. `import Brilliant` in the view controller you'd like the show the NPS Survey  
+6. Add `Brilliant.sharedInstance.showNpsSurvey({INSERT_EVENT_NAME})` to pop up the modal, supply an event name for analytics (i.e. "Friend Request Accepted")
 
 ## Objective-C Getting Started
 1. After installing the pod in your project, `@import Brilliant;` in the AppDelegate  
 2. Set user info in the `didFinishLaunchingWithOptions` method of the AppDelegate (MUST DO BEFORE SINGLETON INITIALIZATION):  
 
-    `Brilliant.sharedInstance.userEmail = "INSERT EMAIL STRING";`  
-    `Brilliant.sharedInstance.userDate = "INSERT USER ACCOUNT CREATION DATE AS NSNUMBER";` (a timestamp wrapped in NSNumber())  
-    `Brilliant.sharedInstance.userType = "INSERT USER TYPE STRING";` (it can be any metric you want (i.e. free, paid, premium, etc)  
-
-3. In order to create a Rate The App link at the end of the survey for those who choose 9 or 10, get the 9 digit apple store id from itunes connect. In the `didFinishLaunchingWithOptions` method of the AppDelegate, add the app store id:  
-    `Brilliant.sharedInstance.appStoreId = "INSERT 9 DIGIT APP STORE ID";`
-4. Get your private app key from the web dashboard: brilliantapp.com/settings  
-5. In the `didFinishLaunchingWithOptions` method of the AppDelegate, add the initialization with APP_KEY  
-    `[Brilliant.sharedInstance createWithAppKey:"INSERT APP KEY FROM WEB"];`  
-6. `@import Brilliant;` in the view controller you'd like the show the NPS Survey
-6. Add `[Brilliant.sharedInstance showNpsSurvey:"INSERT EVENT NAME"]` to pop up the modal, supply an event name for analytics (i.e. "Friend Request Accepted")
-
-## Additional Information
-In Brilliant.swift, set `private static var kDEBUG = true` to enable debugging mode with printout messages.
+    `Brilliant.createInstance("INSERT KEY HERE", appStoreId: "INSERT APP STORE ID", userEmail: "INSERT EMAIL", userType: "INSERT UESR TYPE", userDate: NSDate.distantPast())`  
+3. Get your private app key from the web dashboard: brilliantapp.com/settings  
+4. `@import Brilliant;` in the view controller you'd like the show the NPS Survey
+5. Add `Brilliant.sharedInstance().showNpsSurvey("Button Clicked")` to pop up the modal, supply an event name for analytics (i.e. "Friend Request Accepted")
 
 ## License
 
