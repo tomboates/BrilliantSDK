@@ -41,7 +41,7 @@ class BrilliantWebClient
                         object: reachability)
                     success(JSON)
                     break
-                case .Failure(let data, let type):
+                case .Failure(let data, _):
                     
                     if(data != nil)
                     {
