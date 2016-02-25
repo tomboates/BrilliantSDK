@@ -87,7 +87,6 @@ public class Brilliant: NSObject {
             else
             {
                 Brilliant.sharedInstance().pendingSurvey = false
-                Brilliant.sharedInstance().completedSurvey = Survey(surveyId: NSUUID())
             }
             
             // pull data from server (for now just app name to display)
@@ -131,6 +130,7 @@ public class Brilliant: NSObject {
         // only show survey if enough time has passed and no pendingSurvey to be sent
         if eligible && self.pendingSurvey == false && UIApplication.sharedApplication().delegate?.window != nil
         {
+            Brilliant.sharedInstance().completedSurvey = Survey(surveyId: NSUUID())
             self.completedSurvey?.event = event
             let rootVC = UIApplication.sharedApplication().delegate!.window??.rootViewController
         
@@ -197,8 +197,6 @@ public class Brilliant: NSObject {
     
     private func getInitialSurveyData() {
         weak var weakSelf = self
-        //TODO: Change to userId
-//        ["userEmail" : self.userEmail!]
         BrilliantWebClient.request(.GET, appKey: self.appKey, userId: self.userId, path: "initWithAppKey", params: nil, success: { (JSON) -> Void in
             weakSelf?.appName = JSON["name"] as? String
             
