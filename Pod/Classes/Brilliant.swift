@@ -233,7 +233,14 @@ public class Brilliant: NSObject {
     
     internal static func xibBundle() -> NSBundle
     {
-        return NSBundle(forClass: Brilliant.self)
+        let podBundle = NSBundle(forClass: Brilliant.self)
+        if let bundleURL = podBundle.URLForResource("Brilliant", withExtension: "bundle")
+        {
+            return NSBundle(URL: bundleURL)!
+        }
+        else{
+            return podBundle
+        }
     }
     
     internal static func imageBundle() -> NSBundle
