@@ -128,8 +128,8 @@ public class Brilliant: NSObject {
     public func showNpsSurvey(event: String, completed: (Bool) -> Void)
     {
         // only show survey if enough time has passed and no pendingSurvey to be sent
-        if eligible && self.pendingSurvey == false && UIApplication.sharedApplication().delegate?.window != nil
-        {
+//        if eligible && self.pendingSurvey == false && UIApplication.sharedApplication().delegate?.window != nil
+//        {
             Brilliant.sharedInstance().completedSurvey = Survey(surveyId: NSUUID())
             self.completedSurvey?.event = event
             let rootVC = UIApplication.sharedApplication().delegate!.window??.rootViewController
@@ -139,23 +139,23 @@ public class Brilliant: NSObject {
             surveyVC.modalTransitionStyle = modalStyle
             surveyVC.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
             rootVC!.presentViewController(surveyVC, animated: true, completion: nil)
-        }
-        else
-        {
-            if self.pendingSurvey
-            {
-                self.sendCompletedSurvey()
-                LogUtil.printDebug("Not showing survey, attempting to send pending survey")
-            }
-            else if(UIApplication.sharedApplication().delegate?.window == nil)
-            {
-                LogUtil.printDebug("UIApplication.sharedApplication window is nil")
-            }
-            else
-            {
-                LogUtil.printDebug("Not showing survey: \(daysSinceLastSurvey()) days since last survey, but interval is not eligible")
-            }
-        }
+//        }
+//        else
+//        {
+//            if self.pendingSurvey
+//            {
+//                self.sendCompletedSurvey()
+//                LogUtil.printDebug("Not showing survey, attempting to send pending survey")
+//            }
+//            else if(UIApplication.sharedApplication().delegate?.window == nil)
+//            {
+//                LogUtil.printDebug("UIApplication.sharedApplication window is nil")
+//            }
+//            else
+//            {
+//                LogUtil.printDebug("Not showing survey: \(daysSinceLastSurvey()) days since last survey, but interval is not eligible")
+//            }
+//        }
     }
     
     //# MARK: - Server Calls
