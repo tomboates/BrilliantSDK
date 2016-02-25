@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (2.0.2)
-  - Brilliant (0.1.1):
+  - Brilliant (0.1.3):
     - Alamofire (~> 2.0)
     - ReachabilitySwift (= 2.0)
   - ReachabilitySwift (2.0)
@@ -14,7 +14,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
-  Brilliant: 1316ff6b94e9d58e611c6058d8efcf470836531c
+  Brilliant: 4cafc4bad4a36a8c095c78340cf24bf5916f5c7c
   ReachabilitySwift: 227b98ae7ec99e1c01148b17fb22357aa91a5675
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0
