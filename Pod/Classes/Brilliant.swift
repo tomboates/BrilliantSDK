@@ -269,7 +269,7 @@ public class Brilliant: NSObject {
         case .Pad:
             return UIFont.systemFontOfSize(34)
         case .Phone:
-            return UIFont.systemFontOfSize(23)
+            return UIFont.systemFontOfSize(21)
         case .TV:
             return UIFont.systemFontOfSize(34)
         case .Unspecified:
