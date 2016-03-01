@@ -17,7 +17,6 @@ protocol NegativeFeedbackCompleteViewControllerDelegate: class{
 class NegativeFeedbackCompleteViewController: UIViewController
 {
     @IBOutlet var closeButton: UIButton!
-    @IBOutlet var commentImage: UIImageView!
     @IBOutlet var explanationLabel: UILabel!
     @IBOutlet var doneButton: UIButton!
     
@@ -28,7 +27,6 @@ class NegativeFeedbackCompleteViewController: UIViewController
         let image = UIImage(named: "brilliant-icon-close", inBundle:Brilliant.imageBundle(), compatibleWithTraitCollection: nil)
         let commentImage = UIImage(named: "commentBubble", inBundle: Brilliant.imageBundle(), compatibleWithTraitCollection: nil)
         self.closeButton.setImage(image, forState: .Normal)
-        self.commentImage.image = commentImage
         
         self.explanationLabel.font = Brilliant.sharedInstance().mainLabelFont()
         self.explanationLabel.textColor = Brilliant.sharedInstance().mainLabelColor()

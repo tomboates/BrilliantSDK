@@ -32,15 +32,15 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sorry to hear that. Please give us some more feedback" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bc2-ea-gU7">
-                    <rect key="frame" x="20" y="65" width="280" height="21"/>
+                    <rect key="frame" x="20" y="55" width="280" height="24"/>
                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ygP-3W-wuS">
-                    <rect key="frame" x="20" y="120" width="280" height="100"/>
+                    <rect key="frame" x="20" y="120" width="280" height="80"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="100" id="xrb-ZW-Gut"/>
+                        <constraint firstAttribute="height" constant="80" id="xrb-ZW-Gut"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -64,9 +64,9 @@
                 </button>
             </subviews>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="PIi-4g-5l6" secondAttribute="bottom" constant="35" id="0gE-zZ-d9G"/>
+                <constraint firstAttribute="bottom" secondItem="PIi-4g-5l6" secondAttribute="bottom" constant="20" id="0gE-zZ-d9G"/>
                 <constraint firstItem="bc2-ea-gU7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="4Td-Uc-khy"/>
-                <constraint firstItem="bc2-ea-gU7" firstAttribute="top" secondItem="5up-P8-vEX" secondAttribute="bottom" constant="30" id="H1H-7p-4p9"/>
+                <constraint firstItem="bc2-ea-gU7" firstAttribute="top" secondItem="5up-P8-vEX" secondAttribute="bottom" constant="20" id="H1H-7p-4p9"/>
                 <constraint firstItem="ygP-3W-wuS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="InI-5v-nXp"/>
                 <constraint firstItem="ygP-3W-wuS" firstAttribute="top" secondItem="bc2-ea-gU7" secondAttribute="bottom" constant="20" id="Jpf-80-h2S"/>
                 <constraint firstItem="PIi-4g-5l6" firstAttribute="top" secondItem="mqu-fD-atD" secondAttribute="bottom" constant="20" id="NdM-d1-Dw6"/>

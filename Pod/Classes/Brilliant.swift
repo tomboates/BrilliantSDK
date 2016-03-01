@@ -257,7 +257,7 @@ public class Brilliant: NSObject {
     
     func negativeFeedbackText(number: Int) -> String
     {
-        return String(format: "Bummer! Can you tell us why you choose a %d?", number)
+        return String(format: "Thanks! Can you tell us why you choose a %d?", number)
     }
     
     //Fonts

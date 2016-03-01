@@ -32,6 +32,8 @@ class CommentsViewController: UIViewController
         self.commentDescriptionLabel.textColor = Brilliant.sharedInstance().mainLabelColor()
         self.commentDescriptionLabel.font = Brilliant.sharedInstance().mainLabelFont()
         
+        comments.layer.cornerRadius = 4;
+        
         let npsNumber: Int! = Brilliant.sharedInstance().completedSurvey?.npsRating!
         if(npsNumber >= 7)
         {

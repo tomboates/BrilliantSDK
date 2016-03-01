@@ -18,6 +18,7 @@ class NPSScoreViewController : UIViewController
 {
     @IBOutlet var closeButton: UIButton!
     @IBOutlet var questionLabel: UILabel!
+    @IBOutlet var button0: UIButton!
     @IBOutlet var button1: UIButton!
     @IBOutlet var button2: UIButton!
     @IBOutlet var button3: UIButton!
@@ -49,6 +50,7 @@ class NPSScoreViewController : UIViewController
             self.questionLabel.text = "How likely are you to recommend this app to a friend or colleague?"
         }
         
+        self.button0.tintColor = Brilliant.sharedInstance().npsButtonColor()
         self.button1.tintColor = Brilliant.sharedInstance().npsButtonColor()
         self.button2.tintColor = Brilliant.sharedInstance().npsButtonColor()
         self.button3.tintColor = Brilliant.sharedInstance().npsButtonColor()
@@ -64,6 +66,10 @@ class NPSScoreViewController : UIViewController
     @IBAction func closePressed(sender: AnyObject) {
         Brilliant.sharedInstance().completedSurvey!.dismissAction = "x_npsscreen"
         self.delegate?.closePressed(.RatingScreen)
+    }
+    
+    @IBAction func zeroPressed(sender: AnyObject) {
+        self.npsNumberResponse(0)
     }
     
     @IBAction func onePressed(sender: AnyObject) {

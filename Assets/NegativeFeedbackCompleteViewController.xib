@@ -8,7 +8,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NegativeFeedbackCompleteViewController" customModule="Brilliant" customModuleProvider="target">
             <connections>
                 <outlet property="closeButton" destination="ak0-10-Av7" id="OWp-Xo-1Gf"/>
-                <outlet property="commentImage" destination="5MQ-al-2ch" id="45i-bk-Ggp"/>
                 <outlet property="doneButton" destination="OEc-Um-3X1" id="CWz-FY-iyh"/>
                 <outlet property="explanationLabel" destination="qhr-bj-LRL" id="uL6-ag-tvQ"/>
                 <outlet property="view" destination="iN0-l3-epB" id="mGb-fT-vny"/>
@@ -30,45 +29,31 @@
                         <action selector="closePressed:" destination="-1" eventType="touchUpInside" id="Fq3-dM-62R"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="commentBubble.png" translatesAutoresizingMaskIntoConstraints="NO" id="5MQ-al-2ch">
-                    <rect key="frame" x="112" y="49" width="96" height="89"/>
-                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Thanks! We appreciate the feedback." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qhr-bj-LRL">
-                    <rect key="frame" x="20" y="65" width="280" height="24"/>
+                    <rect key="frame" x="20" y="55" width="280" height="24"/>
                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEc-Um-3X1">
-                    <rect key="frame" x="141" y="518" width="37" height="30"/>
-                    <state key="normal" title="Done"/>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEc-Um-3X1">
+                    <rect key="frame" x="20" y="498" width="280" height="50"/>
+                    <state key="normal" title="Close"/>
                     <connections>
                         <action selector="donePressed:" destination="-1" eventType="touchUpInside" id="yjQ-ae-Was"/>
                     </connections>
                 </button>
             </subviews>
             <constraints>
-                <constraint firstItem="5MQ-al-2ch" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Gaq-el-9Na"/>
                 <constraint firstItem="OEc-Um-3X1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="HZu-wo-YS2"/>
                 <constraint firstItem="ak0-10-Av7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="IDB-O6-GQl"/>
-                <constraint firstItem="qhr-bj-LRL" firstAttribute="top" secondItem="ak0-10-Av7" secondAttribute="bottom" constant="30" id="XKc-eJ-JJB"/>
+                <constraint firstItem="qhr-bj-LRL" firstAttribute="top" secondItem="ak0-10-Av7" secondAttribute="bottom" constant="20" id="XKc-eJ-JJB"/>
                 <constraint firstItem="qhr-bj-LRL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Yyq-wE-siJ"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qhr-bj-LRL" secondAttribute="trailing" constant="20" id="gu3-Qh-Ebj"/>
                 <constraint firstItem="ak0-10-Av7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="hbP-r5-4YB"/>
-                <constraint firstItem="qhr-bj-LRL" firstAttribute="top" secondItem="5MQ-al-2ch" secondAttribute="bottom" constant="20" id="lEs-ro-Umj"/>
-                <constraint firstItem="5MQ-al-2ch" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="49" id="nmo-Gx-r3A"/>
                 <constraint firstItem="qhr-bj-LRL" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="pbr-cl-osT"/>
                 <constraint firstAttribute="bottom" secondItem="OEc-Um-3X1" secondAttribute="bottom" constant="20" id="uSJ-yd-ohb"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="lEs-ro-Umj"/>
-                </mask>
-            </variation>
         </view>
     </objects>
-    <resources>
-        <image name="commentBubble.png" width="96" height="89"/>
-    </resources>
 </document>

@@ -52,7 +52,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Thanks! We would love it if you could rate us in the App Store." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RoB-AP-hfE">
-                    <rect key="frame" x="20" y="65" width="280" height="24"/>
+                    <rect key="frame" x="20" y="55" width="280" height="24"/>
                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -66,7 +66,7 @@
                 <constraint firstItem="RoB-AP-hfE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="CTJ-wL-Owo"/>
                 <constraint firstItem="rqP-DG-6uq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="EGE-Rh-bOE"/>
                 <constraint firstItem="Yo4-NC-Bud" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="LKL-t5-KHo"/>
-                <constraint firstItem="RoB-AP-hfE" firstAttribute="top" secondItem="hFL-Vl-m3N" secondAttribute="bottom" constant="30" id="Qil-VK-VRY"/>
+                <constraint firstItem="RoB-AP-hfE" firstAttribute="top" secondItem="hFL-Vl-m3N" secondAttribute="bottom" constant="20" id="Qil-VK-VRY"/>
                 <constraint firstAttribute="trailing" secondItem="rqP-DG-6uq" secondAttribute="trailing" constant="20" id="Uf7-Jz-TJU"/>
                 <constraint firstItem="Ajj-yY-4bq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="60" id="WVr-6g-1b8"/>
                 <constraint firstItem="Ajj-yY-4bq" firstAttribute="top" secondItem="RoB-AP-hfE" secondAttribute="bottom" constant="20" id="YZm-ZN-smE"/>
