@@ -156,6 +156,7 @@ public class Brilliant: NSObject {
                 LogUtil.printDebug("Not showing survey: \(daysSinceLastSurvey()) days since last survey, but interval is not eligible")
             }
         }
+        
     }
     
     //# MARK: - Server Calls

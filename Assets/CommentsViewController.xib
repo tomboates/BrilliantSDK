@@ -53,10 +53,11 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqu-fD-atD">
-                    <rect key="frame" x="20" y="440" width="280" height="50"/>
+                    <rect key="frame" x="20" y="442" width="280" height="48"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="fdH-E7-TX5"/>
+                        <constraint firstAttribute="height" constant="50" id="fdH-E7-TX5"/>
                     </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                     <state key="normal" title="Submit"/>
                     <connections>
                         <action selector="submitPressed:" destination="-1" eventType="touchUpInside" id="EBH-Q9-2iK"/>
@@ -80,6 +81,7 @@
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bc2-ea-gU7" secondAttribute="trailing" constant="20" id="jZF-zG-kMs"/>
                 <constraint firstItem="mqu-fD-atD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="l9D-Tk-EeV"/>
                 <constraint firstItem="5up-P8-vEX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="s6q-Of-dni"/>
+                <constraint firstAttribute="bottom" secondItem="mqu-fD-atD" secondAttribute="bottom" constant="70" id="sdo-23-CpX"/>
                 <constraint firstItem="5up-P8-vEX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="wvL-WG-eUg"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -87,6 +89,7 @@
                 <mask key="constraints">
                     <exclude reference="S8B-81-QPj"/>
                     <exclude reference="b3T-VF-J5F"/>
+                    <exclude reference="NdM-d1-Dw6"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="165" y="392"/>

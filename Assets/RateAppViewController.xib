@@ -11,7 +11,6 @@
                 <outlet property="confirmButton" destination="rqP-DG-6uq" id="J16-6p-BcU"/>
                 <outlet property="denyButton" destination="Yo4-NC-Bud" id="y78-NW-CaA"/>
                 <outlet property="rateLabel" destination="RoB-AP-hfE" id="44Z-c7-SGW"/>
-                <outlet property="ratingStars" destination="Ajj-yY-4bq" id="jUd-HY-Ipx"/>
                 <outlet property="view" destination="iN0-l3-epB" id="1Vu-0P-ZKJ"/>
             </connections>
         </placeholder>
@@ -31,9 +30,6 @@
                         <action selector="closePressed:" destination="-1" eventType="touchUpInside" id="2r9-N9-nxn"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ratingStars.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ajj-yY-4bq">
-                    <rect key="frame" x="37" y="171" width="246" height="36"/>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqP-DG-6uq">
                     <rect key="frame" x="20" y="458" width="280" height="50"/>
                     <constraints>
@@ -57,32 +53,37 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1q1-Eg-MNH">
+                    <rect key="frame" x="37" y="143" width="246" height="36"/>
+                    <state key="normal" backgroundImage="ratingStars.png"/>
+                    <connections>
+                        <action selector="starsPressed:" destination="-1" eventType="touchUpInside" id="fRI-tb-aJ0"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="Yo4-NC-Bud" firstAttribute="top" secondItem="rqP-DG-6uq" secondAttribute="bottom" constant="20" id="0RI-74-X1b"/>
                 <constraint firstItem="hFL-Vl-m3N" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="38R-ph-EAT"/>
                 <constraint firstItem="RoB-AP-hfE" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="7lE-DU-PL1"/>
-                <constraint firstItem="RoB-AP-hfE" firstAttribute="top" secondItem="Ajj-yY-4bq" secondAttribute="bottom" constant="40" id="Bd7-3w-bru"/>
                 <constraint firstItem="RoB-AP-hfE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="CTJ-wL-Owo"/>
                 <constraint firstItem="rqP-DG-6uq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="EGE-Rh-bOE"/>
+                <constraint firstItem="1q1-Eg-MNH" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Ftj-uw-AdT"/>
+                <constraint firstItem="1q1-Eg-MNH" firstAttribute="top" secondItem="RoB-AP-hfE" secondAttribute="bottom" constant="30" id="HWg-n3-OcM"/>
                 <constraint firstItem="Yo4-NC-Bud" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="LKL-t5-KHo"/>
                 <constraint firstItem="RoB-AP-hfE" firstAttribute="top" secondItem="hFL-Vl-m3N" secondAttribute="bottom" constant="20" id="Qil-VK-VRY"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1q1-Eg-MNH" secondAttribute="trailing" constant="37" id="Smo-HU-aGw"/>
                 <constraint firstAttribute="trailing" secondItem="rqP-DG-6uq" secondAttribute="trailing" constant="20" id="Uf7-Jz-TJU"/>
-                <constraint firstItem="Ajj-yY-4bq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="60" id="WVr-6g-1b8"/>
-                <constraint firstItem="Ajj-yY-4bq" firstAttribute="top" secondItem="RoB-AP-hfE" secondAttribute="bottom" constant="20" id="YZm-ZN-smE"/>
                 <constraint firstAttribute="bottom" secondItem="Yo4-NC-Bud" secondAttribute="bottom" constant="20" id="cUK-cj-kBZ"/>
                 <constraint firstItem="hFL-Vl-m3N" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="d7w-GP-GDl"/>
                 <constraint firstItem="rqP-DG-6uq" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="fe1-2r-b69"/>
+                <constraint firstItem="1q1-Eg-MNH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="37" id="iLn-Dy-HI9"/>
                 <constraint firstItem="RoB-AP-hfE" firstAttribute="top" secondItem="hFL-Vl-m3N" secondAttribute="bottom" constant="65" id="m2h-AL-6bK"/>
-                <constraint firstItem="Ajj-yY-4bq" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="mAd-yJ-6wh"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="RoB-AP-hfE" secondAttribute="trailing" constant="20" id="qoo-6Y-Sg2"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <variation key="default">
                 <mask key="constraints">
-                    <exclude reference="Bd7-3w-bru"/>
                     <exclude reference="m2h-AL-6bK"/>
-                    <exclude reference="WVr-6g-1b8"/>
                 </mask>
             </variation>
         </view>
