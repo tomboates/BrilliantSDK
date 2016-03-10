@@ -16,6 +16,8 @@
 		1C866A4DD81731065B45CF18AD0C6A18 /* Brilliant-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2B123DDD0F92C7E6FC89C36960257 /* Brilliant-dummy.m */; };
 		24242137C8755D835E8560AF77B58A0D /* NegativeFeedbackCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2093F4C1FC2926C72D0E4C1C2A92AB /* NegativeFeedbackCompleteViewController.swift */; };
 		30A8F35FCAB29F5FBFC9F3F7E25A3B6B /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D21E730606421672CA9D1F960B0688A /* ServerTrustPolicy.swift */; };
+		3D5122801C910C2700844B6A /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D51227C1C910C2200844B6A /* ScreenSize.swift */; };
+		3D5122811C910C2900844B6A /* UIDeviceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D51227D1C910C2200844B6A /* UIDeviceHelper.swift */; };
 		3D5598671C7FA926006AD102 /* SurveyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F362FDAA1643E3BF5D64893B95D767EF /* SurveyViewController.xib */; };
 		3D5598681C7FA92A006AD102 /* RateAppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597BD5537A8412A62E2CECB95CE96007 /* RateAppViewController.xib */; };
 		3D5598691C7FA92D006AD102 /* NegativeFeedbackCompleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8DFCD493294664B6D16F58DEEFE14F /* NegativeFeedbackCompleteViewController.xib */; };
@@ -154,6 +156,8 @@
 		2BDCB3CA31B2023DEFE98416962ED177 /* Download.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Download.swift; path = Source/Download.swift; sourceTree = "<group>"; };
 		313EDA019370E7661F4A3F0D6F5A4168 /* ReachabilitySwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ReachabilitySwift-prefix.pch"; sourceTree = "<group>"; };
 		383A94815A6C9681835011E364F2EF48 /* Pods-Brilliant_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Brilliant_Example-frameworks.sh"; sourceTree = "<group>"; };
+		3D51227C1C910C2200844B6A /* ScreenSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
+		3D51227D1C910C2200844B6A /* UIDeviceHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceHelper.swift; sourceTree = "<group>"; };
 		3E2F96CFBA722A8C9B17D7A97315DB63 /* Reachability.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		40B1983564B324B6EF9FA61E7DDE1C3B /* Survey.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
 		40D9F932A53AFA229A70B176FE9DCA83 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -360,6 +364,8 @@
 				40B1983564B324B6EF9FA61E7DDE1C3B /* Survey.swift */,
 				850DFA15B57AB22492C0B42E4335A56B /* SurveyViewController.swift */,
 				F5A785E7E815256688E6F801B7788058 /* SurveyViewControllerState.swift */,
+				3D51227C1C910C2200844B6A /* ScreenSize.swift */,
+				3D51227D1C910C2200844B6A /* UIDeviceHelper.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -747,8 +753,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D5122801C910C2700844B6A /* ScreenSize.swift in Sources */,
 				C39B964077CC290A12C23FA91F42C1D9 /* Brilliant+Colors.swift in Sources */,
 				1C866A4DD81731065B45CF18AD0C6A18 /* Brilliant-dummy.m in Sources */,
+				3D5122811C910C2900844B6A /* UIDeviceHelper.swift in Sources */,
 				A3E6426473DF95E46FB4437729F9B05F /* Brilliant.swift in Sources */,
 				CC52BC2B21F6DF89BFD4B83224610649 /* BrilliantWebClient.swift in Sources */,
 				82C269A7C237938FD88BCA77F35BACAA /* CommentsViewController.swift in Sources */,
