@@ -30,8 +30,8 @@
                         <action selector="closePressed:" destination="-1" eventType="touchUpInside" id="2r9-N9-nxn"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yo4-NC-Bud">
-                    <rect key="frame" x="123" y="518" width="74" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yo4-NC-Bud">
+                    <rect key="frame" x="203" y="270" width="74" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" title="No Thanks"/>
                     <variation key="heightClass=compact-widthClass=compact" ambiguous="YES" misplaced="YES">
@@ -41,8 +41,8 @@
                         <action selector="denyPressed:" destination="-1" eventType="touchUpInside" id="Ld5-os-rly"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Thanks! We would love it if you could rate us in the App Store." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RoB-AP-hfE">
-                    <rect key="frame" x="20" y="55" width="280" height="24"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks! We would love it if you could rate us in the App Store." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RoB-AP-hfE">
+                    <rect key="frame" x="20" y="75" width="440" height="50.5"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="400" id="HKu-2L-cqh"/>
                     </constraints>
@@ -70,8 +70,8 @@
                         </mask>
                     </variation>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1q1-Eg-MNH">
-                    <rect key="frame" x="37" y="143" width="246" height="36"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1q1-Eg-MNH">
+                    <rect key="frame" x="117" y="155.5" width="246" height="36"/>
                     <state key="normal" backgroundImage="ratingStars.png"/>
                     <variation key="heightClass=compact" misplaced="YES">
                         <rect key="frame" x="117" y="160" width="246" height="36"/>
@@ -83,8 +83,8 @@
                         <action selector="starsPressed:" destination="-1" eventType="touchUpInside" id="fRI-tb-aJ0"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqP-DG-6uq">
-                    <rect key="frame" x="20" y="458" width="280" height="50"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqP-DG-6uq">
+                    <rect key="frame" x="224" y="212" width="32" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="4rl-Rm-eH0"/>
                         <constraint firstAttribute="width" constant="260" id="9Za-dD-xu7"/>
@@ -124,6 +124,7 @@
                 <constraint firstItem="rqP-DG-6uq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="EGE-Rh-bOE"/>
                 <constraint firstItem="1q1-Eg-MNH" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Ftj-uw-AdT"/>
                 <constraint firstItem="1q1-Eg-MNH" firstAttribute="top" secondItem="RoB-AP-hfE" secondAttribute="bottom" constant="30" id="HWg-n3-OcM"/>
+                <constraint firstAttribute="bottom" secondItem="Yo4-NC-Bud" secondAttribute="bottom" constant="20" id="JT7-ga-Ho0"/>
                 <constraint firstItem="Yo4-NC-Bud" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="LKL-t5-KHo"/>
                 <constraint firstItem="RoB-AP-hfE" firstAttribute="top" secondItem="hFL-Vl-m3N" secondAttribute="bottom" constant="40" id="Qil-VK-VRY"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1q1-Eg-MNH" secondAttribute="trailing" constant="37" id="Smo-HU-aGw"/>
@@ -140,6 +141,7 @@
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="m2h-AL-6bK"/>
+                    <exclude reference="JT7-ga-Ho0"/>
                 </mask>
             </variation>
             <variation key="heightClass=compact-widthClass=compact">
@@ -149,6 +151,7 @@
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
                 <mask key="constraints">
+                    <include reference="JT7-ga-Ho0"/>
                     <exclude reference="cUK-cj-kBZ"/>
                 </mask>
             </variation>

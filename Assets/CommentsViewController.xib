@@ -31,8 +31,8 @@
                         <action selector="closePressed:" destination="-1" eventType="touchUpInside" id="Jsm-wl-M7o"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sorry to hear that. Please give us some more feedback" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bc2-ea-gU7">
-                    <rect key="frame" x="20" y="55" width="280" height="24"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry to hear that. Please give us some more feedback" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bc2-ea-gU7">
+                    <rect key="frame" x="31" y="75" width="313.5" height="50.5"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="400" id="9Cm-H9-dly"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="440" id="QdT-de-ohJ"/>
@@ -72,8 +72,8 @@
                         </mask>
                     </variation>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIi-4g-5l6">
-                    <rect key="frame" x="20" y="500" width="280" height="50"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIi-4g-5l6">
+                    <rect key="frame" x="150.5" y="617" width="74" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" title="No Thanks"/>
                     <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
@@ -89,8 +89,8 @@
                         <action selector="noThanksPressed:" destination="-1" eventType="touchUpInside" id="WTj-gc-tQv"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqu-fD-atD">
-                    <rect key="frame" x="20" y="442" width="280" height="48"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqu-fD-atD">
+                    <rect key="frame" x="162" y="553" width="51" height="44"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="260" id="J3l-Wy-pFK"/>
                         <constraint firstAttribute="height" constant="44" id="fdH-E7-TX5"/>
@@ -128,11 +128,12 @@
                         <action selector="submitPressed:" destination="-1" eventType="touchUpInside" id="EBH-Q9-2iK"/>
                     </connections>
                 </button>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ygP-3W-wuS">
-                    <rect key="frame" x="20" y="120" width="280" height="80"/>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ygP-3W-wuS">
+                    <rect key="frame" x="47.5" y="145.5" width="280" height="80"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="440" id="AGm-3W-O2P"/>
+                        <constraint firstAttribute="width" constant="280" id="TXl-eb-JbK"/>
                         <constraint firstAttribute="height" constant="120" id="eFd-TI-rtH"/>
                         <constraint firstAttribute="height" constant="80" id="xrb-ZW-Gut"/>
                         <constraint firstAttribute="width" constant="480" id="yxZ-6l-eqD"/>
@@ -179,7 +180,6 @@
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bc2-ea-gU7" secondAttribute="trailing" constant="134" id="5dK-3O-3iQ"/>
                 <constraint firstItem="PIi-4g-5l6" firstAttribute="top" secondItem="mqu-fD-atD" secondAttribute="bottom" constant="14" id="CrO-Z4-IdG"/>
                 <constraint firstItem="bc2-ea-gU7" firstAttribute="top" secondItem="5up-P8-vEX" secondAttribute="bottom" constant="40" id="H1H-7p-4p9"/>
-                <constraint firstItem="ygP-3W-wuS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="InI-5v-nXp"/>
                 <constraint firstItem="ygP-3W-wuS" firstAttribute="top" secondItem="bc2-ea-gU7" secondAttribute="bottom" constant="20" id="Jpf-80-h2S"/>
                 <constraint firstItem="ygP-3W-wuS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="LQt-V6-PFp"/>
                 <constraint firstItem="PIi-4g-5l6" firstAttribute="top" secondItem="mqu-fD-atD" secondAttribute="bottom" constant="20" id="NdM-d1-Dw6"/>
@@ -190,8 +190,8 @@
                 <constraint firstItem="mqu-fD-atD" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="SOA-Pg-tz1"/>
                 <constraint firstItem="PIi-4g-5l6" firstAttribute="top" secondItem="mqu-fD-atD" secondAttribute="bottom" constant="14" id="SOn-Oc-7Q1"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mqu-fD-atD" secondAttribute="trailing" constant="20" id="XeE-4S-int"/>
-                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ygP-3W-wuS" secondAttribute="trailing" constant="20" id="aKF-oo-AnW"/>
                 <constraint firstItem="mqu-fD-atD" firstAttribute="top" secondItem="ygP-3W-wuS" secondAttribute="bottom" constant="20" id="b3T-VF-J5F"/>
+                <constraint firstItem="ygP-3W-wuS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="cm0-I4-w4V"/>
                 <constraint firstItem="bc2-ea-gU7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="134" id="gZA-hP-t01"/>
                 <constraint firstItem="PIi-4g-5l6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="gnT-sd-CWK"/>
                 <constraint firstItem="bc2-ea-gU7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="j7i-eS-YmM"/>
@@ -246,12 +246,10 @@
                     <exclude reference="j7i-eS-YmM"/>
                     <exclude reference="jZF-zG-kMs"/>
                     <include reference="vyE-hf-N58"/>
-                    <exclude reference="InI-5v-nXp"/>
                     <exclude reference="Jpf-80-h2S"/>
                     <include reference="LQt-V6-PFp"/>
                     <include reference="OFg-7W-Tve"/>
                     <include reference="QRc-XA-EHY"/>
-                    <exclude reference="aKF-oo-AnW"/>
                     <include reference="k2f-wj-upO"/>
                     <exclude reference="XeE-4S-int"/>
                     <exclude reference="l9D-Tk-EeV"/>
