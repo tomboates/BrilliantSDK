@@ -202,7 +202,7 @@ public class Brilliant: NSObject {
             weakSelf?.appName = JSON["name"] as? String
             
             if let eligible = JSON["eligible"] as? Bool {
-                weakSelf?.eligible = eligible
+                weakSelf?.eligible = true //eligible
             }
             
             LogUtil.printDebug("initialization server call success. Setting app name to: \(self.appName)")

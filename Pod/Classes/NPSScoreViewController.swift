@@ -30,6 +30,7 @@ class NPSScoreViewController : UIViewController
     @IBOutlet var button9: UIButton!
     @IBOutlet var button10: UIButton!
     
+    @IBOutlet var labelWidthConstraint: NSLayoutConstraint!
     
     internal weak var delegate : NPSScoreViewControllerDelegate?
     
@@ -73,6 +74,23 @@ class NPSScoreViewController : UIViewController
         self.button8.titleLabel!.font = Brilliant.sharedInstance().npsButtonFont()
         self.button9.titleLabel!.font = Brilliant.sharedInstance().npsButtonFont()
         self.button10.titleLabel!.font = Brilliant.sharedInstance().npsButtonFont()
+    }
+    
+    override func  viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let size = UIDeviceHelper.deviceWidth()
+        switch size
+        {
+        case .Small:
+            self.labelWidthConstraint.constant = 280
+            break
+        case .Medium:
+            self.labelWidthConstraint.constant = 300
+            break
+        case .Large:
+            self.labelWidthConstraint.constant = 420
+            break
+        }
     }
     
     @IBAction func closePressed(sender: AnyObject) {
