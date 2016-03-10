@@ -61,6 +61,18 @@ class NPSScoreViewController : UIViewController
         self.button8.tintColor = Brilliant.sharedInstance().npsButtonColor()
         self.button9.tintColor = Brilliant.sharedInstance().npsButtonColor()
         self.button10.tintColor = Brilliant.sharedInstance().npsButtonColor()
+        
+        self.button0.titleLabel!.font = Brilliant.sharedInstance().npsButtonFont()
+        self.button1.titleLabel!.font = Brilliant.sharedInstance().npsButtonFont()
+        self.button2.titleLabel!.font = Brilliant.sharedInstance().npsButtonFont()
+        self.button3.titleLabel!.font = Brilliant.sharedInstance().npsButtonFont()
+        self.button4.titleLabel!.font = Brilliant.sharedInstance().npsButtonFont()
+        self.button5.titleLabel!.font = Brilliant.sharedInstance().npsButtonFont()
+        self.button6.titleLabel!.font = Brilliant.sharedInstance().npsButtonFont()
+        self.button7.titleLabel!.font = Brilliant.sharedInstance().npsButtonFont()
+        self.button8.titleLabel!.font = Brilliant.sharedInstance().npsButtonFont()
+        self.button9.titleLabel!.font = Brilliant.sharedInstance().npsButtonFont()
+        self.button10.titleLabel!.font = Brilliant.sharedInstance().npsButtonFont()
     }
     
     @IBAction func closePressed(sender: AnyObject) {

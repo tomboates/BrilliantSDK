@@ -16,7 +16,7 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFL-Vl-m3N">
@@ -30,49 +30,104 @@
                         <action selector="closePressed:" destination="-1" eventType="touchUpInside" id="2r9-N9-nxn"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqP-DG-6uq">
-                    <rect key="frame" x="20" y="458" width="280" height="50"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="4rl-Rm-eH0"/>
-                    </constraints>
-                    <state key="normal" title="Sure"/>
-                    <connections>
-                        <action selector="confirmPressed:" destination="-1" eventType="touchUpInside" id="0jx-W6-oac"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yo4-NC-Bud">
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yo4-NC-Bud">
                     <rect key="frame" x="123" y="518" width="74" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" title="No Thanks"/>
+                    <variation key="heightClass=compact-widthClass=compact" ambiguous="YES" misplaced="YES">
+                        <rect key="frame" x="196.5" y="246" width="87" height="34"/>
+                    </variation>
                     <connections>
                         <action selector="denyPressed:" destination="-1" eventType="touchUpInside" id="Ld5-os-rly"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Thanks! We would love it if you could rate us in the App Store." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RoB-AP-hfE">
                     <rect key="frame" x="20" y="55" width="280" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="400" id="HKu-2L-cqh"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="HKu-2L-cqh"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=compact" misplaced="YES">
+                        <rect key="frame" x="40" y="53" width="400" height="75.5"/>
+                    </variation>
+                    <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="40" y="55" width="400" height="60"/>
+                    </variation>
+                    <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
+                        <rect key="frame" x="20" y="75" width="440" height="50.5"/>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="20" y="75" width="440" height="50.5"/>
+                        <mask key="constraints">
+                            <include reference="HKu-2L-cqh"/>
+                        </mask>
+                    </variation>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1q1-Eg-MNH">
                     <rect key="frame" x="37" y="143" width="246" height="36"/>
                     <state key="normal" backgroundImage="ratingStars.png"/>
+                    <variation key="heightClass=compact" misplaced="YES">
+                        <rect key="frame" x="117" y="160" width="246" height="36"/>
+                    </variation>
+                    <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="117" y="145" width="246" height="36"/>
+                    </variation>
                     <connections>
                         <action selector="starsPressed:" destination="-1" eventType="touchUpInside" id="fRI-tb-aJ0"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqP-DG-6uq">
+                    <rect key="frame" x="20" y="458" width="280" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="4rl-Rm-eH0"/>
+                        <constraint firstAttribute="width" constant="260" id="9Za-dD-xu7"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="Sure"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="9Za-dD-xu7"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=compact" misplaced="YES">
+                        <rect key="frame" x="110" y="211" width="260" height="44"/>
+                        <mask key="constraints">
+                            <include reference="9Za-dD-xu7"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=compact-widthClass=compact" ambiguous="YES" misplaced="YES">
+                        <rect key="frame" x="110" y="212" width="260" height="44"/>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="224" y="212" width="32" height="44"/>
+                        <mask key="constraints">
+                            <include reference="9Za-dD-xu7"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="confirmPressed:" destination="-1" eventType="touchUpInside" id="0jx-W6-oac"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
-                <constraint firstItem="Yo4-NC-Bud" firstAttribute="top" secondItem="rqP-DG-6uq" secondAttribute="bottom" constant="20" id="0RI-74-X1b"/>
+                <constraint firstItem="Yo4-NC-Bud" firstAttribute="top" secondItem="rqP-DG-6uq" secondAttribute="bottom" constant="14" id="0RI-74-X1b"/>
                 <constraint firstItem="hFL-Vl-m3N" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="38R-ph-EAT"/>
                 <constraint firstItem="RoB-AP-hfE" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="7lE-DU-PL1"/>
                 <constraint firstItem="RoB-AP-hfE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="CTJ-wL-Owo"/>
-                <constraint firstItem="rqP-DG-6uq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="EGE-Rh-bOE"/>
+                <constraint firstItem="rqP-DG-6uq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="EGE-Rh-bOE"/>
                 <constraint firstItem="1q1-Eg-MNH" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Ftj-uw-AdT"/>
                 <constraint firstItem="1q1-Eg-MNH" firstAttribute="top" secondItem="RoB-AP-hfE" secondAttribute="bottom" constant="30" id="HWg-n3-OcM"/>
                 <constraint firstItem="Yo4-NC-Bud" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="LKL-t5-KHo"/>
-                <constraint firstItem="RoB-AP-hfE" firstAttribute="top" secondItem="hFL-Vl-m3N" secondAttribute="bottom" constant="20" id="Qil-VK-VRY"/>
+                <constraint firstItem="RoB-AP-hfE" firstAttribute="top" secondItem="hFL-Vl-m3N" secondAttribute="bottom" constant="40" id="Qil-VK-VRY"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1q1-Eg-MNH" secondAttribute="trailing" constant="37" id="Smo-HU-aGw"/>
-                <constraint firstAttribute="trailing" secondItem="rqP-DG-6uq" secondAttribute="trailing" constant="20" id="Uf7-Jz-TJU"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rqP-DG-6uq" secondAttribute="trailing" constant="20" id="Uf7-Jz-TJU"/>
                 <constraint firstAttribute="bottom" secondItem="Yo4-NC-Bud" secondAttribute="bottom" constant="20" id="cUK-cj-kBZ"/>
                 <constraint firstItem="hFL-Vl-m3N" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="d7w-GP-GDl"/>
                 <constraint firstItem="rqP-DG-6uq" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="fe1-2r-b69"/>
@@ -80,12 +135,24 @@
                 <constraint firstItem="RoB-AP-hfE" firstAttribute="top" secondItem="hFL-Vl-m3N" secondAttribute="bottom" constant="65" id="m2h-AL-6bK"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="RoB-AP-hfE" secondAttribute="trailing" constant="20" id="qoo-6Y-Sg2"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="m2h-AL-6bK"/>
                 </mask>
             </variation>
+            <variation key="heightClass=compact-widthClass=compact">
+                <mask key="constraints">
+                    <exclude reference="cUK-cj-kBZ"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="constraints">
+                    <exclude reference="cUK-cj-kBZ"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="249" y="316"/>
         </view>
     </objects>
     <resources>

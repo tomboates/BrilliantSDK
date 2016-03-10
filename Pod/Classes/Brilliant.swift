@@ -268,7 +268,24 @@ public class Brilliant: NSObject {
         switch UIDevice.currentDevice().userInterfaceIdiom
         {
         case .Pad:
+            return UIFont.systemFontOfSize(31)
+        case .Phone:
+            return UIFont.systemFontOfSize(21)
+        case .TV:
             return UIFont.systemFontOfSize(34)
+        case .Unspecified:
+            return UIFont.systemFontOfSize(34)
+        }
+        
+    }
+    
+    func npsButtonFont() -> UIFont
+    {
+        
+        switch UIDevice.currentDevice().userInterfaceIdiom
+        {
+        case .Pad:
+            return UIFont.systemFontOfSize(31)
         case .Phone:
             return UIFont.systemFontOfSize(21)
         case .TV:

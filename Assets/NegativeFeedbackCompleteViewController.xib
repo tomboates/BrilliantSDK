@@ -15,7 +15,7 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ak0-10-Av7">
@@ -29,31 +29,86 @@
                         <action selector="closePressed:" destination="-1" eventType="touchUpInside" id="Fq3-dM-62R"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Thanks! We appreciate the feedback." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qhr-bj-LRL">
-                    <rect key="frame" x="20" y="55" width="280" height="24"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEc-Um-3X1">
                     <rect key="frame" x="20" y="498" width="280" height="50"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" title="Close"/>
+                    <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="217" y="246" width="46" height="34"/>
+                    </variation>
                     <connections>
                         <action selector="donePressed:" destination="-1" eventType="touchUpInside" id="yjQ-ae-Was"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Thanks! We appreciate your feedback." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qhr-bj-LRL">
+                    <rect key="frame" x="20" y="55" width="280" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="440" id="E1l-gF-TBJ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="E1l-gF-TBJ"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=compact" misplaced="YES">
+                        <rect key="frame" x="39" y="53" width="400" height="50.5"/>
+                    </variation>
+                    <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="20" y="75" width="440" height="30"/>
+                    </variation>
+                    <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
+                        <rect key="frame" x="20" y="75" width="440" height="25.5"/>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="60" y="75" width="360" height="25.5"/>
+                        <mask key="constraints">
+                            <include reference="E1l-gF-TBJ"/>
+                        </mask>
+                    </variation>
+                </label>
             </subviews>
             <constraints>
                 <constraint firstItem="OEc-Um-3X1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="HZu-wo-YS2"/>
                 <constraint firstItem="ak0-10-Av7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="IDB-O6-GQl"/>
-                <constraint firstItem="qhr-bj-LRL" firstAttribute="top" secondItem="ak0-10-Av7" secondAttribute="bottom" constant="20" id="XKc-eJ-JJB"/>
+                <constraint firstItem="qhr-bj-LRL" firstAttribute="top" secondItem="ak0-10-Av7" secondAttribute="bottom" constant="40" id="XKc-eJ-JJB"/>
                 <constraint firstItem="qhr-bj-LRL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Yyq-wE-siJ"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qhr-bj-LRL" secondAttribute="trailing" constant="20" id="gu3-Qh-Ebj"/>
                 <constraint firstItem="ak0-10-Av7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="hbP-r5-4YB"/>
                 <constraint firstItem="qhr-bj-LRL" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="pbr-cl-osT"/>
                 <constraint firstAttribute="bottom" secondItem="OEc-Um-3X1" secondAttribute="bottom" constant="20" id="uSJ-yd-ohb"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="gu3-Qh-Ebj"/>
+                    <exclude reference="uSJ-yd-ohb"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=compact">
+                <mask key="constraints">
+                    <include reference="gu3-Qh-Ebj"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=compact-widthClass=compact">
+                <mask key="constraints">
+                    <include reference="uSJ-yd-ohb"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=compact-widthClass=regular">
+                <mask key="constraints">
+                    <include reference="uSJ-yd-ohb"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="constraints">
+                    <include reference="gu3-Qh-Ebj"/>
+                    <include reference="uSJ-yd-ohb"/>
+                </mask>
+            </variation>
         </view>
     </objects>
 </document>
