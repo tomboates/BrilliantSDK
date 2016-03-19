@@ -12,6 +12,7 @@ protocol NegativeFeedbackCompleteViewControllerDelegate: class{
     
     func closePressed(state: SurveyViewControllerState)
     func doneWithFeedbackPressed()
+    func autoDismissFeedbackComplete()
 }
 
 class NegativeFeedbackCompleteViewController: UIViewController
@@ -32,6 +33,13 @@ class NegativeFeedbackCompleteViewController: UIViewController
         self.explanationLabel.textColor = Brilliant.sharedInstance().mainLabelColor()
         
         self.doneButton.tintColor = Brilliant.sharedInstance().npsDoneColor()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Double(NSEC_PER_SEC)))
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+            self.delegate?.autoDismissFeedbackComplete()
+        }
     }
     
     @IBAction func closePressed(sender: AnyObject) {
