@@ -70,7 +70,7 @@
                         </mask>
                     </variation>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1q1-Eg-MNH">
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1q1-Eg-MNH">
                     <rect key="frame" x="117" y="155.5" width="246" height="36"/>
                     <state key="normal" backgroundImage="ratingStars.png"/>
                     <variation key="heightClass=compact" misplaced="YES">

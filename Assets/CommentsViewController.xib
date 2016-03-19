@@ -10,6 +10,8 @@
                 <outlet property="closeButton" destination="5up-P8-vEX" id="B7F-JS-YPG"/>
                 <outlet property="commentDescriptionLabel" destination="bc2-ea-gU7" id="g9g-90-4fy"/>
                 <outlet property="comments" destination="ygP-3W-wuS" id="1Cu-Cr-0Do"/>
+                <outlet property="doneButton" destination="cMs-6y-Sa1" id="UQg-SW-LNN"/>
+                <outlet property="keyboardToolbar" destination="Zje-Sg-Wbp" id="ly7-Aq-4an"/>
                 <outlet property="noThanksButton" destination="PIi-4g-5l6" id="gXL-aF-l58"/>
                 <outlet property="submitButton" destination="mqu-fD-atD" id="u8j-3T-QCu"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Ocb-Tq-Wnc"/>
@@ -261,6 +263,19 @@
             </variation>
             <point key="canvasLocation" x="165" y="392"/>
         </view>
+        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Zje-Sg-Wbp">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+            <items>
+                <barButtonItem style="plain" systemItem="flexibleSpace" id="CGc-ak-rGf"/>
+                <barButtonItem title="Done" id="cMs-6y-Sa1">
+                    <connections>
+                        <action selector="keyboardDoneClicked:" destination="-1" id="LOh-d9-d8K"/>
+                    </connections>
+                </barButtonItem>
+            </items>
+            <point key="canvasLocation" x="-64" y="334"/>
+        </toolbar>
     </objects>
     <resources>
         <image name="brilliant-icon-close.png" width="20" height="20"/>
