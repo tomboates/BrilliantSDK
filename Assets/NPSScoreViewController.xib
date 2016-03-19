@@ -41,7 +41,7 @@
                         <action selector="closePressed:" destination="-1" eventType="touchUpInside" id="gIf-IY-w1E"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How likely are you to recommend \(appName) to a friend or colleague?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOf-xa-Sly">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="How likely are you to recommend \(appName) to a friend or colleague?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOf-xa-Sly">
                     <rect key="frame" x="100" y="55" width="280" height="75.5"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="440" id="9Oe-lk-U4H"/>
@@ -65,7 +65,7 @@
                         </mask>
                     </variation>
                     <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
-                        <rect key="frame" x="-89.5" y="75" width="659" height="25.5"/>
+                        <rect key="frame" x="-90" y="75" width="660" height="26"/>
                         <mask key="constraints">
                             <include reference="9Oe-lk-U4H"/>
                             <exclude reference="RiR-bj-Pgb"/>
@@ -85,10 +85,10 @@
                         </mask>
                     </variation>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8b0-MA-hjD">
+                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8b0-MA-hjD">
                     <rect key="frame" x="92" y="157" width="296" height="56"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ndv-fy-O0y">
+                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ndv-fy-O0y">
                             <rect key="frame" x="134" y="0.0" width="27" height="28"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -116,7 +116,8 @@
                                     <exclude reference="wNh-ng-r0Z"/>
                                 </mask>
                             </variation>
-                            <variation key="heightClass=regular-widthClass=compact">
+                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                <rect key="frame" x="211" y="0.0" width="42.5" height="28"/>
                                 <mask key="constraints">
                                     <exclude reference="wNh-ng-r0Z"/>
                                 </mask>
@@ -131,7 +132,7 @@
                                 <action selector="fivePressed:" destination="-1" eventType="touchUpInside" id="KSi-BX-9VA"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ebq-rX-jWb">
+                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ebq-rX-jWb">
                             <rect key="frame" x="188" y="0.0" width="27" height="28"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -159,7 +160,8 @@
                                     <exclude reference="Eve-t3-wt3"/>
                                 </mask>
                             </variation>
-                            <variation key="heightClass=regular-widthClass=compact">
+                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                <rect key="frame" x="296" y="0.0" width="42.5" height="28"/>
                                 <mask key="constraints">
                                     <exclude reference="Eve-t3-wt3"/>
                                 </mask>
@@ -174,7 +176,7 @@
                                 <action selector="sevenPressed:" destination="-1" eventType="touchUpInside" id="3qB-fP-PHh"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VEy-BK-zat">
+                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VEy-BK-zat">
                             <rect key="frame" x="215" y="0.0" width="27" height="28"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -218,7 +220,7 @@
                                 <action selector="eightPressed:" destination="-1" eventType="touchUpInside" id="hN2-hy-awx"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ut2-su-Ygv">
+                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ut2-su-Ygv">
                             <rect key="frame" x="242" y="0.0" width="27" height="28"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -262,7 +264,7 @@
                                 <action selector="ninePressed:" destination="-1" eventType="touchUpInside" id="ftx-2O-tRM"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0wS-ab-y8h" userLabel="Button0">
+                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0wS-ab-y8h" userLabel="Button0">
                             <rect key="frame" x="0.0" y="0.0" width="27" height="28"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -288,8 +290,7 @@
                                     <exclude reference="8zM-Te-UGX"/>
                                 </mask>
                             </variation>
-                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                <rect key="frame" x="0.0" y="0.0" width="43" height="28"/>
+                            <variation key="heightClass=regular-widthClass=compact">
                                 <mask key="constraints">
                                     <exclude reference="8zM-Te-UGX"/>
                                 </mask>
@@ -304,7 +305,7 @@
                                 <action selector="zeroPressed:" destination="-1" eventType="touchUpInside" id="x89-fh-0TG"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oqY-TW-Z0o">
+                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oqY-TW-Z0o">
                             <rect key="frame" x="27" y="0.0" width="26" height="28"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -333,7 +334,7 @@
                                 </mask>
                             </variation>
                             <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                <rect key="frame" x="42.5" y="0.0" width="41" height="28"/>
+                                <rect key="frame" x="42" y="0.0" width="41" height="28"/>
                                 <mask key="constraints">
                                     <exclude reference="8td-0z-MaL"/>
                                 </mask>
@@ -348,7 +349,7 @@
                                 <action selector="onePressed:" destination="-1" eventType="touchUpInside" id="4WT-U2-Kac"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wn8-bb-FAf">
+                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wn8-bb-FAf">
                             <rect key="frame" x="53" y="0.0" width="27" height="28"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -376,7 +377,8 @@
                                     <exclude reference="7PB-Et-qu1"/>
                                 </mask>
                             </variation>
-                            <variation key="heightClass=regular-widthClass=compact">
+                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                <rect key="frame" x="83.5" y="0.0" width="42.5" height="28"/>
                                 <mask key="constraints">
                                     <exclude reference="7PB-Et-qu1"/>
                                 </mask>
@@ -391,7 +393,7 @@
                                 <action selector="twoPressed:" destination="-1" eventType="touchUpInside" id="KL4-m3-acC"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fI-4L-gXY">
+                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fI-4L-gXY">
                             <rect key="frame" x="80" y="0.0" width="27" height="28"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -419,7 +421,8 @@
                                     <exclude reference="PMW-L8-64D"/>
                                 </mask>
                             </variation>
-                            <variation key="heightClass=regular-widthClass=compact">
+                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                <rect key="frame" x="126" y="0.0" width="42.5" height="28"/>
                                 <mask key="constraints">
                                     <exclude reference="PMW-L8-64D"/>
                                 </mask>
@@ -434,7 +437,7 @@
                                 <action selector="threePressed:" destination="-1" eventType="touchUpInside" id="dgZ-Xe-Sm9"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqG-H7-xeS">
+                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqG-H7-xeS">
                             <rect key="frame" x="269" y="0.0" width="27" height="28"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -462,7 +465,8 @@
                                     <exclude reference="0mW-DK-udd"/>
                                 </mask>
                             </variation>
-                            <variation key="heightClass=regular-widthClass=compact">
+                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                <rect key="frame" x="422.5" y="0.0" width="47" height="28"/>
                                 <mask key="constraints">
                                     <exclude reference="0mW-DK-udd"/>
                                 </mask>
@@ -477,7 +481,7 @@
                                 <action selector="tenPressed:" destination="-1" eventType="touchUpInside" id="vDh-1q-5wI"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UA0-Jp-4VX">
+                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UA0-Jp-4VX">
                             <rect key="frame" x="107" y="0.0" width="27" height="28"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -505,7 +509,8 @@
                                     <exclude reference="XTG-WK-x5E"/>
                                 </mask>
                             </variation>
-                            <variation key="heightClass=regular-widthClass=compact">
+                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                <rect key="frame" x="168.5" y="0.0" width="42.5" height="28"/>
                                 <mask key="constraints">
                                     <exclude reference="XTG-WK-x5E"/>
                                 </mask>
@@ -520,7 +525,7 @@
                                 <action selector="fourPressed:" destination="-1" eventType="touchUpInside" id="4S9-Yq-O0M"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYR-K9-cX3">
+                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYR-K9-cX3">
                             <rect key="frame" x="161" y="0.0" width="27" height="28"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -549,7 +554,7 @@
                                 </mask>
                             </variation>
                             <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                <rect key="frame" x="253" y="0.0" width="42" height="28"/>
+                                <rect key="frame" x="253" y="0.0" width="42.5" height="28"/>
                                 <mask key="constraints">
                                     <exclude reference="Hih-W5-jWQ"/>
                                 </mask>
@@ -564,13 +569,13 @@
                                 <action selector="sixPressed:" destination="-1" eventType="touchUpInside" id="AB8-6z-c3q"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Likely" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOF-4z-WZF">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Not Likely" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOF-4z-WZF">
                             <rect key="frame" x="5" y="39" width="64" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Very Likely" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TiN-wb-BB4">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Very Likely" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TiN-wb-BB4">
                             <rect key="frame" x="224" y="39" width="70" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -997,13 +1002,16 @@
             </subviews>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="JOf-xa-Sly" secondAttribute="trailing" constant="20" id="1MJ-rc-3EF"/>
+                <constraint firstItem="5Pw-EC-jU4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="2Um-Os-Gfc"/>
                 <constraint firstAttribute="trailing" secondItem="8b0-MA-hjD" secondAttribute="trailing" constant="5" id="406-eZ-72P"/>
-                <constraint firstItem="5Pw-EC-jU4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="MqU-X6-wxt"/>
+                <constraint firstItem="5Pw-EC-jU4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="Kin-Qs-P5R"/>
+                <constraint firstItem="5Pw-EC-jU4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="35" id="MqU-X6-wxt"/>
                 <constraint firstItem="8b0-MA-hjD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="NhN-3L-rEb"/>
                 <constraint firstItem="JOf-xa-Sly" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="65" id="Pr9-pc-miD"/>
                 <constraint firstItem="JOf-xa-Sly" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="TDu-Ad-rIF"/>
                 <constraint firstItem="8b0-MA-hjD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="148" id="UAJ-Lm-0fC"/>
                 <constraint firstItem="JOf-xa-Sly" firstAttribute="top" secondItem="5Pw-EC-jU4" secondAttribute="bottom" constant="20" id="aQ3-7a-gaA"/>
+                <constraint firstItem="5Pw-EC-jU4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="35" id="bXB-7j-W4V"/>
                 <constraint firstItem="JOf-xa-Sly" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="cFN-Bx-cgC"/>
                 <constraint firstItem="JOf-xa-Sly" firstAttribute="top" secondItem="5Pw-EC-jU4" secondAttribute="bottom" constant="120" id="ekH-OW-wge"/>
                 <constraint firstItem="8b0-MA-hjD" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.95" id="m5S-Sz-OET"/>
@@ -1021,6 +1029,10 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="2Um-Os-Gfc"/>
+                    <exclude reference="Kin-Qs-P5R"/>
+                    <exclude reference="MqU-X6-wxt"/>
+                    <exclude reference="bXB-7j-W4V"/>
                     <exclude reference="1MJ-rc-3EF"/>
                     <exclude reference="Pr9-pc-miD"/>
                     <exclude reference="aQ3-7a-gaA"/>
@@ -1040,6 +1052,7 @@
             </variation>
             <variation key="heightClass=compact-widthClass=compact">
                 <mask key="constraints">
+                    <include reference="2Um-Os-Gfc"/>
                     <exclude reference="1MJ-rc-3EF"/>
                     <exclude reference="cFN-Bx-cgC"/>
                     <include reference="mN9-FS-gWf"/>
@@ -1048,6 +1061,7 @@
             </variation>
             <variation key="heightClass=compact-widthClass=regular">
                 <mask key="constraints">
+                    <include reference="Kin-Qs-P5R"/>
                     <include reference="p28-E9-X4C"/>
                     <exclude reference="NhN-3L-rEb"/>
                     <exclude reference="UAJ-Lm-0fC"/>
@@ -1056,6 +1070,7 @@
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
                 <mask key="constraints">
+                    <include reference="MqU-X6-wxt"/>
                     <include reference="1MJ-rc-3EF"/>
                     <include reference="cFN-Bx-cgC"/>
                     <include reference="s7K-WQ-yce"/>
@@ -1066,6 +1081,7 @@
             </variation>
             <variation key="heightClass=regular-widthClass=regular">
                 <mask key="constraints">
+                    <include reference="bXB-7j-W4V"/>
                     <include reference="ekH-OW-wge"/>
                 </mask>
             </variation>

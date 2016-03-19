@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -90,6 +90,7 @@
                 <constraint firstItem="qhr-bj-LRL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="234" id="JPD-Zk-Uk8"/>
                 <constraint firstItem="OEc-Um-3X1" firstAttribute="top" secondItem="qhr-bj-LRL" secondAttribute="bottom" constant="40" id="XJb-L9-W4r"/>
                 <constraint firstItem="qhr-bj-LRL" firstAttribute="top" secondItem="ak0-10-Av7" secondAttribute="bottom" constant="40" id="XKc-eJ-JJB"/>
+                <constraint firstItem="ak0-10-Av7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="35" id="YAN-5W-PcA"/>
                 <constraint firstAttribute="bottom" secondItem="OEc-Um-3X1" secondAttribute="bottom" constant="20" id="YR5-5T-ny9"/>
                 <constraint firstItem="qhr-bj-LRL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Yyq-wE-siJ"/>
                 <constraint firstItem="qhr-bj-LRL" firstAttribute="top" secondItem="ak0-10-Av7" secondAttribute="bottom" constant="40" id="aOD-5M-qro"/>
@@ -104,6 +105,8 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="YAN-5W-PcA"/>
+                    <exclude reference="hbP-r5-4YB"/>
                     <exclude reference="2ue-5q-Ryc"/>
                     <exclude reference="JPD-Zk-Uk8"/>
                     <exclude reference="XKc-eJ-JJB"/>
@@ -125,12 +128,14 @@
             </variation>
             <variation key="heightClass=compact-widthClass=compact">
                 <mask key="constraints">
+                    <include reference="hbP-r5-4YB"/>
                     <include reference="2ue-5q-Ryc"/>
                     <include reference="uSJ-yd-ohb"/>
                 </mask>
             </variation>
             <variation key="heightClass=compact-widthClass=regular">
                 <mask key="constraints">
+                    <include reference="hbP-r5-4YB"/>
                     <exclude reference="Yyq-wE-siJ"/>
                     <include reference="aOD-5M-qro"/>
                     <exclude reference="gu3-Qh-Ebj"/>
@@ -139,6 +144,7 @@
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
                 <mask key="constraints">
+                    <include reference="YAN-5W-PcA"/>
                     <include reference="XKc-eJ-JJB"/>
                     <include reference="Yyq-wE-siJ"/>
                     <include reference="gu3-Qh-Ebj"/>
@@ -148,6 +154,7 @@
             </variation>
             <variation key="heightClass=regular-widthClass=regular">
                 <mask key="constraints">
+                    <include reference="YAN-5W-PcA"/>
                     <exclude reference="JPD-Zk-Uk8"/>
                     <exclude reference="XKc-eJ-JJB"/>
                     <exclude reference="Yyq-wE-siJ"/>

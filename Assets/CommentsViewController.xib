@@ -33,7 +33,7 @@
                         <action selector="closePressed:" destination="-1" eventType="touchUpInside" id="Jsm-wl-M7o"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry to hear that. Please give us some more feedback" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bc2-ea-gU7">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Sorry to hear that. Please give us some more feedback" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bc2-ea-gU7">
                     <rect key="frame" x="31" y="75" width="313.5" height="50.5"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="440" id="9Cm-H9-dly"/>
@@ -82,7 +82,7 @@
                         </mask>
                     </variation>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIi-4g-5l6">
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIi-4g-5l6">
                     <rect key="frame" x="150.5" y="617" width="74" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <state key="normal" title="No Thanks"/>
@@ -99,7 +99,7 @@
                         <action selector="noThanksPressed:" destination="-1" eventType="touchUpInside" id="WTj-gc-tQv"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqu-fD-atD">
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqu-fD-atD">
                     <rect key="frame" x="162" y="553" width="51" height="44"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="280" id="J3l-Wy-pFK"/>
@@ -141,7 +141,7 @@
                         <action selector="submitPressed:" destination="-1" eventType="touchUpInside" id="EBH-Q9-2iK"/>
                     </connections>
                 </button>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ygP-3W-wuS">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ygP-3W-wuS">
                     <rect key="frame" x="47.5" y="145.5" width="280" height="80"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -207,6 +207,7 @@
                 <constraint firstAttribute="bottom" secondItem="PIi-4g-5l6" secondAttribute="bottom" constant="20" id="0gE-zZ-d9G"/>
                 <constraint firstItem="bc2-ea-gU7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="4Td-Uc-khy"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bc2-ea-gU7" secondAttribute="trailing" constant="134" id="5dK-3O-3iQ"/>
+                <constraint firstItem="5up-P8-vEX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="35" id="76S-0z-E4u"/>
                 <constraint firstItem="PIi-4g-5l6" firstAttribute="top" secondItem="mqu-fD-atD" secondAttribute="bottom" constant="14" id="CrO-Z4-IdG"/>
                 <constraint firstAttribute="bottom" secondItem="PIi-4g-5l6" secondAttribute="bottom" constant="20" id="Es1-vg-jDS"/>
                 <constraint firstItem="bc2-ea-gU7" firstAttribute="top" secondItem="5up-P8-vEX" secondAttribute="bottom" constant="40" id="H1H-7p-4p9"/>
@@ -246,6 +247,8 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="76S-0z-E4u"/>
+                    <exclude reference="s6q-Of-dni"/>
                     <exclude reference="5dK-3O-3iQ"/>
                     <exclude reference="H1H-7p-4p9"/>
                     <exclude reference="Pmd-nu-i5a"/>
@@ -284,6 +287,7 @@
             </variation>
             <variation key="heightClass=compact-widthClass=compact">
                 <mask key="constraints">
+                    <include reference="s6q-Of-dni"/>
                     <include reference="sqV-jT-YEh"/>
                     <include reference="Jpf-80-h2S"/>
                     <exclude reference="XeE-4S-int"/>
@@ -293,6 +297,7 @@
             </variation>
             <variation key="heightClass=compact-widthClass=regular">
                 <mask key="constraints">
+                    <include reference="s6q-Of-dni"/>
                     <include reference="Pmd-nu-i5a"/>
                     <include reference="ktK-ph-hTf"/>
                     <exclude reference="XeE-4S-int"/>
@@ -302,6 +307,7 @@
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
                 <mask key="constraints">
+                    <include reference="76S-0z-E4u"/>
                     <include reference="H1H-7p-4p9"/>
                     <include reference="j7i-eS-YmM"/>
                     <include reference="jZF-zG-kMs"/>
@@ -317,6 +323,7 @@
             </variation>
             <variation key="heightClass=regular-widthClass=regular">
                 <mask key="constraints">
+                    <include reference="76S-0z-E4u"/>
                     <exclude reference="5dK-3O-3iQ"/>
                     <exclude reference="H1H-7p-4p9"/>
                     <exclude reference="gZA-hP-t01"/>
