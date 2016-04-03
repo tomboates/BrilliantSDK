@@ -156,6 +156,7 @@ public class Brilliant: NSObject {
                 LogUtil.printDebug("Not showing survey: \(daysSinceLastSurvey()) days since last survey, but interval is not eligible")
             }
         }
+        
     }
     
     //# MARK: - Server Calls
@@ -252,12 +253,12 @@ public class Brilliant: NSObject {
     //Texts
     func positiveFeedbackText(number: Int) -> String
     {
-        return String(format: "Great can you tell us why you choose a %d?", number)
+        return String(format: "Great! Can you tell us a little more about why you choose a %d?", number)
     }
     
     func negativeFeedbackText(number: Int) -> String
     {
-        return String(format: "Bummer! Can you tell us why you choose a %d?", number)
+        return String(format: "Thanks! Can you tell us a little more about why you choose a %d?", number)
     }
     
     //Fonts
@@ -267,9 +268,26 @@ public class Brilliant: NSObject {
         switch UIDevice.currentDevice().userInterfaceIdiom
         {
         case .Pad:
-            return UIFont.systemFontOfSize(34)
+            return UIFont.systemFontOfSize(31)
         case .Phone:
-            return UIFont.systemFontOfSize(23)
+            return UIFont.systemFontOfSize(21)
+        case .TV:
+            return UIFont.systemFontOfSize(34)
+        case .Unspecified:
+            return UIFont.systemFontOfSize(34)
+        }
+        
+    }
+    
+    func npsButtonFont() -> UIFont
+    {
+        
+        switch UIDevice.currentDevice().userInterfaceIdiom
+        {
+        case .Pad:
+            return UIFont.systemFontOfSize(31)
+        case .Phone:
+            return UIFont.systemFontOfSize(21)
         case .TV:
             return UIFont.systemFontOfSize(34)
         case .Unspecified:

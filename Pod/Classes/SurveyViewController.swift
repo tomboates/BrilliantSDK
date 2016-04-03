@@ -188,4 +188,10 @@ class SurveyViewController: UIViewController, NPSScoreViewControllerDelegate, Co
         Brilliant.sharedInstance().completedSurvey!.dismissAction = "done_feedback"
         self.close()
     }
+    
+    func autoDismissFeedbackComplete()
+    {
+        Brilliant.sharedInstance().completedSurvey!.dismissAction = "auto_dismiss"
+        self.close()
+    }
 }

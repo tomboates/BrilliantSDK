@@ -18,6 +18,7 @@ class NPSScoreViewController : UIViewController
 {
     @IBOutlet var closeButton: UIButton!
     @IBOutlet var questionLabel: UILabel!
+    @IBOutlet var button0: UIButton!
     @IBOutlet var button1: UIButton!
     @IBOutlet var button2: UIButton!
     @IBOutlet var button3: UIButton!
@@ -29,6 +30,7 @@ class NPSScoreViewController : UIViewController
     @IBOutlet var button9: UIButton!
     @IBOutlet var button10: UIButton!
     
+    @IBOutlet var labelWidthConstraint: NSLayoutConstraint!
     
     internal weak var delegate : NPSScoreViewControllerDelegate?
     
@@ -49,6 +51,7 @@ class NPSScoreViewController : UIViewController
             self.questionLabel.text = "How likely are you to recommend this app to a friend or colleague?"
         }
         
+        self.button0.tintColor = Brilliant.sharedInstance().npsButtonColor()
         self.button1.tintColor = Brilliant.sharedInstance().npsButtonColor()
         self.button2.tintColor = Brilliant.sharedInstance().npsButtonColor()
         self.button3.tintColor = Brilliant.sharedInstance().npsButtonColor()
@@ -59,11 +62,44 @@ class NPSScoreViewController : UIViewController
         self.button8.tintColor = Brilliant.sharedInstance().npsButtonColor()
         self.button9.tintColor = Brilliant.sharedInstance().npsButtonColor()
         self.button10.tintColor = Brilliant.sharedInstance().npsButtonColor()
+        
+        self.button0.titleLabel!.font = Brilliant.sharedInstance().npsButtonFont()
+        self.button1.titleLabel!.font = Brilliant.sharedInstance().npsButtonFont()
+        self.button2.titleLabel!.font = Brilliant.sharedInstance().npsButtonFont()
+        self.button3.titleLabel!.font = Brilliant.sharedInstance().npsButtonFont()
+        self.button4.titleLabel!.font = Brilliant.sharedInstance().npsButtonFont()
+        self.button5.titleLabel!.font = Brilliant.sharedInstance().npsButtonFont()
+        self.button6.titleLabel!.font = Brilliant.sharedInstance().npsButtonFont()
+        self.button7.titleLabel!.font = Brilliant.sharedInstance().npsButtonFont()
+        self.button8.titleLabel!.font = Brilliant.sharedInstance().npsButtonFont()
+        self.button9.titleLabel!.font = Brilliant.sharedInstance().npsButtonFont()
+        self.button10.titleLabel!.font = Brilliant.sharedInstance().npsButtonFont()
+    }
+    
+    override func  viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let size = UIDeviceHelper.deviceWidth()
+        switch size
+        {
+        case .Small:
+            self.labelWidthConstraint.constant = 280
+            break
+        case .Medium:
+            self.labelWidthConstraint.constant = 300
+            break
+        case .Large:
+            self.labelWidthConstraint.constant = 420
+            break
+        }
     }
     
     @IBAction func closePressed(sender: AnyObject) {
         Brilliant.sharedInstance().completedSurvey!.dismissAction = "x_npsscreen"
         self.delegate?.closePressed(.RatingScreen)
+    }
+    
+    @IBAction func zeroPressed(sender: AnyObject) {
+        self.npsNumberResponse(0)
     }
     
     @IBAction func onePressed(sender: AnyObject) {

@@ -22,6 +22,8 @@ class CommentsViewController: UIViewController
     @IBOutlet var noThanksButton: UIButton!
     @IBOutlet var submitButton: UIButton!
     @IBOutlet var commentDescriptionLabel: UILabel!
+    @IBOutlet var doneButton: UIBarButtonItem!
+    @IBOutlet var keyboardToolbar: UIToolbar!
     
     internal weak var delegate : CommentsViewControllerDelegate?
     
@@ -31,6 +33,9 @@ class CommentsViewController: UIViewController
         
         self.commentDescriptionLabel.textColor = Brilliant.sharedInstance().mainLabelColor()
         self.commentDescriptionLabel.font = Brilliant.sharedInstance().mainLabelFont()
+        
+        self.comments.layer.cornerRadius = 4;
+        self.comments.inputAccessoryView = self.keyboardToolbar
         
         let npsNumber: Int! = Brilliant.sharedInstance().completedSurvey?.npsRating!
         if(npsNumber >= 7)
@@ -45,6 +50,8 @@ class CommentsViewController: UIViewController
         Brilliant.sharedInstance().styleButton(self.submitButton)
         
         self.noThanksButton.tintColor = Brilliant.sharedInstance().noThanksButtonColor()
+        
+        
     }
     
     func textFieldValue(notification: NSNotification){
@@ -144,5 +151,9 @@ class CommentsViewController: UIViewController
     
     @IBAction func closePressed(sender: AnyObject) {
         self.delegate?.closePressed(.CommentScreen)
+    }
+    
+    @IBAction func keyboardDoneClicked(sender: AnyObject) {
+        self.comments.resignFirstResponder()
     }
 }

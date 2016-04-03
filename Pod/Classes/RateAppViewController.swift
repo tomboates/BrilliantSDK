@@ -21,7 +21,6 @@ class RateAppViewController: UIViewController
     @IBOutlet var rateLabel: UILabel!
     @IBOutlet var confirmButton: UIButton!
     @IBOutlet var denyButton: UIButton!
-    @IBOutlet var ratingStars: UIImageView!
     
     internal weak var delegate : RateAppViewControllerDelegate?
     
@@ -29,9 +28,6 @@ class RateAppViewController: UIViewController
         
         let image = UIImage(named: "brilliant-icon-close", inBundle:Brilliant.imageBundle(), compatibleWithTraitCollection: nil)
         self.closeButton.setImage(image, forState: .Normal)
-        
-        let ratingStarsImage = UIImage(named: "ratingStars", inBundle:Brilliant.imageBundle(), compatibleWithTraitCollection: nil)
-        self.ratingStars.image = ratingStarsImage
         
         self.rateLabel.font = Brilliant.sharedInstance().mainLabelFont()
         self.rateLabel.textColor = Brilliant.sharedInstance().mainLabelColor()
@@ -47,6 +43,10 @@ class RateAppViewController: UIViewController
     
     @IBAction func denyPressed(sender: AnyObject) {
         self.delegate?.doNotRateAppPressed()
+    }
+    
+    @IBAction func starsPressed(sender: AnyObject) {
+        self.delegate?.rateAppPressed()
     }
     
     @IBAction func confirmPressed(sender: AnyObject) {
