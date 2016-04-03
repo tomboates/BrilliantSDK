@@ -19,7 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFL-Vl-m3N">
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFL-Vl-m3N">
                     <rect key="frame" x="15" y="15" width="20" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="20" id="cGQ-Ia-ktm"/>
@@ -41,7 +41,7 @@
                         <action selector="denyPressed:" destination="-1" eventType="touchUpInside" id="Ld5-os-rly"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks! We would love it if you could rate us in the App Store." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RoB-AP-hfE">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Thanks! We would love it if you could rate us in the App Store." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RoB-AP-hfE">
                     <rect key="frame" x="20" y="75" width="440" height="50.5"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="400" id="HKu-2L-cqh"/>
@@ -67,7 +67,7 @@
                         </mask>
                     </variation>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1q1-Eg-MNH">
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1q1-Eg-MNH">
                     <rect key="frame" x="117" y="155.5" width="246" height="36"/>
                     <state key="normal" backgroundImage="ratingStars.png"/>
                     <variation key="heightClass=compact" misplaced="YES">
