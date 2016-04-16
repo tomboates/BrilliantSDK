@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = "Brilliant"
-  s.version          = "0.1.8"
-  s.summary          = "A library for in-app User Surveys"
+  s.version          = "0.2"
+  s.summary          = "A library for in-app NPS Surveys"
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -17,15 +17,15 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!  
   s.description      = <<-DESC
-                         Brilliant is a library for in-app user surveys
+                         Brilliant is a library for in-app nps (net promoter score) surveys
                        DESC
 
   s.homepage         = "https://github.com/tomboates/BrilliantSDK"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
+  s.screenshots     = "www.brilliant-llc.com/nps.png", "www.brilliant-llc.com/comments.png", "www.brilliant-llc.com/rating.png"
   s.license          = 'MIT'
-  s.author           = { "Paul Berry" => "pdbthefifth@gmail.com" }
+  s.author           = { "Tom Boates" => "tom.boates@me.com" }
   s.source           = { :git => "https://github.com/tomboates/BrilliantSDK.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.social_media_url = 'https://twitter.com/brilliantnps'
 
   s.platform     = :ios, '8.0'
   s.requires_arc = true

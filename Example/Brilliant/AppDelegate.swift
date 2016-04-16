@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
       // Setup User Info
 //        createInstance(key: String, appStoreId: String, userEmail: String?, userType: String?, userDate: NSDate?)
-        Brilliant.createInstance("AuGpYKQlL7RlP3agYX4TyeS5hZ/oySCkfI5SYjNBIN5khQVJzQ30tI2f621JXHYC4/lKHWeshpDNKjci9hUQUw==", appStoreId: "300235330", userEmail: "tom.boates@me.com", userType: "normal", userDate: NSDate.distantPast())
+        Brilliant.createInstance("", appStoreId: "", userEmail: "", userType: "", userDate: NSDate.distantPast())
         return true
     }
 

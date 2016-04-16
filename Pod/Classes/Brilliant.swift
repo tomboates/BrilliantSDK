@@ -253,12 +253,12 @@ public class Brilliant: NSObject {
     //Texts
     func positiveFeedbackText(number: Int) -> String
     {
-        return String(format: "Great! Can you tell us a little more about why you choose a %d?", number)
+        return String(format: "Great! Can you tell us why you chose a %d?", number)
     }
     
     func negativeFeedbackText(number: Int) -> String
     {
-        return String(format: "Thanks! Can you tell us a little more about why you choose a %d?", number)
+        return String(format: "Thank you! Can you tell us why you chose a %d?", number)
     }
     
     //Fonts
@@ -273,7 +273,7 @@ public class Brilliant: NSObject {
             return UIFont.systemFontOfSize(21)
         case .TV:
             return UIFont.systemFontOfSize(34)
-        case .Unspecified:
+        default:
             return UIFont.systemFontOfSize(34)
         }
         
@@ -290,7 +290,7 @@ public class Brilliant: NSObject {
             return UIFont.systemFontOfSize(21)
         case .TV:
             return UIFont.systemFontOfSize(34)
-        case .Unspecified:
+        default:
             return UIFont.systemFontOfSize(34)
         }
         
