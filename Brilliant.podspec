@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "Brilliant"
-  s.version          = "0.2"
+  s.version          = "0.2.1"
   s.summary          = "A library for in-app NPS Surveys"
 
 # This description is used to generate tags and improve search results.
@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
                        DESC
 
   s.homepage         = "https://github.com/tomboates/BrilliantSDK"
-  s.screenshots     = "www.brilliant-llc.com/nps.png", "www.brilliant-llc.com/comments.png", "www.brilliant-llc.com/rating.png"
+s.screenshots     = "http://www.brilliant-llc.com/nps.png", "http://www.brilliant-llc.com/comments.png", "http://www.brilliant-llc.com/rating.png"
   s.license          = 'MIT'
   s.author           = { "Tom Boates" => "tom.boates@me.com" }
   s.source           = { :git => "https://github.com/tomboates/BrilliantSDK.git", :tag => s.version.to_s }
