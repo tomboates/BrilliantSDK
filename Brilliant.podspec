@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
                        DESC
 
   s.homepage         = "https://github.com/tomboates/BrilliantSDK"
-s.screenshots     = "http://www.brilliant-llc.com/nps.png", "http://www.brilliant-llc.com/comments.png", "http://www.brilliant-llc.com/rating.png"
+  s.screenshots     = "http://www.brilliant-llc.com/nps.png", "http://www.brilliant-llc.com/comments.png", "http://www.brilliant-llc.com/rating.png"
   s.license          = 'MIT'
   s.author           = { "Tom Boates" => "tom.boates@me.com" }
   s.source           = { :git => "https://github.com/tomboates/BrilliantSDK.git", :tag => s.version.to_s }
