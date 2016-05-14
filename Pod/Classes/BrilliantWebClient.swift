@@ -26,8 +26,13 @@ class BrilliantWebClient
             "Content-Type": "application/json",
         ]
         
+        var encoding = ParameterEncoding.URL
+        if (method == .POST) {
+            encoding = .JSON
+        }
+        
         // now send data to server
-        Alamofire.request(method, "\(kBaseURL)" + path, headers: headers, parameters: params, encoding: .JSON)
+        Alamofire.request(method, "\(kBaseURL)" + path, headers: headers, parameters: params, encoding: encoding)
             .responseJSON(completionHandler: { (request, ResponseSerializer, result) -> Void in
                 
                 switch(result)
