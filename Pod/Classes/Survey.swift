@@ -17,20 +17,20 @@ class Survey: NSObject
     var triggerTimestamp : NSDate?
     var event: String?
     var comment: String?
-    var userEmail: String?
+    var customerUserId: String?
     var userType: String?
     var completedTimestamp: NSDate?
     var npsRating: Int?
     
-    static let triggerTimestampKey = "triggerTimestamp"
-    static let dismissActionKey = "dismissAction"
-    static let completedTimestampKey = "completedTimestamp"
-    static let npsRatingKey = "npsRating"
+    static let triggerTimestampKey = "trigger_timestamp"
+    static let dismissActionKey = "dismiss_action"
+    static let completedTimestampKey = "completed_timestamp"
+    static let npsRatingKey = "nps_rating"
     static let commentsKey = "comments"
-    static let userAccountCreationKey = "userAcctCreation"
+    static let userAccountCreationKey = "user_account_creation"
     static let eventKey = "event"
-    static let userEmailKey = "userEmail"
-    static let userTypeKey = "userType"
+    static let customerUserIdKey = "customer_user_id"
+    static let userTypeKey = "user_type"
     static let surveyIdKey = "survey_id"
     
     init(surveyId: NSUUID){
@@ -46,7 +46,7 @@ class Survey: NSObject
         self.comment = map[Survey.commentsKey] as? String
         self.userAccountCreation = map[Survey.userAccountCreationKey] as? NSDate
         self.event = map[Survey.eventKey] as? String
-        self.userEmail = map[Survey.userEmailKey] as? String
+        self.customerUserId = map[Survey.customerUserIdKey] as? String
         self.userType = map[Survey.userTypeKey] as? String
         self.surveyId = NSUUID(UUIDString: map[Survey.surveyIdKey] as! String)
     }
@@ -62,7 +62,7 @@ class Survey: NSObject
         map[Survey.commentsKey] = self.comment
         map[Survey.userAccountCreationKey] = self.userAccountCreation
         map[Survey.eventKey] = self.event
-        map[Survey.userEmailKey] = self.userEmail
+        map[Survey.customerUserIdKey] = self.customerUserId
         map[Survey.userTypeKey] = self.userType
         map[Survey.surveyIdKey] = self.surveyId.UUIDString
         
@@ -98,7 +98,7 @@ class Survey: NSObject
         }
         
         map[Survey.eventKey] = self.event
-        map[Survey.userEmailKey] = self.userEmail
+        map[Survey.customerUserIdKey] = self.customerUserId
         map[Survey.userTypeKey] = self.userType
         map[Survey.surveyIdKey] = self.surveyId.UUIDString
         

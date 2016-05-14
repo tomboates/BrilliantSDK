@@ -14,7 +14,7 @@ public class Brilliant: NSObject {
     
     private static let lastSurveyShownTimeKey = "lastSurveyShownTime"
     private static let completedSurveyKey = "completedSurvey"
-    private static let userIdKey = "userId"
+    private static let uniqueIdentifierKey = "uniqueIdentifier"
     
     //  public static let sharedInstance = Brilliant()
     private static var instanceVar: Brilliant?
@@ -22,9 +22,9 @@ public class Brilliant: NSObject {
     
     public let appKey: String
     public let appStoreId: String?
-    public let userEmail: String?
+    public let userId: String?
     public let userType: String?
-    public let userId: NSUUID
+    private let uniqueIdentifier: NSUUID
     
     public let userDate: NSDate?
     
@@ -72,10 +72,10 @@ public class Brilliant: NSObject {
         return instanceVar!
     }
     
-    public static func createInstance(key: String!, appStoreId: String?, userEmail: String?, userType: String?, userDate: NSDate?)
+    public static func createInstance(key: String!, appStoreId: String?, userId: String?, userType: String?, userDate: NSDate?)
     {
         dispatch_once(&onceToken) { () -> Void in
-            instanceVar = Brilliant(key: key, appStoreId: appStoreId, userEmail: userEmail, userType: userType, userDate: userDate)
+            instanceVar = Brilliant(key: key, appStoreId: appStoreId, userId: userId, userType: userType, userDate: userDate)
             
             // if a pending survey is saved, load and attempt to resend
             if let surveyMap = NSUserDefaults.standardUserDefaults().objectForKey(Brilliant.completedSurveyKey) as? [String : String]
@@ -94,23 +94,23 @@ public class Brilliant: NSObject {
         }
     }
     
-    private init(key: String, appStoreId: String?, userEmail: String?, userType: String?, userDate: NSDate?) {
+    private init(key: String, appStoreId: String?, userId: String?, userType: String?, userDate: NSDate?) {
         self.appKey = key
         self.appStoreId = appStoreId
-        self.userEmail = userEmail
+        self.userId = userId
         self.userType = userType
         self.userDate = userDate
         
-        let userIdStr = NSUserDefaults.standardUserDefaults().stringForKey(Brilliant.userIdKey)
+        let uniqueIdentifierStr = NSUserDefaults.standardUserDefaults().stringForKey(Brilliant.uniqueIdentifierKey)
         
-        if(userIdStr == nil)
+        if(uniqueIdentifierStr == nil)
         {
-            self.userId = NSUUID()
-            NSUserDefaults.standardUserDefaults().setObject(self.userId.UUIDString, forKey: Brilliant.userIdKey)
+            self.uniqueIdentifier = NSUUID()
+            NSUserDefaults.standardUserDefaults().setObject(self.uniqueIdentifier.UUIDString, forKey: Brilliant.uniqueIdentifierKey)
         }
         else
         {
-            self.userId = NSUUID(UUIDString: userIdStr!)!
+            self.uniqueIdentifier = NSUUID(UUIDString: uniqueIdentifierStr!)!
         }
         
         // set or initalize lastSurveyShownTime
@@ -170,7 +170,7 @@ public class Brilliant: NSObject {
         }        
         
         // add user data
-        self.completedSurvey!.userEmail = self.userEmail
+        self.completedSurvey!.customerUserId = self.userId
         if let acctCreationDate = self.userDate {
             self.completedSurvey!.userAccountCreation = acctCreationDate
         }
@@ -179,7 +179,7 @@ public class Brilliant: NSObject {
         
         weak var weakSelf = self
         // now send data to server
-        BrilliantWebClient.request(.POST, appKey: self.appKey, userId: self.userId, path: "surveys", params: ["nps_survey": self.completedSurvey!.serializeForSurvey()], success: { (JSON) -> Void in
+        BrilliantWebClient.request(.POST, appKey: self.appKey, uniqueIdentifier: self.uniqueIdentifier, path: "surveys", params: ["nps_survey": self.completedSurvey!.serializeForSurvey(), "uniqueIdentifier": self.uniqueIdentifier.UUIDString], success: { (JSON) -> Void in
             LogUtil.printDebug("Successfully saved to server.")
             
             if !Brilliant.kDEBUG {
@@ -198,7 +198,7 @@ public class Brilliant: NSObject {
     
     private func getInitialSurveyData() {
         weak var weakSelf = self
-        BrilliantWebClient.request(.GET, appKey: self.appKey, userId: self.userId, path: "initWithAppKey", params: nil, success: { (JSON) -> Void in
+        BrilliantWebClient.request(.GET, appKey: self.appKey, uniqueIdentifier: self.uniqueIdentifier, path: "initWithAppKey", params: ["uniqueIdentifier": self.uniqueIdentifier.UUIDString, "advertistingId" : ""], success: { (JSON) -> Void in
             weakSelf?.appName = JSON["name"] as? String
             
             if let eligible = JSON["eligible"] as? Bool {

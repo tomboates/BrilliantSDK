@@ -16,7 +16,7 @@ class BrilliantWebClient
     static private let kBaseURL = "https://www.brilliantapp.com/api/"
     //  private let kBaseURL = "http://localhost:3000/api/"
     
-    static func request(method: Alamofire.Method, appKey: String, userId: NSUUID, path: String, params: [String: AnyObject]?, success: (AnyObject) -> Void, failure: (Void) -> Void)
+    static func request(method: Alamofire.Method, appKey: String, uniqueIdentifier: NSUUID, path: String, params: [String: AnyObject]?, success: (AnyObject) -> Void, failure: (Void) -> Void)
     {
         let appVersion = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleVersion") as! String
         // set headers for auth and JSON content-type
@@ -24,7 +24,6 @@ class BrilliantWebClient
             "X-App-Key": appKey,
             "X-App-Version": appVersion,
             "Content-Type": "application/json",
-            "X-App-UserId" : userId.UUIDString
         ]
         
         // now send data to server
