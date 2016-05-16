@@ -253,12 +253,12 @@ public class Brilliant: NSObject {
     //Texts
     func positiveFeedbackText(number: Int) -> String
     {
-        return String(format: "Great! Can you tell us why you chose a %d?", number)
+        return String(format: "What is the primary reason for choosing a %d?", number)
     }
     
     func negativeFeedbackText(number: Int) -> String
     {
-        return String(format: "Thank you! Can you tell us why you chose a %d?", number)
+        return String(format: "What is the primary reason for choosing a %d?", number)
     }
     
     //Fonts
