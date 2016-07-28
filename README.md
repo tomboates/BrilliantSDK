@@ -17,25 +17,25 @@ pod "Brilliant"
 NOTE: if project is in Objective-C, make sure the line `use_frameworks!` is added to your podfile.
 
 ## Swift Getting Started
-1. After installing the pod in your project, `@import Brilliant` in the AppDelegate
+1. After installing the pod in your project, `import Brilliant` in the AppDelegate
 2. Configure Brilliant in the `didFinishLaunchingWithOptions` method of the AppDelegate:  
     
-    `Brilliant.createInstance("INSERT KEY HERE", appStoreId: "INSERT APP STORE ID", userEmail: "INSERT EMAIL", userType: "INSERT UESR TYPE", userDate: NSDate.distantPast())`  
+    `Brilliant.createInstance("INSERT KEY HERE", appStoreId: "INSERT APP STORE ID", userEmail: "INSERT EMAIL", userType: "INSERT USER TYPE", userDate: NSDate.distantPast())`  
     
 
 3. Get your private app key from the web dashboard: brilliantapp.com/settings  
-4. `@import Brilliant` in the view controller you'd like the show the NPS Survey  
-6. Add `Brilliant.sharedInstance.showNpsSurvey({INSERT_EVENT_NAME})` to pop up the modal, supply an event name for analytics (i.e. "Friend Request Accepted")
+4. `import Brilliant` in the view controller you'd like the show the NPS Survey  
+6. Add `Brilliant.sharedInstance().showNpsSurvey("INSERT EVENT NAME"){ (success) -> Void in}` to pop up the modal, supply an event name for analytics (i.e. "Friend Request Accepted")
 
 ## Objective-C Getting Started
 1. After installing the pod in your project, `@import Brilliant;` in the AppDelegate  
 2. Set user info in the `didFinishLaunchingWithOptions` method of the AppDelegate (MUST DO BEFORE SINGLETON INITIALIZATION):  
 
-`[Brilliant createInstance:@"appId" appStoreId: @"INSERT APP STORE ID", userEmail: @"INSERT EMAIL", userType: @"INSERT UESR TYPE", userDate: [NSDate distantPast]]`
+`[Brilliant createInstance:@"appId" appStoreId: @"INSERT APP STORE ID" userEmail: @"INSERT EMAIL" userType: @"INSERT USER TYPE" userDate: [NSDate distantPast]];`
     
 3. Get your private app key from the web dashboard: brilliantapp.com/settings  
 4. `@import Brilliant;` in the view controller you'd like the show the NPS Survey
-5. Add `[[Brilliant sharedInstance] showNpsSurvey:@"Button Clicked"] completed:^(BOOL completed) {}]` to pop up the modal, supply an event name for analytics (i.e. "Friend Request Accepted")
+5. Add `[[Brilliant sharedInstance] showNpsSurvey:@"Button Clicked" completed:^(BOOL completed) {}];` to pop up the modal, supply an event name for analytics (i.e. "Friend Request Accepted")
 
 ## License
 
