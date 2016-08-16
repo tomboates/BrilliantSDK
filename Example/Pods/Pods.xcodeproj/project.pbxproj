@@ -56,7 +56,7 @@
 		E29641D7D2C4EDCEC7AE5F6B645775BE /* Brilliant.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E7FCC627D758F4B6CF8F1939AB37369E /* Brilliant.bundle */; };
 		E6D041ABFBB48D9F1D8AA96E7D4C6C34 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBEAFAA80EE0FCB01A21E36A27B23A4 /* Result.swift */; };
 		E7B226D8BB16471AD63665A794036E44 /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3445C9911FFBFB8861ACAFB2DB37EA /* Upload.swift */; };
-		E7DBE8B3283420583FFC6E7BE8F43652 /* Brilliant+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A1A53EDF51B04B3062229FE6C832D1 /* Brilliant+Colors.swift */; };
+		E7DBE8B3283420583FFC6E7BE8F43652 /* Brilliant+ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A1A53EDF51B04B3062229FE6C832D1 /* Brilliant+ButtonStyle.swift */; };
 		E816509B4E3564E1A117CBDC0D845D69 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624D1C702AD90501EB9D69C27C6840FC /* Alamofire.swift */; };
 		EC25429DE5674E956A29BC3B2726D205 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 143D9AD3C0C8C6A8EC4119CBEA860CDF /* Foundation.framework */; };
 		F16FEF1CB9703FE1887C8A618B84B7C6 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8144B105B4C69E594AFD1EE1E2791211 /* Request.swift */; };
@@ -162,7 +162,7 @@
 		69A3EBEA9D4D6ED73435747C2490533B /* Brilliant.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Brilliant.swift; sourceTree = "<group>"; };
 		6AECA6E4F1382BF201163C4A6ABBD9D6 /* Pods-Brilliant_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Brilliant_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		70E54B666BA4DFB4A52C227B959B05E3 /* LogUtil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LogUtil.swift; sourceTree = "<group>"; };
-		72A1A53EDF51B04B3062229FE6C832D1 /* Brilliant+Colors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Brilliant+Colors.swift"; sourceTree = "<group>"; };
+		72A1A53EDF51B04B3062229FE6C832D1 /* Brilliant+ButtonStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Brilliant+ButtonStyle.swift"; sourceTree = "<group>"; };
 		740CBD4DA05D1FFC170DCD0E1234147F /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
 		764EE1BB05DBB696575D5612867D4176 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76A19AE70FE37B381A126D0F6B57C2F7 /* Stream.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Stream.swift; path = Source/Stream.swift; sourceTree = "<group>"; };
@@ -393,7 +393,7 @@
 			isa = PBXGroup;
 			children = (
 				69A3EBEA9D4D6ED73435747C2490533B /* Brilliant.swift */,
-				72A1A53EDF51B04B3062229FE6C832D1 /* Brilliant+Colors.swift */,
+				72A1A53EDF51B04B3062229FE6C832D1 /* Brilliant+ButtonStyle.swift */,
 				91A0D5B1D92CF87D43336494CCC7A183 /* BrilliantWebClient.swift */,
 				EA91BA0DC0591796935C5B8E9B3F0212 /* CommentsViewController.swift */,
 				70E54B666BA4DFB4A52C227B959B05E3 /* LogUtil.swift */,
@@ -746,7 +746,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7DBE8B3283420583FFC6E7BE8F43652 /* Brilliant+Colors.swift in Sources */,
+				E7DBE8B3283420583FFC6E7BE8F43652 /* Brilliant+ButtonStyle.swift in Sources */,
 				116FD1CBBAFED4205CA3BA77F113BF02 /* Brilliant-dummy.m in Sources */,
 				3915F848ACC9542CE278819C5576AAD7 /* Brilliant.swift in Sources */,
 				E27B48E86E26C68D16BFDDABE2D6228E /* BrilliantWebClient.swift in Sources */,
