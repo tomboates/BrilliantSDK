@@ -28,6 +28,7 @@ class NegativeFeedbackCompleteViewController: UIViewController
         let image = UIImage(named: "brilliant-icon-close", inBundle:Brilliant.imageBundle(), compatibleWithTraitCollection: nil)
         let commentImage = UIImage(named: "commentBubble", inBundle: Brilliant.imageBundle(), compatibleWithTraitCollection: nil)
         self.closeButton.setImage(image, forState: .Normal)
+        self.closeButton.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 25, right: 25)
         
         self.explanationLabel.font = Brilliant.sharedInstance().mainLabelFont()
         self.explanationLabel.textColor = Brilliant.sharedInstance().mainLabelColor()

@@ -38,17 +38,18 @@ class NPSScoreViewController : UIViewController
 
         let image = UIImage(named: "brilliant-icon-close", inBundle:Brilliant.imageBundle(), compatibleWithTraitCollection: nil)
         self.closeButton.setImage(image, forState: .Normal)
+        self.closeButton.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 25, right: 25)
         
         self.questionLabel.textColor = Brilliant.sharedInstance().mainLabelColor()
         self.questionLabel.font = Brilliant.sharedInstance().mainLabelFont()
         
         if (Brilliant.sharedInstance().appName != nil)
         {
-            self.questionLabel.text = String(format: "How likely are you to recommend %@ to a friend or colleague?", Brilliant.sharedInstance().appName!)
+            self.questionLabel.text = String(format: "How likely is it that you will recommend %@ to a friend or colleague?", Brilliant.sharedInstance().appName!)
         }
         else
         {
-            self.questionLabel.text = "How likely are you to recommend this app to a friend or colleague?"
+            self.questionLabel.text = "How likely is it that you will recommend this app to a friend or colleague?"
         }
         
         self.button0.tintColor = Brilliant.sharedInstance().npsButtonColor()
@@ -78,6 +79,19 @@ class NPSScoreViewController : UIViewController
     
     override func  viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+//        self.updateConstraints()
+    }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        
+        coordinator.animateAlongsideTransition(nil) { (completion) in
+//            self.updateConstraints()
+        }
+    }
+    
+    func updateConstraints() {
         let size = UIDeviceHelper.deviceWidth()
         switch size
         {
@@ -91,6 +105,7 @@ class NPSScoreViewController : UIViewController
             self.labelWidthConstraint.constant = 420
             break
         }
+
     }
     
     @IBAction func closePressed(sender: AnyObject) {

@@ -28,6 +28,7 @@ class RateAppViewController: UIViewController
         
         let image = UIImage(named: "brilliant-icon-close", inBundle:Brilliant.imageBundle(), compatibleWithTraitCollection: nil)
         self.closeButton.setImage(image, forState: .Normal)
+        self.closeButton.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 25, right: 25)
         
         self.rateLabel.font = Brilliant.sharedInstance().mainLabelFont()
         self.rateLabel.textColor = Brilliant.sharedInstance().mainLabelColor()

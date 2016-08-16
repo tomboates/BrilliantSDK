@@ -24,12 +24,14 @@ class CommentsViewController: UIViewController
     @IBOutlet var commentDescriptionLabel: UILabel!
     @IBOutlet var doneButton: UIBarButtonItem!
     @IBOutlet var keyboardToolbar: UIToolbar!
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
     
     internal weak var delegate : CommentsViewControllerDelegate?
     
     override func viewDidLoad() {
         let image = UIImage(named: "brilliant-icon-close", inBundle:Brilliant.imageBundle(), compatibleWithTraitCollection: nil)
         self.closeButton.setImage(image, forState: .Normal)
+        self.closeButton.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 25, right: 25)
         
         self.commentDescriptionLabel.textColor = Brilliant.sharedInstance().mainLabelColor()
         self.commentDescriptionLabel.font = Brilliant.sharedInstance().mainLabelFont()
@@ -51,7 +53,37 @@ class CommentsViewController: UIViewController
         
         self.noThanksButton.tintColor = Brilliant.sharedInstance().noThanksButtonColor()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(adjustForKeyboard), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(adjustForKeyboard), name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func adjustForKeyboard(notification: NSNotification) {
+        var userInfo = notification.userInfo!
         
+        let keyboardScreenEndFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue()
+        let keyboardViewEndFrame = view.convertRect(keyboardScreenEndFrame, toView: view.window)
+        
+        self.view.translatesAutoresizingMaskIntoConstraints = true
+        
+        let screenHeight = UIScreen.mainScreen().bounds.height
+        let height = self.comments.frame.height + self.comments.frame.origin.y
+        let diffHeight = CGFloat(screenHeight) - height
+    
+        var moveHeight : CGFloat? = 0
+        
+        if (diffHeight < keyboardScreenEndFrame.height) {
+            moveHeight = diffHeight - keyboardScreenEndFrame.height
+        }
+        
+        if notification.name == UIKeyboardWillHideNotification {
+            UIView.animateWithDuration(1.0, animations: {
+                self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+            })
+        } else {
+            UIView.animateWithDuration(1.0, animations: {
+                self.view.frame = CGRect(x: 0, y: moveHeight! - 20, width: self.view.frame.width, height: self.view.frame.height)
+            })
+        }
     }
     
     func textFieldValue(notification: NSNotification){

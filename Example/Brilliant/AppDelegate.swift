@@ -20,6 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       // Setup User Info
 //        createInstance(key: String, appStoreId: String, userEmail: String?, userType: String?, userDate: NSDate?)
         Brilliant.createInstance("D-oopkRrBiA99uWTp8dhLJyQk40eumcbFrtpBwb5FkaaFWOOrRo5-97qKdILn_vOthaIwKhAWKMJNfuWrXGq7A", appStoreId: "", userId: "", userType: "", userDate: NSDate.distantPast())
+//        Brilliant.sharedInstance().configureButtonColors(UIColor.redColor())
+//        Brilliant.sharedInstance().configureFontName("Times New Roman")
+        
         return true
     }
 

@@ -36,6 +36,7 @@ public class Brilliant: NSObject {
     internal var shadowColorCustom = UIColor(red: 0.211, green: 0.660, blue: 0.324, alpha: 1)
     internal var mainLabelColorCustom = UIColor.whiteColor()
     
+    internal var customFontName = "Default"
     
     //These variables are sent down from the server
     public var appName: String?
@@ -156,7 +157,6 @@ public class Brilliant: NSObject {
                 LogUtil.printDebug("Not showing survey: \(daysSinceLastSurvey()) days since last survey, but interval is not eligible")
             }
         }
-        
     }
     
     //# MARK: - Server Calls
@@ -253,47 +253,98 @@ public class Brilliant: NSObject {
     //Texts
     func positiveFeedbackText(number: Int) -> String
     {
-        return String(format: "What is the primary reason for choosing a %d?", number)
+        return String(format: "What is the most important reason for choosing a %d?", number)
     }
     
     func negativeFeedbackText(number: Int) -> String
     {
-        return String(format: "What is the primary reason for choosing a %d?", number)
+        return String(format: "What is the most important reason for choosing a %d?", number)
     }
     
     //Fonts
     func mainLabelFont() -> UIFont
     {
         
-        switch UIDevice.currentDevice().userInterfaceIdiom
-        {
-        case .Pad:
-            return UIFont.systemFontOfSize(31)
-        case .Phone:
-            return UIFont.systemFontOfSize(21)
-        case .TV:
-            return UIFont.systemFontOfSize(34)
-        default:
-            return UIFont.systemFontOfSize(34)
+//        switch UIDevice.currentDevice().userInterfaceIdiom
+//        {
+//        case .Pad:
+//            return UIFont.systemFontOfSize(31)
+//        case .Phone:
+//            return UIFont.systemFontOfSize(21)
+//        case .TV:
+//            return UIFont.systemFontOfSize(34)
+//        default:
+//            return UIFont.systemFontOfSize(34)
+//        }
+
+        if (self.customFontName == "Default") {
+            switch UIDevice.currentDevice().userInterfaceIdiom
+            {
+            case .Pad:
+                return UIFont.systemFontOfSize(31)
+            case .Phone:
+                return UIFont.systemFontOfSize(21)
+            case .TV:
+                return UIFont.systemFontOfSize(34)
+            default:
+                return UIFont.systemFontOfSize(34)
+            }
+        } else {
+            var size : CGFloat? = 0.0
+            switch UIDevice.currentDevice().userInterfaceIdiom
+            {
+            case .Pad:
+                size = 31
+            case .Phone:
+                size = 21
+            case .TV:
+                size = 34
+            default:
+                size = 34
+            }
+            let font = UIFont(name: self.customFontName, size: size!)
+            if  font != nil {
+                return font!
+            } else {
+                return UIFont.systemFontOfSize(size!)
+            }
         }
-        
     }
     
     func npsButtonFont() -> UIFont
     {
-        
-        switch UIDevice.currentDevice().userInterfaceIdiom
-        {
-        case .Pad:
-            return UIFont.systemFontOfSize(31)
-        case .Phone:
-            return UIFont.systemFontOfSize(21)
-        case .TV:
-            return UIFont.systemFontOfSize(34)
-        default:
-            return UIFont.systemFontOfSize(34)
+        if (self.customFontName == "Default") {
+            switch UIDevice.currentDevice().userInterfaceIdiom
+            {
+            case .Pad:
+                return UIFont.systemFontOfSize(31)
+            case .Phone:
+                return UIFont.systemFontOfSize(21)
+            case .TV:
+                return UIFont.systemFontOfSize(34)
+            default:
+                return UIFont.systemFontOfSize(34)
+            }
+        } else {
+            var size : CGFloat? = 0.0
+            switch UIDevice.currentDevice().userInterfaceIdiom
+            {
+            case .Pad:
+                size = 31
+            case .Phone:
+                size = 21
+            case .TV:
+                size = 34
+            default:
+                size = 34
+            }
+            let font = UIFont(name: self.customFontName, size: size!)
+            if  font != nil {
+                return font!
+            } else {
+                return UIFont.systemFontOfSize(size!)
+            }
         }
-        
     }
     
     //Style Button
@@ -301,11 +352,7 @@ public class Brilliant: NSObject {
     {
         button.layer.cornerRadius = 4
         button.tintColor = UIColor.whiteColor()
-        button.layer.shadowColor = Brilliant.sharedInstance().shadowColor().CGColor
-        button.layer.shadowOffset = CGSizeMake(0, 2)
-        button.layer.shadowRadius = 0
-        button.layer.shadowOpacity = 1.0
-        button.backgroundColor = UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
+        button.backgroundColor = Brilliant.sharedInstance().submitCommentsColor()
     }
     
 }
