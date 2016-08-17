@@ -71,8 +71,14 @@ class CommentsViewController: UIViewController
     
         var moveHeight : CGFloat? = 0
         
-        if (diffHeight < keyboardScreenEndFrame.height) {
-            moveHeight = diffHeight - keyboardScreenEndFrame.height
+        if (diffHeight < keyboardViewEndFrame.height) {
+            moveHeight = diffHeight - keyboardViewEndFrame.height
+        }
+        
+        var offset : CGFloat? = 0
+        
+        if comments.frame.origin.y < abs(moveHeight!) {
+            offset = abs(moveHeight!) - comments.frame.origin.y - 5
         }
         
         if notification.name == UIKeyboardWillHideNotification {
@@ -81,7 +87,7 @@ class CommentsViewController: UIViewController
             })
         } else {
             UIView.animateWithDuration(1.0, animations: {
-                self.view.frame = CGRect(x: 0, y: moveHeight! - 20, width: self.view.frame.width, height: self.view.frame.height)
+                self.view.frame = CGRect(x: 0, y: moveHeight! + offset! - 5, width: self.view.frame.width, height: self.view.frame.height)
             })
         }
     }

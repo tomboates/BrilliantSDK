@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CommentsViewController" customModule="Brilliant" customModuleProvider="target">
@@ -35,7 +34,12 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry to hear that. Please give us some more feedback" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bc2-ea-gU7">
-                    <rect key="frame" x="38" y="192" width="692" height="26"/>
+                    <rect key="frame" x="172" y="85" width="424" height="51"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="440" id="7Qr-OU-0NJ">
+                            <variation key="heightClass=regular-widthClass=regular" constant="500"/>
+                        </constraint>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                     <nil key="highlightedColor"/>
                     <variation key="heightClass=compact" misplaced="YES">
@@ -52,13 +56,101 @@
                     </variation>
                     <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
                         <rect key="frame" x="31" y="75" width="313.5" height="50.5"/>
+                        <mask key="constraints">
+                            <include reference="7Qr-OU-0NJ"/>
+                        </mask>
                     </variation>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqu-fD-atD">
+                    <rect key="frame" x="244" y="895" width="280" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="280" id="KuW-o9-Tmk">
+                            <variation key="heightClass=compact" constant="280"/>
+                            <variation key="heightClass=regular-widthClass=regular" constant="300"/>
+                        </constraint>
+                        <constraint firstAttribute="height" constant="44" id="nQH-zg-EhR">
+                            <variation key="heightClass=compact" constant="44"/>
+                            <variation key="heightClass=regular-widthClass=compact" constant="44"/>
+                            <variation key="heightClass=regular-widthClass=regular" constant="48"/>
+                        </constraint>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                    <state key="normal" title="Submit"/>
+                    <variation key="heightClass=compact">
+                        <mask key="constraints">
+                            <include reference="KuW-o9-Tmk"/>
+                            <include reference="nQH-zg-EhR"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="456" y="306" width="260" height="44"/>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="303" y="263" width="61" height="44"/>
+                        <mask key="constraints">
+                            <include reference="nQH-zg-EhR"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                        <rect key="frame" x="162" y="553" width="51" height="44"/>
+                        <mask key="constraints">
+                            <include reference="KuW-o9-Tmk"/>
+                            <include reference="nQH-zg-EhR"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="submitPressed:" destination="-1" eventType="touchUpInside" id="EBH-Q9-2iK"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIi-4g-5l6">
+                    <rect key="frame" x="341" y="949" width="87" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="007-o2-LE1">
+                            <variation key="heightClass=compact" constant="100"/>
+                            <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                        </constraint>
+                        <constraint firstAttribute="height" constant="40" id="JPg-GI-sdE">
+                            <variation key="heightClass=regular-widthClass=regular" constant="48"/>
+                        </constraint>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <state key="normal" title="No Thanks"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="007-o2-LE1"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular">
+                        <mask key="constraints">
+                            <include reference="007-o2-LE1"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="331" y="364" width="74" height="30"/>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="290" y="321" width="87" height="34"/>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                        <rect key="frame" x="150" y="617" width="74" height="30"/>
+                        <mask key="constraints">
+                            <include reference="007-o2-LE1"/>
+                            <include reference="JPg-GI-sdE"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="noThanksPressed:" destination="-1" eventType="touchUpInside" id="WTj-gc-tQv"/>
+                    </connections>
+                </button>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ygP-3W-wuS">
-                    <rect key="frame" x="38" y="238" width="692" height="150"/>
+                    <rect key="frame" x="284" y="166" width="200" height="100"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="150" id="bO3-8T-HyB">
+                        <constraint firstAttribute="width" constant="200" id="MWU-7M-iVQ">
+                            <variation key="heightClass=compact" constant="400"/>
+                            <variation key="heightClass=regular-widthClass=regular" constant="500"/>
+                        </constraint>
+                        <constraint firstAttribute="height" constant="100" id="bO3-8T-HyB">
                             <variation key="heightClass=compact" constant="80"/>
                             <variation key="heightClass=regular-widthClass=regular" constant="150"/>
                         </constraint>
@@ -68,6 +160,7 @@
                     <variation key="heightClass=compact" misplaced="YES">
                         <rect key="frame" x="30" y="120" width="420" height="80"/>
                         <mask key="constraints">
+                            <include reference="MWU-7M-iVQ"/>
                             <include reference="bO3-8T-HyB"/>
                         </mask>
                     </variation>
@@ -83,85 +176,107 @@
                     <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
                         <rect key="frame" x="47" y="140" width="280" height="80"/>
                         <mask key="constraints">
+                            <include reference="MWU-7M-iVQ"/>
                             <include reference="bO3-8T-HyB"/>
                         </mask>
                     </variation>
                 </textView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqu-fD-atD">
-                    <rect key="frame" x="77" y="916" width="615" height="44"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="nQH-zg-EhR"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                    <state key="normal" title="Submit"/>
-                    <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
-                        <rect key="frame" x="456" y="306" width="260" height="44"/>
-                    </variation>
-                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                        <rect key="frame" x="303" y="263" width="61" height="44"/>
-                    </variation>
-                    <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                        <rect key="frame" x="162" y="553" width="51" height="44"/>
-                    </variation>
-                    <connections>
-                        <action selector="submitPressed:" destination="-1" eventType="touchUpInside" id="EBH-Q9-2iK"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIi-4g-5l6">
-                    <rect key="frame" x="77" y="970" width="615" height="34"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                    <state key="normal" title="No Thanks"/>
-                    <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
-                        <rect key="frame" x="331" y="364" width="74" height="30"/>
-                    </variation>
-                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                        <rect key="frame" x="290" y="321" width="87" height="34"/>
-                    </variation>
-                    <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                        <rect key="frame" x="150" y="617" width="74" height="30"/>
-                    </variation>
-                    <connections>
-                        <action selector="noThanksPressed:" destination="-1" eventType="touchUpInside" id="WTj-gc-tQv"/>
-                    </connections>
-                </button>
             </subviews>
             <constraints>
-                <constraint firstItem="bc2-ea-gU7" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.9" id="4Eq-82-VKI">
-                    <variation key="heightClass=compact" constant="-180"/>
-                    <variation key="heightClass=regular-widthClass=regular" constant="-300"/>
+                <constraint firstAttribute="trailing" secondItem="PIi-4g-5l6" secondAttribute="trailing" constant="20" id="2MD-ay-5nK">
+                    <variation key="heightClass=regular-widthClass=compact" constant="20"/>
                 </constraint>
-                <constraint firstItem="PIi-4g-5l6" firstAttribute="top" secondItem="mqu-fD-atD" secondAttribute="bottom" constant="10" id="BY5-LX-81O"/>
-                <constraint firstItem="mqu-fD-atD" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.8" id="KQO-HG-S1y">
-                    <variation key="heightClass=compact" constant="-200"/>
-                    <variation key="heightClass=regular-widthClass=regular" constant="-300"/>
+                <constraint firstItem="PIi-4g-5l6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="7UC-rX-7wp">
+                    <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                </constraint>
+                <constraint firstItem="ygP-3W-wuS" firstAttribute="top" secondItem="bc2-ea-gU7" secondAttribute="bottom" constant="30" id="91f-im-cT0">
+                    <variation key="heightClass=compact" constant="20"/>
+                    <variation key="heightClass=regular-widthClass=regular" constant="30"/>
+                </constraint>
+                <constraint firstItem="PIi-4g-5l6" firstAttribute="top" secondItem="mqu-fD-atD" secondAttribute="bottom" constant="10" id="BY5-LX-81O">
+                    <variation key="heightClass=compact" constant="5"/>
+                    <variation key="heightClass=regular-widthClass=regular" constant="10"/>
                 </constraint>
                 <constraint firstItem="bc2-ea-gU7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="SAI-oY-21c"/>
-                <constraint firstItem="5up-P8-vEX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="TiP-A1-ZvC"/>
-                <constraint firstItem="PIi-4g-5l6" firstAttribute="width" secondItem="mqu-fD-atD" secondAttribute="width" id="VUt-LT-LpK"/>
-                <constraint firstItem="ygP-3W-wuS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="VhW-52-eMA"/>
+                <constraint firstItem="5up-P8-vEX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="TiP-A1-ZvC">
+                    <variation key="heightClass=compact" constant="0.0"/>
+                    <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
+                </constraint>
                 <constraint firstItem="mqu-fD-atD" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="VxW-tM-Y7m"/>
-                <constraint firstItem="ygP-3W-wuS" firstAttribute="width" secondItem="bc2-ea-gU7" secondAttribute="width" id="WH2-3x-tIy"/>
                 <constraint firstItem="PIi-4g-5l6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Xm0-t6-aqL"/>
-                <constraint firstItem="bc2-ea-gU7" firstAttribute="bottom" secondItem="ygP-3W-wuS" secondAttribute="top" constant="-20" id="nTY-eE-KfI"/>
-                <constraint firstAttribute="bottom" secondItem="PIi-4g-5l6" secondAttribute="bottom" constant="20" id="pYY-eS-gZP"/>
-                <constraint firstItem="bc2-ea-gU7" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="0.4" id="wV6-eV-AnE"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bc2-ea-gU7" secondAttribute="trailing" constant="20" id="Zvp-Ky-V7L"/>
+                <constraint firstItem="bc2-ea-gU7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="85" id="abh-Pp-VWs">
+                    <variation key="heightClass=compact" constant="65"/>
+                    <variation key="heightClass=regular-widthClass=regular" constant="180"/>
+                </constraint>
+                <constraint firstItem="mqu-fD-atD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="dbH-zJ-7V9">
+                    <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                </constraint>
+                <constraint firstAttribute="bottom" secondItem="PIi-4g-5l6" secondAttribute="bottom" constant="35" placeholder="YES" id="gw4-lG-HKh"/>
+                <constraint firstItem="bc2-ea-gU7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="kV4-7D-dhR"/>
+                <constraint firstItem="ygP-3W-wuS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="n4T-Mg-tMv"/>
+                <constraint firstAttribute="bottom" secondItem="PIi-4g-5l6" secondAttribute="bottom" constant="35" id="pYY-eS-gZP">
+                    <variation key="heightClass=compact" constant="15"/>
+                    <variation key="heightClass=regular-widthClass=compact" constant="35"/>
+                </constraint>
+                <constraint firstAttribute="trailing" secondItem="ygP-3W-wuS" secondAttribute="trailing" constant="20" id="wNi-uB-lEG">
+                    <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                </constraint>
+                <constraint firstItem="ygP-3W-wuS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wVe-Jw-DbT">
+                    <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                </constraint>
                 <constraint firstItem="5up-P8-vEX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wvL-WG-eUg"/>
+                <constraint firstAttribute="trailing" secondItem="mqu-fD-atD" secondAttribute="trailing" constant="20" id="xCy-ez-yRH">
+                    <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                </constraint>
+                <constraint firstItem="mqu-fD-atD" firstAttribute="top" secondItem="ygP-3W-wuS" secondAttribute="bottom" constant="629" id="z9L-ZR-o02">
+                    <variation key="heightClass=regular-widthClass=regular" constant="30"/>
+                </constraint>
             </constraints>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="wNi-uB-lEG"/>
+                    <exclude reference="wVe-Jw-DbT"/>
+                    <exclude reference="dbH-zJ-7V9"/>
+                    <exclude reference="xCy-ez-yRH"/>
+                    <exclude reference="z9L-ZR-o02"/>
+                    <exclude reference="2MD-ay-5nK"/>
+                    <exclude reference="7UC-rX-7wp"/>
+                    <exclude reference="pYY-eS-gZP"/>
+                </mask>
+            </variation>
             <variation key="heightClass=compact">
                 <mask key="constraints">
-                    <include reference="4Eq-82-VKI"/>
-                    <include reference="KQO-HG-S1y"/>
+                    <include reference="TiP-A1-ZvC"/>
+                    <include reference="abh-Pp-VWs"/>
+                    <include reference="91f-im-cT0"/>
+                    <include reference="BY5-LX-81O"/>
+                    <include reference="pYY-eS-gZP"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="constraints">
+                    <include reference="wNi-uB-lEG"/>
+                    <include reference="wVe-Jw-DbT"/>
+                    <include reference="dbH-zJ-7V9"/>
+                    <include reference="xCy-ez-yRH"/>
+                    <include reference="2MD-ay-5nK"/>
+                    <include reference="7UC-rX-7wp"/>
+                    <include reference="pYY-eS-gZP"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=regular">
                 <mask key="constraints">
-                    <include reference="4Eq-82-VKI"/>
-                    <include reference="KQO-HG-S1y"/>
+                    <include reference="TiP-A1-ZvC"/>
+                    <include reference="abh-Pp-VWs"/>
+                    <include reference="91f-im-cT0"/>
+                    <include reference="z9L-ZR-o02"/>
+                    <include reference="BY5-LX-81O"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="227" y="527"/>
+            <point key="canvasLocation" x="289" y="487"/>
         </view>
         <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Zje-Sg-Wbp">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
