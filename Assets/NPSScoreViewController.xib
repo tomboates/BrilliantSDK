@@ -430,7 +430,7 @@
                     <variation key="heightClass=regular-widthClass=compact" constant="20"/>
                 </constraint>
                 <constraint firstItem="JOf-xa-Sly" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="85" id="rDr-kh-NUv">
-                    <variation key="heightClass=compact" constant="55"/>
+                    <variation key="heightClass=compact" constant="45"/>
                     <variation key="heightClass=regular-widthClass=regular" constant="180"/>
                 </constraint>
                 <constraint firstItem="JOf-xa-Sly" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="sJm-xA-Lnr">
