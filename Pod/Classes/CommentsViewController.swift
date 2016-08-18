@@ -39,6 +39,8 @@ class CommentsViewController: UIViewController
         self.comments.layer.cornerRadius = 4;
         self.comments.inputAccessoryView = self.keyboardToolbar
         
+        self.comments.font = Brilliant.sharedInstance().commentBoxFont()
+        
         let npsNumber: Int! = Brilliant.sharedInstance().completedSurvey?.npsRating!
         if(npsNumber >= 7)
         {
