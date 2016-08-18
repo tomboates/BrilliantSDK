@@ -29,6 +29,9 @@ class NPSScoreViewController : UIViewController
     @IBOutlet var button8: UIButton!
     @IBOutlet var button9: UIButton!
     @IBOutlet var button10: UIButton!
+    @IBOutlet weak var notLikelyBtn: UILabel!
+    @IBOutlet weak var likelyBtn: UILabel!
+    
     
     @IBOutlet var labelWidthConstraint: NSLayoutConstraint!
     
@@ -75,6 +78,9 @@ class NPSScoreViewController : UIViewController
         self.button8.titleLabel!.font = Brilliant.sharedInstance().npsButtonFont()
         self.button9.titleLabel!.font = Brilliant.sharedInstance().npsButtonFont()
         self.button10.titleLabel!.font = Brilliant.sharedInstance().npsButtonFont()
+        
+        self.notLikelyBtn.font = Brilliant.sharedInstance().levelLabelFont()
+        self.likelyBtn.font = Brilliant.sharedInstance().levelLabelFont()
     }
     
     override func  viewWillAppear(animated: Bool) {

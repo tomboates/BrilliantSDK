@@ -52,6 +52,8 @@ class CommentsViewController: UIViewController
         Brilliant.sharedInstance().styleButton(self.submitButton)
         
         self.noThanksButton.tintColor = Brilliant.sharedInstance().noThanksButtonColor()
+        self.submitButton.titleLabel?.font = Brilliant.sharedInstance().submitButtonFont()
+        self.noThanksButton.titleLabel?.font = Brilliant.sharedInstance().submitButtonFont()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(adjustForKeyboard), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(adjustForKeyboard), name: UIKeyboardWillHideNotification, object: nil)

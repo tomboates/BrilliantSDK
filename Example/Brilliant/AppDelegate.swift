@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        createInstance(key: String, appStoreId: String, userEmail: String?, userType: String?, userDate: NSDate?)
         Brilliant.createInstance("smo25b-ej7jg8ZLIufBBqkCVmbQ-b8X4U47HZPBGH7r4RAYLdkEYCFtR8z-4wLR4wLV4beGL8eo786JnXRlqnQ", appStoreId: "", userId: "", userType: "", userDate: NSDate.distantPast())
 //        Brilliant.sharedInstance().configureButtonColors(UIColor.redColor())
-//        Brilliant.sharedInstance().configureFontName("Times New Roman")
+        Brilliant.sharedInstance().configureFontName("Times New Roman")
         
         return true
     }

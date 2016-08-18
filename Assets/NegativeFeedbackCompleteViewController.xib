@@ -61,8 +61,8 @@
                         <action selector="donePressed:" destination="-1" eventType="touchUpInside" id="yjQ-ae-Was"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks! We really appreciate your feedback." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qhr-bj-LRL">
-                    <rect key="frame" x="33" y="85" width="415" height="26"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks! We appreciate your feedback." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qhr-bj-LRL">
+                    <rect key="frame" x="60" y="85" width="360" height="26"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="440" id="NMi-e5-Rvx">
                             <variation key="heightClass=compact" constant="440"/>
@@ -122,7 +122,7 @@
                 </constraint>
                 <constraint firstAttribute="bottom" secondItem="OEc-Um-3X1" secondAttribute="bottom" constant="35" placeholder="YES" id="wPi-Gg-gHz"/>
                 <constraint firstItem="qhr-bj-LRL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="85" id="wlr-uI-Z2p">
-                    <variation key="heightClass=compact" constant="55"/>
+                    <variation key="heightClass=compact" constant="45"/>
                     <variation key="heightClass=regular-widthClass=regular" constant="180"/>
                 </constraint>
                 <constraint firstAttribute="trailing" secondItem="OEc-Um-3X1" secondAttribute="trailing" constant="48" id="zs8-o8-da7">

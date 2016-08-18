@@ -206,7 +206,7 @@
                 <constraint firstItem="PIi-4g-5l6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Xm0-t6-aqL"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bc2-ea-gU7" secondAttribute="trailing" constant="20" id="Zvp-Ky-V7L"/>
                 <constraint firstItem="bc2-ea-gU7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="85" id="abh-Pp-VWs">
-                    <variation key="heightClass=compact" constant="55"/>
+                    <variation key="heightClass=compact" constant="45"/>
                     <variation key="heightClass=regular-widthClass=regular" constant="180"/>
                 </constraint>
                 <constraint firstItem="mqu-fD-atD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="dbH-zJ-7V9">

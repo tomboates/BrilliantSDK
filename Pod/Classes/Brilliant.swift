@@ -311,6 +311,34 @@ public class Brilliant: NSObject {
         }
     }
     
+    func levelLabelFont() -> UIFont
+    {
+        if (self.customFontName == "Default") {
+            return UIFont.systemFontOfSize(14)
+        } else {
+            let font = UIFont(name: self.customFontName, size: 14)
+            if  font != nil {
+                return font!
+            } else {
+                return UIFont.systemFontOfSize(14)
+            }
+        }
+    }
+    
+    func submitButtonFont() -> UIFont
+    {
+        if (self.customFontName == "Default") {
+            return UIFont.systemFontOfSize(18)
+        } else {
+            let font = UIFont(name: self.customFontName, size: 18)
+            if  font != nil {
+                return font!
+            } else {
+                return UIFont.systemFontOfSize(18)
+            }
+        }
+    }
+    
     func npsButtonFont() -> UIFont
     {
         if (self.customFontName == "Default") {

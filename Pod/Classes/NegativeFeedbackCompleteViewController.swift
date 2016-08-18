@@ -34,6 +34,8 @@ class NegativeFeedbackCompleteViewController: UIViewController
         self.explanationLabel.textColor = Brilliant.sharedInstance().mainLabelColor()
         
         self.doneButton.tintColor = Brilliant.sharedInstance().npsDoneColor()
+        
+        self.doneButton.titleLabel?.font = Brilliant.sharedInstance().submitButtonFont()
     }
     
     override func viewDidAppear(animated: Bool) {

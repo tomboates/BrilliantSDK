@@ -36,6 +36,9 @@ class RateAppViewController: UIViewController
         Brilliant.sharedInstance().styleButton(self.confirmButton)
         
         self.denyButton.tintColor = Brilliant.sharedInstance().npsDoneColor()
+        
+        self.confirmButton.titleLabel?.font = Brilliant.sharedInstance().submitButtonFont()
+        self.denyButton.titleLabel?.font = Brilliant.sharedInstance().submitButtonFont()
     }
     
     @IBAction func closePressed(sender: AnyObject) {

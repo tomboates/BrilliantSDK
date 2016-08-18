@@ -174,7 +174,7 @@
             </subviews>
             <constraints>
                 <constraint firstItem="RoB-AP-hfE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="85" id="CWE-ku-8wE">
-                    <variation key="heightClass=compact" constant="55"/>
+                    <variation key="heightClass=compact" constant="45"/>
                     <variation key="heightClass=regular-widthClass=regular" constant="180"/>
                 </constraint>
                 <constraint firstItem="RoB-AP-hfE" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="JyQ-M3-TOK"/>
