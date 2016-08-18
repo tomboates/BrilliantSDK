@@ -170,7 +170,8 @@ class SurveyViewController: UIViewController, NPSScoreViewControllerDelegate, Co
     func rateAppPressed()
     {
 //        let url = "itms-apps://itunes.apple.com/app/id\(Brilliant.sharedInstance().appStoreId)"
-        let url = "http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=\(Brilliant.sharedInstance().appStoreId)&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8"
+//        let url = "http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=\(Brilliant.sharedInstance().appStoreId)&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8"
+        let url = "https://itunes.apple.com/us/app/apple-store/id\(Brilliant.sharedInstance().appStoreId)?mt=8"
         UIApplication.sharedApplication().openURL(NSURL(string: url)!)
         
         Brilliant.sharedInstance().completedSurvey!.dismissAction =  "sure_rateapp"
