@@ -29,11 +29,18 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEc-Um-3X1">
-                    <rect key="frame" x="217" y="251" width="46" height="34"/>
+                    <rect key="frame" x="48" y="245" width="384" height="40"/>
                     <constraints>
+                        <constraint firstAttribute="width" constant="384" id="2nF-tp-Kvj">
+                            <variation key="heightClass=compact" constant="100"/>
+                            <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                        </constraint>
                         <constraint firstAttribute="width" constant="384" id="PD3-ZP-SI8">
                             <variation key="heightClass=compact" constant="280"/>
                             <variation key="heightClass=regular-widthClass=regular" constant="300"/>
+                        </constraint>
+                        <constraint firstAttribute="height" constant="40" id="kCW-kJ-YqN">
+                            <variation key="heightClass=regular-widthClass=regular" constant="48"/>
                         </constraint>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -45,6 +52,7 @@
                     </variation>
                     <variation key="heightClass=compact">
                         <mask key="constraints">
+                            <include reference="2nF-tp-Kvj"/>
                             <include reference="PD3-ZP-SI8"/>
                         </mask>
                     </variation>
@@ -54,7 +62,9 @@
                     <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
                         <rect key="frame" x="217" y="143" width="46" height="34"/>
                         <mask key="constraints">
+                            <include reference="2nF-tp-Kvj"/>
                             <include reference="PD3-ZP-SI8"/>
+                            <include reference="kCW-kJ-YqN"/>
                         </mask>
                     </variation>
                     <connections>
