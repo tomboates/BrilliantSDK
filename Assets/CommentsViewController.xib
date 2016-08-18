@@ -23,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5up-P8-vEX">
-                    <rect key="frame" x="0.0" y="20" width="60" height="60"/>
+                    <rect key="frame" x="0.0" y="15" width="60" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="2Ak-H2-Aue"/>
                         <constraint firstAttribute="height" constant="60" id="Tai-sP-Hem"/>
@@ -62,7 +62,7 @@
                     </variation>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqu-fD-atD">
-                    <rect key="frame" x="244" y="895" width="280" height="44"/>
+                    <rect key="frame" x="244" y="890" width="280" height="44"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="280" id="KuW-o9-Tmk">
                             <variation key="heightClass=compact" constant="280"/>
@@ -151,7 +151,7 @@
                             <variation key="heightClass=regular-widthClass=regular" constant="500"/>
                         </constraint>
                         <constraint firstAttribute="height" constant="100" id="bO3-8T-HyB">
-                            <variation key="heightClass=compact" constant="80"/>
+                            <variation key="heightClass=compact" constant="70"/>
                             <variation key="heightClass=regular-widthClass=regular" constant="150"/>
                         </constraint>
                     </constraints>
@@ -193,20 +193,20 @@
                     <variation key="heightClass=compact" constant="20"/>
                     <variation key="heightClass=regular-widthClass=regular" constant="30"/>
                 </constraint>
-                <constraint firstItem="PIi-4g-5l6" firstAttribute="top" secondItem="mqu-fD-atD" secondAttribute="bottom" constant="10" id="BY5-LX-81O">
-                    <variation key="heightClass=compact" constant="5"/>
-                    <variation key="heightClass=regular-widthClass=regular" constant="10"/>
+                <constraint firstItem="PIi-4g-5l6" firstAttribute="top" secondItem="mqu-fD-atD" secondAttribute="bottom" constant="15" id="BY5-LX-81O">
+                    <variation key="heightClass=compact" constant="15"/>
+                    <variation key="heightClass=regular-widthClass=regular" constant="15"/>
                 </constraint>
                 <constraint firstItem="bc2-ea-gU7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="SAI-oY-21c"/>
-                <constraint firstItem="5up-P8-vEX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="TiP-A1-ZvC">
+                <constraint firstItem="5up-P8-vEX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="TiP-A1-ZvC">
                     <variation key="heightClass=compact" constant="0.0"/>
-                    <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
+                    <variation key="heightClass=regular-widthClass=regular" constant="15"/>
                 </constraint>
                 <constraint firstItem="mqu-fD-atD" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="VxW-tM-Y7m"/>
                 <constraint firstItem="PIi-4g-5l6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Xm0-t6-aqL"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bc2-ea-gU7" secondAttribute="trailing" constant="20" id="Zvp-Ky-V7L"/>
                 <constraint firstItem="bc2-ea-gU7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="85" id="abh-Pp-VWs">
-                    <variation key="heightClass=compact" constant="65"/>
+                    <variation key="heightClass=compact" constant="55"/>
                     <variation key="heightClass=regular-widthClass=regular" constant="180"/>
                 </constraint>
                 <constraint firstItem="mqu-fD-atD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="dbH-zJ-7V9">
@@ -217,7 +217,7 @@
                 <constraint firstItem="ygP-3W-wuS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="n4T-Mg-tMv"/>
                 <constraint firstAttribute="bottom" secondItem="PIi-4g-5l6" secondAttribute="bottom" constant="35" id="pYY-eS-gZP">
                     <variation key="heightClass=compact" constant="15"/>
-                    <variation key="heightClass=regular-widthClass=compact" constant="35"/>
+                    <variation key="heightClass=regular-widthClass=compact" constant="15"/>
                 </constraint>
                 <constraint firstAttribute="trailing" secondItem="ygP-3W-wuS" secondAttribute="trailing" constant="20" id="wNi-uB-lEG">
                     <variation key="heightClass=regular-widthClass=compact" constant="20"/>

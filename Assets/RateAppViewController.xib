@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFL-Vl-m3N">
-                    <rect key="frame" x="0.0" y="20" width="60" height="60"/>
+                    <rect key="frame" x="0.0" y="15" width="60" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="cGQ-Ia-ktm"/>
                         <constraint firstAttribute="height" constant="60" id="wcr-QB-tlZ"/>
@@ -29,7 +29,7 @@
                         <action selector="closePressed:" destination="-1" eventType="touchUpInside" id="2r9-N9-nxn"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks! We would really appreciate it if you would rate us in the App Store." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RoB-AP-hfE">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks! We would appreciate it if you would rate us in the App Store." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RoB-AP-hfE">
                     <rect key="frame" x="20" y="85" width="440" height="51"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="440" id="ftA-gN-TiU">
@@ -129,7 +129,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqP-DG-6uq">
-                    <rect key="frame" x="220" y="191" width="40" height="44"/>
+                    <rect key="frame" x="220" y="186" width="40" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="AHW-0f-d6Z">
                             <variation key="heightClass=regular-widthClass=regular" constant="48"/>
@@ -174,7 +174,7 @@
             </subviews>
             <constraints>
                 <constraint firstItem="RoB-AP-hfE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="85" id="CWE-ku-8wE">
-                    <variation key="heightClass=compact" constant="65"/>
+                    <variation key="heightClass=compact" constant="55"/>
                     <variation key="heightClass=regular-widthClass=regular" constant="180"/>
                 </constraint>
                 <constraint firstItem="RoB-AP-hfE" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="JyQ-M3-TOK"/>
@@ -185,12 +185,12 @@
                 <constraint firstAttribute="bottom" secondItem="Yo4-NC-Bud" secondAttribute="bottom" constant="35" placeholder="YES" id="Qea-Jn-G5P"/>
                 <constraint firstItem="RoB-AP-hfE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" placeholder="YES" id="Vqp-oR-Sjn"/>
                 <constraint firstItem="rqP-DG-6uq" firstAttribute="top" secondItem="1q1-Eg-MNH" secondAttribute="bottom" constant="-9" id="XTO-f7-fag">
-                    <variation key="heightClass=regular-widthClass=regular" constant="30"/>
+                    <variation key="heightClass=regular-widthClass=regular" constant="50"/>
                 </constraint>
                 <constraint firstItem="1q1-Eg-MNH" firstAttribute="centerX" secondItem="RoB-AP-hfE" secondAttribute="centerX" id="Xel-Hw-Eae"/>
-                <constraint firstItem="Yo4-NC-Bud" firstAttribute="top" secondItem="rqP-DG-6uq" secondAttribute="bottom" constant="10" id="aG4-Tg-CH1">
-                    <variation key="heightClass=compact" constant="5"/>
-                    <variation key="heightClass=regular-widthClass=regular" constant="10"/>
+                <constraint firstItem="Yo4-NC-Bud" firstAttribute="top" secondItem="rqP-DG-6uq" secondAttribute="bottom" constant="15" id="aG4-Tg-CH1">
+                    <variation key="heightClass=compact" constant="15"/>
+                    <variation key="heightClass=regular-widthClass=regular" constant="15"/>
                 </constraint>
                 <constraint firstItem="Yo4-NC-Bud" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="cdV-Os-i7J"/>
                 <constraint firstAttribute="trailing" secondItem="rqP-DG-6uq" secondAttribute="trailing" constant="48" id="d5y-Pa-wYl">
@@ -200,18 +200,20 @@
                 <constraint firstItem="rqP-DG-6uq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="dIW-19-rvT">
                     <variation key="heightClass=regular-widthClass=compact" constant="20"/>
                 </constraint>
-                <constraint firstItem="hFL-Vl-m3N" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="pB2-95-q3y">
+                <constraint firstItem="hFL-Vl-m3N" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="pB2-95-q3y">
                     <variation key="heightClass=compact" constant="0.0"/>
-                    <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
+                    <variation key="heightClass=regular-widthClass=regular" constant="15"/>
                 </constraint>
                 <constraint firstAttribute="trailing" secondItem="RoB-AP-hfE" secondAttribute="trailing" constant="20" placeholder="YES" id="qRg-hZ-0np"/>
                 <constraint firstAttribute="trailing" secondItem="RoB-AP-hfE" secondAttribute="trailing" constant="20" id="rXC-Cu-bDm">
                     <variation key="heightClass=regular-widthClass=compact" constant="20"/>
                 </constraint>
-                <constraint firstItem="1q1-Eg-MNH" firstAttribute="top" secondItem="RoB-AP-hfE" secondAttribute="bottom" constant="20" id="tn5-Vd-RN1"/>
+                <constraint firstItem="1q1-Eg-MNH" firstAttribute="top" secondItem="RoB-AP-hfE" secondAttribute="bottom" constant="20" id="tn5-Vd-RN1">
+                    <variation key="heightClass=regular-widthClass=regular" constant="50"/>
+                </constraint>
                 <constraint firstAttribute="bottom" secondItem="Yo4-NC-Bud" secondAttribute="bottom" constant="35" id="zzt-dX-fpR">
                     <variation key="heightClass=compact" constant="15"/>
-                    <variation key="heightClass=regular-widthClass=compact" constant="35"/>
+                    <variation key="heightClass=regular-widthClass=compact" constant="15"/>
                 </constraint>
             </constraints>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -247,6 +249,7 @@
                 <mask key="constraints">
                     <include reference="pB2-95-q3y"/>
                     <include reference="CWE-ku-8wE"/>
+                    <include reference="tn5-Vd-RN1"/>
                     <include reference="aG4-Tg-CH1"/>
                     <include reference="XTO-f7-fag"/>
                 </mask>

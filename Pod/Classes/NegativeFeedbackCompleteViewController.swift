@@ -37,10 +37,10 @@ class NegativeFeedbackCompleteViewController: UIViewController
     }
     
     override func viewDidAppear(animated: Bool) {
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue()) {
-            self.delegate?.autoDismissFeedbackComplete()
-        }
+//        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Double(NSEC_PER_SEC)))
+//        dispatch_after(delayTime, dispatch_get_main_queue()) {
+//            self.delegate?.autoDismissFeedbackComplete()
+//        }
     }
     
     @IBAction func closePressed(sender: AnyObject) {

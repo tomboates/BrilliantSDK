@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NegativeFeedbackCompleteViewController" customModule="Brilliant" customModuleProvider="target">
@@ -20,7 +19,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ak0-10-Av7">
-                    <rect key="frame" x="0.0" y="20" width="60" height="60"/>
+                    <rect key="frame" x="0.0" y="15" width="60" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="1dG-Me-c53"/>
                         <constraint firstAttribute="height" constant="60" id="SaB-7e-sx2"/>
@@ -29,13 +28,60 @@
                         <action selector="closePressed:" destination="-1" eventType="touchUpInside" id="Fq3-dM-62R"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEc-Um-3X1">
+                    <rect key="frame" x="217" y="251" width="46" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="384" id="PD3-ZP-SI8">
+                            <variation key="heightClass=compact" constant="280"/>
+                            <variation key="heightClass=regular-widthClass=regular" constant="300"/>
+                        </constraint>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <state key="normal" title="Close"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="PD3-ZP-SI8"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=compact">
+                        <mask key="constraints">
+                            <include reference="PD3-ZP-SI8"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="217" y="246" width="46" height="34"/>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                        <rect key="frame" x="217" y="143" width="46" height="34"/>
+                        <mask key="constraints">
+                            <include reference="PD3-ZP-SI8"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="donePressed:" destination="-1" eventType="touchUpInside" id="yjQ-ae-Was"/>
+                    </connections>
+                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks! We really appreciate your feedback." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qhr-bj-LRL">
-                    <rect key="frame" x="48" y="55" width="384" height="51"/>
+                    <rect key="frame" x="33" y="85" width="415" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="440" id="NMi-e5-Rvx">
+                            <variation key="heightClass=compact" constant="440"/>
+                            <variation key="heightClass=regular-widthClass=regular" constant="500"/>
+                        </constraint>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="NMi-e5-Rvx"/>
+                        </mask>
+                    </variation>
                     <variation key="heightClass=compact" misplaced="YES">
                         <rect key="frame" x="39" y="53" width="400" height="50.5"/>
+                        <mask key="constraints">
+                            <include reference="NMi-e5-Rvx"/>
+                        </mask>
                     </variation>
                     <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
                         <rect key="frame" x="20" y="75" width="440" height="30"/>
@@ -43,45 +89,79 @@
                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                         <rect key="frame" x="18" y="75" width="445" height="26"/>
                     </variation>
+                    <variation key="heightClass=regular-widthClass=regular">
+                        <mask key="constraints">
+                            <include reference="NMi-e5-Rvx"/>
+                        </mask>
+                    </variation>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEc-Um-3X1">
-                    <rect key="frame" x="48" y="256" width="384" height="34"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                    <state key="normal" title="Close"/>
-                    <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
-                        <rect key="frame" x="217" y="246" width="46" height="34"/>
-                    </variation>
-                    <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                        <rect key="frame" x="217" y="143" width="46" height="34"/>
-                    </variation>
-                    <connections>
-                        <action selector="donePressed:" destination="-1" eventType="touchUpInside" id="yjQ-ae-Was"/>
-                    </connections>
-                </button>
             </subviews>
             <constraints>
-                <constraint firstItem="qhr-bj-LRL" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.8" id="BhQ-N5-suW"/>
                 <constraint firstItem="ak0-10-Av7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="IDB-O6-GQl"/>
-                <constraint firstItem="OEc-Um-3X1" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.8" id="esr-Z7-knK">
-                    <variation key="heightClass=compact" constant="200"/>
-                    <variation key="heightClass=regular-widthClass=regular" constant="300"/>
-                </constraint>
                 <constraint firstItem="qhr-bj-LRL" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="fLu-mU-nLu"/>
+                <constraint firstAttribute="trailing" secondItem="qhr-bj-LRL" secondAttribute="trailing" constant="20" id="guF-lN-tjM">
+                    <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                </constraint>
+                <constraint firstItem="OEc-Um-3X1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="48" id="juf-DQ-hfN">
+                    <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                </constraint>
                 <constraint firstItem="OEc-Um-3X1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="mcq-FG-Pnh"/>
-                <constraint firstItem="ak0-10-Av7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="ooP-ux-x9W"/>
-                <constraint firstAttribute="bottom" secondItem="OEc-Um-3X1" secondAttribute="bottom" constant="30" id="pVT-nt-qAh"/>
-                <constraint firstItem="qhr-bj-LRL" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="0.5" id="rg1-0f-kF7"/>
+                <constraint firstItem="ak0-10-Av7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="ooP-ux-x9W">
+                    <variation key="heightClass=compact" constant="0.0"/>
+                    <variation key="heightClass=regular-widthClass=regular" constant="15"/>
+                </constraint>
+                <constraint firstAttribute="bottom" secondItem="OEc-Um-3X1" secondAttribute="bottom" constant="35" id="pVT-nt-qAh">
+                    <variation key="heightClass=compact" constant="15"/>
+                    <variation key="heightClass=regular-widthClass=compact" constant="15"/>
+                </constraint>
+                <constraint firstItem="qhr-bj-LRL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="tUD-ks-Tpk">
+                    <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                </constraint>
+                <constraint firstItem="OEc-Um-3X1" firstAttribute="top" secondItem="qhr-bj-LRL" secondAttribute="bottom" constant="140" id="vi3-vJ-7g5">
+                    <variation key="heightClass=regular-widthClass=regular" constant="50"/>
+                </constraint>
+                <constraint firstAttribute="bottom" secondItem="OEc-Um-3X1" secondAttribute="bottom" constant="35" placeholder="YES" id="wPi-Gg-gHz"/>
+                <constraint firstItem="qhr-bj-LRL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="85" id="wlr-uI-Z2p">
+                    <variation key="heightClass=compact" constant="55"/>
+                    <variation key="heightClass=regular-widthClass=regular" constant="180"/>
+                </constraint>
+                <constraint firstAttribute="trailing" secondItem="OEc-Um-3X1" secondAttribute="trailing" constant="48" id="zs8-o8-da7">
+                    <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                </constraint>
             </constraints>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="guF-lN-tjM"/>
+                    <exclude reference="tUD-ks-Tpk"/>
+                    <exclude reference="juf-DQ-hfN"/>
+                    <exclude reference="pVT-nt-qAh"/>
+                    <exclude reference="vi3-vJ-7g5"/>
+                    <exclude reference="zs8-o8-da7"/>
+                </mask>
+            </variation>
             <variation key="heightClass=compact">
                 <mask key="constraints">
-                    <include reference="esr-Z7-knK"/>
+                    <include reference="ooP-ux-x9W"/>
+                    <include reference="wlr-uI-Z2p"/>
+                    <include reference="pVT-nt-qAh"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="constraints">
+                    <include reference="guF-lN-tjM"/>
+                    <include reference="tUD-ks-Tpk"/>
+                    <include reference="juf-DQ-hfN"/>
+                    <include reference="pVT-nt-qAh"/>
+                    <include reference="zs8-o8-da7"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=regular">
                 <mask key="constraints">
-                    <include reference="esr-Z7-knK"/>
+                    <include reference="ooP-ux-x9W"/>
+                    <include reference="wlr-uI-Z2p"/>
+                    <include reference="vi3-vJ-7g5"/>
                 </mask>
             </variation>
         </view>
