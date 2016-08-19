@@ -19,7 +19,7 @@ class ViewController: UIViewController {
   }
   
   @IBAction func surveyButtonPressed(sender: AnyObject) {
-    Brilliant.sharedInstance().showNpsSurvey("Button Clicked") { (success) -> Void in
+    Brilliant.sharedInstance().showNpsSurvey("Test Event") { (success) -> Void in
         
     }
   }
