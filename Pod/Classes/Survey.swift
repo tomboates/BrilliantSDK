@@ -55,16 +55,16 @@ class Survey: NSObject
     {
         var map = [String: AnyObject]()
         
-        map[Survey.triggerTimestampKey] = self.triggerTimestamp as? AnyObject
-        map[Survey.dismissActionKey] = self.dismissAction as? AnyObject
-        map[Survey.completedTimestampKey] = self.completedTimestamp as? AnyObject
-        map[Survey.npsRatingKey] = self.npsRating as? AnyObject
-        map[Survey.commentsKey] = self.comment as? AnyObject
-        map[Survey.userAccountCreationKey] = self.userAccountCreation as? AnyObject
-        map[Survey.eventKey] = self.event as? AnyObject
-        map[Survey.customerUserIdKey] = self.customerUserId as? AnyObject
-        map[Survey.userTypeKey] = self.userType as? AnyObject
-        map[Survey.surveyIdKey] = self.surveyId.uuidString as? AnyObject
+        map[Survey.triggerTimestampKey] = self.triggerTimestamp as AnyObject!
+        map[Survey.dismissActionKey] = self.dismissAction as AnyObject!
+        map[Survey.completedTimestampKey] = self.completedTimestamp as AnyObject!
+        map[Survey.npsRatingKey] = self.npsRating as AnyObject!
+        map[Survey.commentsKey] = self.comment as AnyObject!
+        map[Survey.userAccountCreationKey] = self.userAccountCreation as AnyObject!
+        map[Survey.eventKey] = self.event as AnyObject!
+        map[Survey.customerUserIdKey] = self.customerUserId as AnyObject!
+        map[Survey.userTypeKey] = self.userType as AnyObject!
+        map[Survey.surveyIdKey] = self.surveyId.uuidString as AnyObject!
         
         return map
     }
