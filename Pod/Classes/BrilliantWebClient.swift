@@ -39,7 +39,8 @@ class BrilliantWebClient
                     switch(response.result){
                     case .success:
                         // no need to listen for internet connection change anymore
-                        let reachability = Reachability.init()
+                        let reachability = Reachability()!
+                        reachability.stopNotifier()
                         NotificationCenter.default.removeObserver(self,   name: ReachabilityChangedNotification,
                                                                             object: reachability)
                         success(response.result.value as AnyObject)
@@ -52,20 +53,21 @@ class BrilliantWebClient
                         }
                         
                         // start listening for internet connection changes
-                        let reachability = Reachability.init()
+                        let reachability = Reachability()!
                         
-                        NotificationCenter.default.addObserver(self,
-                                                                         selector: "reachabilityChanged:",
+                        NotificationCenter.default.addObserver(self,    selector: "reachabilityChanged:",
                                                                          name: ReachabilityChangedNotification,
                                                                          object: reachability)
                         do {
-                            try reachability!.startNotifier()
+                            try reachability.startNotifier()
                         } catch {
                             print("Unable to start notifier")
                         }
                         
                         LogUtil.printDebug("listening for network change")
+                        
                         failure()
+                        
                         break
                     }
 
@@ -73,40 +75,20 @@ class BrilliantWebClient
         } else {
             // Fallback on earlier versions
         }
-//        Alamofire.request(method, "\(kBaseURL)" + path, headers: headers, parameters: params, encoding: encoding)
-     /*       .responseJSON(completionHandler: { (request, ResponseSerializer, result) -> Void in
-                
-                switch(result)
-                {
-                case .Success(let JSON):
-                    // no need to listen for internet connection change anymore
-                    let reachability = Reachability.reachabilityForInternetConnection()
-                    NSNotificationCenter.defaultCenter().removeObserver(self,
-                        name: ReachabilityChangedNotification,
-                        object: reachability)
-                    success(JSON)
-                    break
-                case .Failure(let data, _):
-                    
-                    if(data != nil)
-                    {
-                        LogUtil.printDebug("BrilliantWebClient error " + data!.description)
-                    }
-                    
-                    // start listening for internet connection changes
-                    let reachability = Reachability.reachabilityForInternetConnection()
-                    
-                    NSNotificationCenter.defaultCenter().addObserver(self,
-                        selector: "reachabilityChanged:",
-                        name: ReachabilityChangedNotification,
-                        object: reachability)
-                    
-                    reachability!.startNotifier()
-                    LogUtil.printDebug("listening for network change")
-                    failure()
-                    break
-                }
-        })
-*/
+    }
+    
+    func reachabilityChanged(note: NSNotification) {
+        
+        let reachability = note.object as! Reachability
+        
+        if reachability.isReachable {
+            if reachability.isReachableViaWiFi {
+                print("Reachable via WiFi")
+            } else {
+                print("Reachable via Cellular")
+            }
+        } else {
+            print("Network not reachable")
+        }
     }
 }

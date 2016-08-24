@@ -229,8 +229,8 @@ public class Brilliant: NSObject {
     }
     
     private func daysSinceLastSurvey() -> Int {
-//        return NSCalendar.currentCalendar.components(.Day, fromDate: self.lastSurveyShownTime, toDate: NSDate(), options: []).day
-                return 5
+        let unitFlags = Set<Calendar.Component>([.hour, .year, .minute])
+        return Calendar.current.dateComponents(unitFlags, from: self.lastSurveyShownTime, to: Date()).day!
     }
     
     open static func xibBundle() -> Bundle
@@ -265,18 +265,6 @@ public class Brilliant: NSObject {
     //Fonts
     func mainLabelFont() -> UIFont
     {
-        
-//        switch UIDevice.currentDevice().userInterfaceIdiom
-//        {
-//        case .Pad:
-//            return UIFont.systemFontOfSize(31)
-//        case .Phone:
-//            return UIFont.systemFontOfSize(21)
-//        case .TV:
-//            return UIFont.systemFontOfSize(34)
-//        default:
-//            return UIFont.systemFontOfSize(34)
-//        }
 
         if (self.customFontName == "Default") {
             switch UIDevice.current.userInterfaceIdiom
