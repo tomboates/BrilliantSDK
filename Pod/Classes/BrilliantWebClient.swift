@@ -32,10 +32,49 @@ class BrilliantWebClient
         }
         
         // now send data to server
-     /*
-        
-        Alamofire.request(method, "\(kBaseURL)" + path, headers: headers, parameters: params, encoding: encoding)
-            .responseJSON(completionHandler: { (request, ResponseSerializer, result) -> Void in
+     
+        if #available(iOS 9.0, *) {
+            Alamofire.request("\(kBaseURL)" + path, withMethod: method, parameters: params, encoding: encoding, headers: headers)
+                .responseJSON { response in
+                    switch(response.result){
+                    case .success:
+                        // no need to listen for internet connection change anymore
+                        let reachability = Reachability.init()
+                        NotificationCenter.default.removeObserver(self,   name: ReachabilityChangedNotification,
+                                                                            object: reachability)
+                        success(response.result.value as AnyObject)
+                        break
+                    case .failure:
+                        
+                        if(response.result.value != nil)
+                        {
+                            LogUtil.printDebug("BrilliantWebClient error " + (response.result.value! as AnyObject).description)
+                        }
+                        
+                        // start listening for internet connection changes
+                        let reachability = Reachability.init()
+                        
+                        NotificationCenter.default.addObserver(self,
+                                                                         selector: "reachabilityChanged:",
+                                                                         name: ReachabilityChangedNotification,
+                                                                         object: reachability)
+                        do {
+                            try reachability!.startNotifier()
+                        } catch {
+                            print("Unable to start notifier")
+                        }
+                        
+                        LogUtil.printDebug("listening for network change")
+                        failure()
+                        break
+                    }
+
+            }
+        } else {
+            // Fallback on earlier versions
+        }
+//        Alamofire.request(method, "\(kBaseURL)" + path, headers: headers, parameters: params, encoding: encoding)
+     /*       .responseJSON(completionHandler: { (request, ResponseSerializer, result) -> Void in
                 
                 switch(result)
                 {

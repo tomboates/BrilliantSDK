@@ -115,13 +115,14 @@ public class Brilliant: NSObject {
         }
         
         // set or initalize lastSurveyShownTime
+    
         if let lastDate = UserDefaults.standard.object(forKey: Brilliant.lastSurveyShownTimeKey) as? Date
         {
             self.lastSurveyShownTime = lastDate
         }
         else
         {
-            self.lastSurveyShownTime =  NSDate.distantPast
+            self.lastSurveyShownTime =  Date.distantPast
         }
     }
     
@@ -131,7 +132,7 @@ public class Brilliant: NSObject {
         // only show survey if enough time has passed and no pendingSurvey to be sent
         if eligible && self.pendingSurvey == false && UIApplication.shared.delegate?.window != nil
         {
-            Brilliant.sharedInstance().completedSurvey = Survey(surveyId: NSUUID() as UUID)
+            Brilliant.sharedInstance().completedSurvey = Survey(surveyId: UUID())
             self.completedSurvey?.event = event
             let rootVC = UIApplication.shared.delegate!.window??.rootViewController
         
@@ -199,12 +200,13 @@ public class Brilliant: NSObject {
     private func getInitialSurveyData() {
         weak var weakSelf = self
         BrilliantWebClient.request(.get, appKey: self.appKey, uniqueIdentifier: self.uniqueIdentifier as UUID, path: "initWithAppKey", params: ["uniqueIdentifier": self.uniqueIdentifier.uuidString as AnyObject, "advertistingId" : "" as AnyObject], success: { (JSON) -> Void in
-            weakSelf?.appName = JSON["name"] as? String
-            
-            if let eligible = JSON["eligible"] as? Bool {
-                weakSelf?.eligible = eligible
+            if let jsonResult = JSON as? Dictionary<String, AnyObject> {
+                weakSelf?.appName = jsonResult["name"] as? String
+                
+                if let eligible = jsonResult["eligible"] as? Bool {
+                    weakSelf?.eligible = eligible
+                }
             }
-            
             LogUtil.printDebug("initialization server call success. Setting app name to: \(self.appName)")
             }, failure:  { () -> Void in
                 weakSelf?.appName = Bundle.main.infoDictionary!["CFBundleName"] as? String

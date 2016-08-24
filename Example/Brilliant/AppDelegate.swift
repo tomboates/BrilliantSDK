@@ -1,3 +1,4 @@
+
 //
 //  AppDelegate.swift
 //  Brilliant
@@ -16,9 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: Any]?) -> Bool {
-        NSLog("Application started");
+        
       // Setup User Info
-//        createInstance(key: String, appStoreId: String, userEmail: String?, userType: String?, userDate: NSDate?)
         Brilliant.createInstance(key: "smo25b-ej7jg8ZLIufBBqkCVmbQ-b8X4U47HZPBGH7r4RAYLdkEYCFtR8z-4wLR4wLV4beGL8eo786JnXRlqnQ", appStoreId: "", userId: "", userType: "", userDate: Date.distantPast as NSDate?)
 //        Brilliant.sharedInstance().configureButtonColors(UIColor.redColor())
 //        Brilliant.sharedInstance().configureFontName("Times New Roman")
