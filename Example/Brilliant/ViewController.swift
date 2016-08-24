@@ -16,10 +16,11 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
   }
   
   @IBAction func surveyButtonPressed(_ sender: AnyObject) {
-    Brilliant.sharedInstance().showNpsSurvey("Button Clicked") { (success) -> Void in
+    Brilliant.sharedInstance().showNpsSurvey(event: "Button Clicked") { (success) -> Void in
         
     }
   }

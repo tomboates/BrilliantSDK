@@ -33,7 +33,7 @@ class RateAppViewController: UIViewController
         self.rateLabel.font = Brilliant.sharedInstance().mainLabelFont()
         self.rateLabel.textColor = Brilliant.sharedInstance().mainLabelColor()
         
-        Brilliant.sharedInstance().styleButton(self.confirmButton)
+        Brilliant.sharedInstance().styleButton(button: self.confirmButton)
         
         self.denyButton.tintColor = Brilliant.sharedInstance().npsDoneColor()
         

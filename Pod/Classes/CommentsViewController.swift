@@ -44,14 +44,14 @@ class CommentsViewController: UIViewController
         let npsNumber: Int! = Brilliant.sharedInstance().completedSurvey?.npsRating!
         if(npsNumber >= 7)
         {
-            self.commentDescriptionLabel.text = Brilliant.sharedInstance().positiveFeedbackText(npsNumber)
+            self.commentDescriptionLabel.text = Brilliant.sharedInstance().positiveFeedbackText(number: npsNumber)
         }
         else
         {
-            self.commentDescriptionLabel.text = Brilliant.sharedInstance().negativeFeedbackText(npsNumber)
+            self.commentDescriptionLabel.text = Brilliant.sharedInstance().negativeFeedbackText(number: npsNumber)
         }
         
-        Brilliant.sharedInstance().styleButton(self.submitButton)
+        Brilliant.sharedInstance().styleButton(button: self.submitButton)
         
         self.noThanksButton.tintColor = Brilliant.sharedInstance().noThanksButtonColor()
         self.submitButton.titleLabel?.font = Brilliant.sharedInstance().submitButtonFont()

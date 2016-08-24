@@ -18,7 +18,7 @@ public class Brilliant: NSObject {
     
     //  public static let sharedInstance = Brilliant()
     private static var instanceVar: Brilliant?
-    private static var onceToken: dispatch_once_t = 0
+//    private static var onceToken: dispatch_once_t = 0
     
     public let appKey: String
     public let appStoreId: String?
@@ -34,7 +34,7 @@ public class Brilliant: NSObject {
     internal var npsReviewColorCustom = UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
     internal var npsDoneColorCustom = UIColor(red: 0.313, green: 0.854, blue: 0.451, alpha: 1)
     internal var shadowColorCustom = UIColor(red: 0.211, green: 0.660, blue: 0.324, alpha: 1)
-    internal var mainLabelColorCustom = UIColor.whiteColor()
+    internal var mainLabelColorCustom = UIColor.white
     
     internal var customFontName = "Default"
     
@@ -42,12 +42,12 @@ public class Brilliant: NSObject {
     public var appName: String?
     
     private var eligible: Bool = false
-    private var npsCompletion: ((success: Bool) -> Void)?
+    private var npsCompletion: ((_ success: Bool) -> Void)?
     
-    private var lastSurveyShownTime: NSDate! {
+    private var lastSurveyShownTime: Date {
         
         willSet(date) {
-            NSUserDefaults.standardUserDefaults().setObject(date, forKey: Brilliant.lastSurveyShownTimeKey)
+            UserDefaults.standard.set(date, forKey: Brilliant.lastSurveyShownTimeKey)
         }
     }
     
@@ -58,7 +58,7 @@ public class Brilliant: NSObject {
     internal var completedSurvey: Survey? {
         willSet(survey) {
             //TODO: Load out as map and convert to Survey object
-            NSUserDefaults.standardUserDefaults().setObject(survey?.serialize(), forKey: Brilliant.completedSurveyKey)
+            UserDefaults.standard.set(survey?.serialize(), forKey: Brilliant.completedSurveyKey)
         }
     }
     
@@ -75,13 +75,13 @@ public class Brilliant: NSObject {
     
     public static func createInstance(key: String!, appStoreId: String?, userId: String?, userType: String?, userDate: NSDate?)
     {
-        dispatch_once(&onceToken) { () -> Void in
+//        dispatch_once(&onceToken) { () -> Void in
             instanceVar = Brilliant(key: key, appStoreId: appStoreId, userId: userId, userType: userType, userDate: userDate)
             
             // if a pending survey is saved, load and attempt to resend
-            if let surveyMap = NSUserDefaults.standardUserDefaults().objectForKey(Brilliant.completedSurveyKey) as? [String : String]
+            if let surveyMap = UserDefaults.standard.object(forKey: Brilliant.completedSurveyKey) as? [String : String]
             {
-                Brilliant.sharedInstance().completedSurvey = Survey(map: surveyMap)
+                Brilliant.sharedInstance().completedSurvey = Survey(map: surveyMap as [String : AnyObject])
                 Brilliant.sharedInstance().pendingSurvey = true
                 Brilliant.sharedInstance().sendCompletedSurvey()
             }
@@ -92,7 +92,7 @@ public class Brilliant: NSObject {
             
             // pull data from server (for now just app name to display)
             Brilliant.sharedInstance().getInitialSurveyData()
-        }
+//        }
     }
     
     private init(key: String, appStoreId: String?, userId: String?, userType: String?, userDate: NSDate?) {
@@ -102,26 +102,26 @@ public class Brilliant: NSObject {
         self.userType = userType
         self.userDate = userDate
         
-        let uniqueIdentifierStr = NSUserDefaults.standardUserDefaults().stringForKey(Brilliant.uniqueIdentifierKey)
+        let uniqueIdentifierStr = UserDefaults.standard.string(forKey: Brilliant.uniqueIdentifierKey)
         
         if(uniqueIdentifierStr == nil)
         {
             self.uniqueIdentifier = NSUUID()
-            NSUserDefaults.standardUserDefaults().setObject(self.uniqueIdentifier.UUIDString, forKey: Brilliant.uniqueIdentifierKey)
+            UserDefaults.standard.set(self.uniqueIdentifier.uuidString, forKey: Brilliant.uniqueIdentifierKey)
         }
         else
         {
-            self.uniqueIdentifier = NSUUID(UUIDString: uniqueIdentifierStr!)!
+            self.uniqueIdentifier = NSUUID(uuidString: uniqueIdentifierStr!)!
         }
         
         // set or initalize lastSurveyShownTime
-        if let lastDate = NSUserDefaults.standardUserDefaults().objectForKey(Brilliant.lastSurveyShownTimeKey) as? NSDate
+        if let lastDate = UserDefaults.standard.object(forKey: Brilliant.lastSurveyShownTimeKey) as? Date
         {
             self.lastSurveyShownTime = lastDate
         }
         else
         {
-            self.lastSurveyShownTime =  NSDate.distantPast()
+            self.lastSurveyShownTime =  NSDate.distantPast
         }
     }
     
@@ -129,17 +129,17 @@ public class Brilliant: NSObject {
     public func showNpsSurvey(event: String, completed: (Bool) -> Void)
     {
         // only show survey if enough time has passed and no pendingSurvey to be sent
-        if eligible && self.pendingSurvey == false && UIApplication.sharedApplication().delegate?.window != nil
+        if eligible && self.pendingSurvey == false && UIApplication.shared.delegate?.window != nil
         {
-            Brilliant.sharedInstance().completedSurvey = Survey(surveyId: NSUUID())
+            Brilliant.sharedInstance().completedSurvey = Survey(surveyId: NSUUID() as UUID)
             self.completedSurvey?.event = event
-            let rootVC = UIApplication.sharedApplication().delegate!.window??.rootViewController
+            let rootVC = UIApplication.shared.delegate!.window??.rootViewController
         
             let surveyVC = SurveyViewController(nibName: "SurveyViewController", bundle: Brilliant.xibBundle())
-            let modalStyle = UIModalTransitionStyle.CrossDissolve
+            let modalStyle = UIModalTransitionStyle.crossDissolve
             surveyVC.modalTransitionStyle = modalStyle
-            surveyVC.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
-            rootVC!.presentViewController(surveyVC, animated: true, completion: nil)
+            surveyVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+            rootVC!.present(surveyVC, animated: true, completion: nil)
         }
         else
         {
@@ -148,7 +148,7 @@ public class Brilliant: NSObject {
                 self.sendCompletedSurvey()
                 LogUtil.printDebug("Not showing survey, attempting to send pending survey")
             }
-            else if(UIApplication.sharedApplication().delegate?.window == nil)
+            else if(UIApplication.shared.delegate?.window == nil)
             {
                 LogUtil.printDebug("UIApplication.sharedApplication window is nil")
             }
@@ -172,18 +172,18 @@ public class Brilliant: NSObject {
         // add user data
         self.completedSurvey!.customerUserId = self.userId
         if let acctCreationDate = self.userDate {
-            self.completedSurvey!.userAccountCreation = acctCreationDate
+            self.completedSurvey!.userAccountCreation = acctCreationDate as Date
         }
         
         self.completedSurvey!.userType = self.userType
         
         weak var weakSelf = self
         // now send data to server
-        BrilliantWebClient.request(.POST, appKey: self.appKey, uniqueIdentifier: self.uniqueIdentifier, path: "surveys", params: ["nps_survey": self.completedSurvey!.serializeForSurvey(), "uniqueIdentifier": self.uniqueIdentifier.UUIDString], success: { (JSON) -> Void in
+        BrilliantWebClient.request(.post, appKey: self.appKey, uniqueIdentifier: self.uniqueIdentifier as UUID, path: "surveys", params: ["nps_survey": self.completedSurvey!.serializeForSurvey() as AnyObject, "uniqueIdentifier": self.uniqueIdentifier.uuidString as AnyObject], success: { (JSON) -> Void in
             LogUtil.printDebug("Successfully saved to server.")
             
             if !Brilliant.kDEBUG {
-                weakSelf?.lastSurveyShownTime = NSDate()
+                weakSelf?.lastSurveyShownTime = Date()
             }
             
             weakSelf?.completedSurvey = nil
@@ -198,7 +198,7 @@ public class Brilliant: NSObject {
     
     private func getInitialSurveyData() {
         weak var weakSelf = self
-        BrilliantWebClient.request(.GET, appKey: self.appKey, uniqueIdentifier: self.uniqueIdentifier, path: "initWithAppKey", params: ["uniqueIdentifier": self.uniqueIdentifier.UUIDString, "advertistingId" : ""], success: { (JSON) -> Void in
+        BrilliantWebClient.request(.get, appKey: self.appKey, uniqueIdentifier: self.uniqueIdentifier as UUID, path: "initWithAppKey", params: ["uniqueIdentifier": self.uniqueIdentifier.uuidString as AnyObject, "advertistingId" : "" as AnyObject], success: { (JSON) -> Void in
             weakSelf?.appName = JSON["name"] as? String
             
             if let eligible = JSON["eligible"] as? Bool {
@@ -207,7 +207,7 @@ public class Brilliant: NSObject {
             
             LogUtil.printDebug("initialization server call success. Setting app name to: \(self.appName)")
             }, failure:  { () -> Void in
-                weakSelf?.appName = NSBundle.mainBundle().infoDictionary!["CFBundleName"] as? String
+                weakSelf?.appName = Bundle.main.infoDictionary!["CFBundleName"] as? String
                 LogUtil.printDebug("initialization server call failure. Setting app name to: \(self.appName)")
         })
     }
@@ -218,7 +218,7 @@ public class Brilliant: NSObject {
         
         let reachability = note.object as! Reachability
         
-        if reachability.isReachable() {
+        if reachability.isReachable {
             if self.pendingSurvey == true {
                 self.sendCompletedSurvey()
                 LogUtil.printDebug("Network reconnected, attempting to send survey.")
@@ -226,28 +226,27 @@ public class Brilliant: NSObject {
         }
     }
     
-    //# MARK: - Helpers
-    
     private func daysSinceLastSurvey() -> Int {
-        return NSCalendar.currentCalendar().components(.Day, fromDate: self.lastSurveyShownTime, toDate: NSDate(), options: []).day
+//        return NSCalendar.currentCalendar.components(.Day, fromDate: self.lastSurveyShownTime, toDate: NSDate(), options: []).day
+                return 5
     }
     
-    internal static func xibBundle() -> NSBundle
+    open static func xibBundle() -> Bundle
     {
-        let podBundle = NSBundle(forClass: Brilliant.self)
-        if let bundleURL = podBundle.URLForResource("Brilliant", withExtension: "bundle")
+        let podBundle = Bundle(for: Brilliant.self)
+        if let bundleURL = podBundle.url(forResource: "Brilliant", withExtension: "bundle")
         {
-            return NSBundle(URL: bundleURL)!
+            return Bundle(url: bundleURL)!
         }
         else{
             return podBundle
         }
     }
     
-    internal static func imageBundle() -> NSBundle
+    open static func imageBundle() -> Bundle
     {
-        let bundleURL = NSBundle(forClass: Brilliant.self).URLForResource("Brilliant", withExtension: "bundle")
-        return NSBundle(URL: bundleURL!)!
+        let bundleURL = Bundle(for: Brilliant.self).url(forResource: "Brilliant", withExtension: "bundle")
+        return Bundle(url: bundleURL!)!
     }
     
     //Texts
@@ -278,26 +277,26 @@ public class Brilliant: NSObject {
 //        }
 
         if (self.customFontName == "Default") {
-            switch UIDevice.currentDevice().userInterfaceIdiom
+            switch UIDevice.current.userInterfaceIdiom
             {
-            case .Pad:
-                return UIFont.systemFontOfSize(31)
-            case .Phone:
-                return UIFont.systemFontOfSize(21)
-            case .TV:
-                return UIFont.systemFontOfSize(34)
+            case .pad:
+                return UIFont.systemFont(ofSize: 31)
+            case .phone:
+                return UIFont.systemFont(ofSize: 21)
+            case .tv:
+                return UIFont.systemFont(ofSize: 34)
             default:
-                return UIFont.systemFontOfSize(34)
+                return UIFont.systemFont(ofSize: 34)
             }
         } else {
             var size : CGFloat? = 0.0
-            switch UIDevice.currentDevice().userInterfaceIdiom
+            switch UIDevice.current.userInterfaceIdiom
             {
-            case .Pad:
+            case .pad:
                 size = 31
-            case .Phone:
+            case .phone:
                 size = 21
-            case .TV:
+            case .tv:
                 size = 34
             default:
                 size = 34
@@ -306,7 +305,7 @@ public class Brilliant: NSObject {
             if  font != nil {
                 return font!
             } else {
-                return UIFont.systemFontOfSize(size!)
+                return UIFont.systemFont(ofSize: size!)
             }
         }
     }
@@ -314,26 +313,26 @@ public class Brilliant: NSObject {
     func levelLabelFont() -> UIFont
     {
         if (self.customFontName == "Default") {
-            return UIFont.systemFontOfSize(14)
+            return UIFont.systemFont(ofSize:14)
         } else {
             let font = UIFont(name: self.customFontName, size: 14)
             if  font != nil {
                 return font!
             } else {
-                return UIFont.systemFontOfSize(14)
+                return UIFont.systemFont(ofSize:14)
             }
         }
     }
     
     func commentBoxFont() -> UIFont{
         if (self.customFontName == "Default") {
-            return UIFont.systemFontOfSize(18)
+            return UIFont.systemFont(ofSize: 18)
         } else {
             let font = UIFont(name: self.customFontName, size: 18)
             if  font != nil {
                 return font!
             } else {
-                return UIFont.systemFontOfSize(18)
+                return UIFont.systemFont(ofSize: 18)
             }
         }
     }
@@ -341,13 +340,13 @@ public class Brilliant: NSObject {
     func submitButtonFont() -> UIFont
     {
         if (self.customFontName == "Default") {
-            return UIFont.systemFontOfSize(18)
+            return UIFont.systemFont(ofSize: 18)
         } else {
             let font = UIFont(name: self.customFontName, size: 18)
             if  font != nil {
                 return font!
             } else {
-                return UIFont.systemFontOfSize(18)
+                return UIFont.systemFont(ofSize: 18)
             }
         }
     }
@@ -355,26 +354,26 @@ public class Brilliant: NSObject {
     func npsButtonFont() -> UIFont
     {
         if (self.customFontName == "Default") {
-            switch UIDevice.currentDevice().userInterfaceIdiom
+            switch UIDevice.current.userInterfaceIdiom
             {
-            case .Pad:
-                return UIFont.systemFontOfSize(31)
-            case .Phone:
-                return UIFont.systemFontOfSize(21)
-            case .TV:
-                return UIFont.systemFontOfSize(34)
+            case .pad:
+                return UIFont.systemFont(ofSize: 31)
+            case .phone:
+                return UIFont.systemFont(ofSize: 21)
+            case .tv:
+                return UIFont.systemFont(ofSize: 34)
             default:
-                return UIFont.systemFontOfSize(34)
+                return UIFont.systemFont(ofSize: 34)
             }
         } else {
             var size : CGFloat? = 0.0
-            switch UIDevice.currentDevice().userInterfaceIdiom
+            switch UIDevice.current.userInterfaceIdiom
             {
-            case .Pad:
+            case .pad:
                 size = 31
-            case .Phone:
+            case .phone:
                 size = 21
-            case .TV:
+            case .tv:
                 size = 34
             default:
                 size = 34
@@ -383,7 +382,7 @@ public class Brilliant: NSObject {
             if  font != nil {
                 return font!
             } else {
-                return UIFont.systemFontOfSize(size!)
+                return UIFont.systemFont(ofSize: size!)
             }
         }
     }
@@ -392,7 +391,7 @@ public class Brilliant: NSObject {
     func styleButton(button: UIButton)
     {
         button.layer.cornerRadius = 4
-        button.tintColor = UIColor.whiteColor()
+        button.tintColor = UIColor.white
         button.backgroundColor = Brilliant.sharedInstance().submitCommentsColor()
     }
     
