@@ -12,7 +12,7 @@ extension Brilliant
 {
     //Custom color for the buttons
     
-    public func configureButtonColors(color: UIColor?) {
+    public func configureButtonColors(_ color: UIColor?) {
         if (color != nil)
         {
             self.npsButtonColorCustom = color!
@@ -23,7 +23,7 @@ extension Brilliant
         }
     }
     
-    public func configureFontName(name: String?) {
+    public func configureFontName(_ name: String?) {
         if (name != nil) {
             self.customFontName = name!
         }
@@ -55,6 +55,6 @@ extension Brilliant
     
     internal func mainLabelColor() -> UIColor
     {
-        return UIColor.whiteColor()
+        return UIColor.white
     }
 }

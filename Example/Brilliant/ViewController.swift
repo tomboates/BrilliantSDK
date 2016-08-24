@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     super.viewDidLoad()
   }
   
-  @IBAction func surveyButtonPressed(sender: AnyObject) {
+  @IBAction func surveyButtonPressed(_ sender: AnyObject) {
     Brilliant.sharedInstance().showNpsSurvey("Button Clicked") { (success) -> Void in
         
     }

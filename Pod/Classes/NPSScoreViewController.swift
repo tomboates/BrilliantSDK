@@ -10,8 +10,8 @@ import Foundation
 
 protocol NPSScoreViewControllerDelegate: class{
     
-    func closePressed(state: SurveyViewControllerState)
-    func npsScorePressed(npsScore: Int)
+    func closePressed(_ state: SurveyViewControllerState)
+    func npsScorePressed(_ npsScore: Int)
 }
 
 class NPSScoreViewController : UIViewController
@@ -39,8 +39,8 @@ class NPSScoreViewController : UIViewController
     
     override func viewDidLoad() {
 
-        let image = UIImage(named: "brilliant-icon-close", inBundle:Brilliant.imageBundle(), compatibleWithTraitCollection: nil)
-        self.closeButton.setImage(image, forState: .Normal)
+        let image = UIImage(named: "brilliant-icon-close", in:Brilliant.imageBundle(), compatibleWith: nil)
+        self.closeButton.setImage(image, for: UIControlState())
         self.closeButton.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 25, right: 25)
         
         self.questionLabel.textColor = Brilliant.sharedInstance().mainLabelColor()
@@ -83,16 +83,16 @@ class NPSScoreViewController : UIViewController
         self.likelyBtn.font = Brilliant.sharedInstance().levelLabelFont()
     }
     
-    override func  viewWillAppear(animated: Bool) {
+    override func  viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
 //        self.updateConstraints()
     }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
         
-        coordinator.animateAlongsideTransition(nil) { (completion) in
+        coordinator.animate(alongsideTransition: nil) { (completion) in
 //            self.updateConstraints()
         }
     }
@@ -101,69 +101,69 @@ class NPSScoreViewController : UIViewController
         let size = UIDeviceHelper.deviceWidth()
         switch size
         {
-        case .Small:
+        case .small:
             self.labelWidthConstraint.constant = 280
             break
-        case .Medium:
+        case .medium:
             self.labelWidthConstraint.constant = 300
             break
-        case .Large:
+        case .large:
             self.labelWidthConstraint.constant = 420
             break
         }
 
     }
     
-    @IBAction func closePressed(sender: AnyObject) {
+    @IBAction func closePressed(_ sender: AnyObject) {
         Brilliant.sharedInstance().completedSurvey!.dismissAction = "x_npsscreen"
-        self.delegate?.closePressed(.RatingScreen)
+        self.delegate?.closePressed(.ratingScreen)
     }
     
-    @IBAction func zeroPressed(sender: AnyObject) {
+    @IBAction func zeroPressed(_ sender: AnyObject) {
         self.npsNumberResponse(0)
     }
     
-    @IBAction func onePressed(sender: AnyObject) {
+    @IBAction func onePressed(_ sender: AnyObject) {
         self.npsNumberResponse(1)
     }
     
-    @IBAction func twoPressed(sender: AnyObject) {
+    @IBAction func twoPressed(_ sender: AnyObject) {
         self.npsNumberResponse(2)
     }
     
-    @IBAction func threePressed(sender: AnyObject) {
+    @IBAction func threePressed(_ sender: AnyObject) {
         self.npsNumberResponse(3)
     }
     
-    @IBAction func fourPressed(sender: AnyObject) {
+    @IBAction func fourPressed(_ sender: AnyObject) {
         self.npsNumberResponse(4)
     }
     
-    @IBAction func fivePressed(sender: AnyObject) {
+    @IBAction func fivePressed(_ sender: AnyObject) {
         self.npsNumberResponse(5)
     }
     
-    @IBAction func sixPressed(sender: AnyObject) {
+    @IBAction func sixPressed(_ sender: AnyObject) {
         self.npsNumberResponse(6)
     }
     
-    @IBAction func sevenPressed(sender: AnyObject) {
+    @IBAction func sevenPressed(_ sender: AnyObject) {
         self.npsNumberResponse(7)
     }
     
-    @IBAction func eightPressed(sender: AnyObject) {
+    @IBAction func eightPressed(_ sender: AnyObject) {
         self.npsNumberResponse(8)
     }
     
-    @IBAction func ninePressed(sender: AnyObject) {
+    @IBAction func ninePressed(_ sender: AnyObject) {
         self.npsNumberResponse(9)
     }
     
-    @IBAction func tenPressed(sender: AnyObject) {
+    @IBAction func tenPressed(_ sender: AnyObject) {
         self.npsNumberResponse(10)
     }
     
-    func npsNumberResponse(npsNumber: Int)
+    func npsNumberResponse(_ npsNumber: Int)
     {
         Brilliant.sharedInstance().completedSurvey!.npsRating = npsNumber
         self.delegate?.npsScorePressed(npsNumber)

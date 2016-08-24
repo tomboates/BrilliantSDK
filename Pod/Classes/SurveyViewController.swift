@@ -8,6 +8,26 @@
 
 import Foundation
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l >= r
+  default:
+    return !(lhs < rhs)
+  }
+}
+
 
 class SurveyViewController: UIViewController, NPSScoreViewControllerDelegate, CommentsViewControllerDelegate, RateAppViewControllerDelegate, NegativeFeedbackCompleteViewControllerDelegate {
     
@@ -23,12 +43,12 @@ class SurveyViewController: UIViewController, NPSScoreViewControllerDelegate, Co
     var state: SurveyViewControllerState // keep track of what screen is showing for analytics
     
     required init?(coder aDecoder: NSCoder) {
-        self.state = .RatingScreen
+        self.state = .ratingScreen
         super.init(coder: aDecoder)
     }
     
-    override init(nibName nibNameOrNil: String!, bundle: NSBundle!) {
-        self.state = .RatingScreen
+    override init(nibName nibNameOrNil: String!, bundle: Bundle!) {
+        self.state = .ratingScreen
         super.init(nibName: nibNameOrNil, bundle: bundle)
     }
     
@@ -37,20 +57,20 @@ class SurveyViewController: UIViewController, NPSScoreViewControllerDelegate, Co
         
         //only apply the blur if the user hasn't disabled transparency effects
         if !UIAccessibilityIsReduceTransparencyEnabled() {
-            self.view.backgroundColor = UIColor.clearColor()
-            blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark);
+            self.view.backgroundColor = UIColor.clear
+            blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark);
             blurEffectView = UIVisualEffectView(effect: blurEffect);
             
-            blurEffectView!.frame = CGRectMake(0, 0, 2732, 2732)
+            blurEffectView!.frame = CGRect(x: 0, y: 0, width: 2732, height: 2732)
             
             self.view.addSubview(blurEffectView!)
         }
         else
         {
-            self.view.backgroundColor = UIColor.blackColor()
+            self.view.backgroundColor = UIColor.black
         }
         
-        Brilliant.sharedInstance().completedSurvey?.triggerTimestamp = NSDate()
+        Brilliant.sharedInstance().completedSurvey?.triggerTimestamp = Date()
         
         self.npsScoreVC = NPSScoreViewController(nibName: "NPSScoreViewController", bundle: Brilliant.xibBundle())
         self.npsScoreVC!.delegate = self
@@ -58,21 +78,21 @@ class SurveyViewController: UIViewController, NPSScoreViewControllerDelegate, Co
         
     }
     
-    func addFullScreenSubViewController(subViewController: UIViewController)
+    func addFullScreenSubViewController(_ subViewController: UIViewController)
     {
         self.addChildViewController(subViewController)
         self.view.addSubview(subViewController.view)
         subViewController.view.translatesAutoresizingMaskIntoConstraints = false
         
-        let hConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[subViewController]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["subViewController" : subViewController.view])
-        let vConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[subViewController]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["subViewController" : subViewController.view])
+        let hConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[subViewController]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["subViewController" : subViewController.view])
+        let vConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[subViewController]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["subViewController" : subViewController.view])
         self.view.addConstraints(hConstraints)
         self.view.addConstraints(vConstraints)
     }
     
-    func viewControllerTransition(oldVC: UIViewController?, newVC: UIViewController)
+    func viewControllerTransition(_ oldVC: UIViewController?, newVC: UIViewController)
     {
-        UIView.animateWithDuration(0.3, animations: { () -> Void in
+        UIView.animate(withDuration: 0.3, animations: { () -> Void in
             oldVC?.view.alpha = 0
             newVC.view.alpha = 1
             }) { (success) -> Void in
@@ -82,20 +102,20 @@ class SurveyViewController: UIViewController, NPSScoreViewControllerDelegate, Co
     }
     
     //NPSScoreViewControllerDelegate
-    func closePressed(state: SurveyViewControllerState)
+    func closePressed(_ state: SurveyViewControllerState)
     {
         switch state
         {
-        case .RatingScreen: // rating screen
+        case .ratingScreen: // rating screen
             Brilliant.sharedInstance().completedSurvey!.dismissAction = "x_npsscreen"
             break
-        case .CommentScreen: // comment screen
+        case .commentScreen: // comment screen
             Brilliant.sharedInstance().completedSurvey!.dismissAction = "x_comments"
             break
-        case .FeedbackScreen: // feedback screen
+        case .feedbackScreen: // feedback screen
             Brilliant.sharedInstance().completedSurvey!.dismissAction = "x_feedback"
             break
-        case .RateAppScreen: // rate the app screen
+        case .rateAppScreen: // rate the app screen
             Brilliant.sharedInstance().completedSurvey!.dismissAction = "x_rateapp"
             break
         }
@@ -105,7 +125,7 @@ class SurveyViewController: UIViewController, NPSScoreViewControllerDelegate, Co
     
     func close()
     {
-        UIView.animateWithDuration(0.2, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: UIViewAnimationOptions.curveEaseIn, animations: {
             
             self.blurEffectView?.alpha = 0
             self.npsScoreVC?.view.alpha = 0
@@ -114,18 +134,18 @@ class SurveyViewController: UIViewController, NPSScoreViewControllerDelegate, Co
             self.negativeFeedbackVC?.view.alpha = 0
             
             }, completion: {_ in
-                UIView.animateWithDuration(0.3, delay: 0.5, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-                    self.dismissViewControllerAnimated(true, completion: nil)
+                UIView.animate(withDuration: 0.3, delay: 0.5, options: UIViewAnimationOptions.curveEaseIn, animations: {
+                    self.dismiss(animated: true, completion: nil)
                     
                     }, completion: {_ in
                         // SEND SURVEY DATA
-                        Brilliant.sharedInstance().completedSurvey!.completedTimestamp = NSDate()
+                        Brilliant.sharedInstance().completedSurvey!.completedTimestamp = Date()
                         Brilliant.sharedInstance().sendCompletedSurvey()
                 })
         })
     }
 
-    func npsScorePressed(npsScore: Int)
+    func npsScorePressed(_ npsScore: Int)
     {
         self.commentsVC = CommentsViewController(nibName: "CommentsViewController", bundle: Brilliant.xibBundle())
         self.commentsVC!.delegate = self
@@ -173,7 +193,7 @@ class SurveyViewController: UIViewController, NPSScoreViewControllerDelegate, Co
             let url = "itms-apps://itunes.apple.com/app/id\(appStoreId)"
             //        let url = "http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=\(Brilliant.sharedInstance().appStoreId)&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8"
             //        let url = "https://itunes.apple.com/us/app/apple-store/id\(Brilliant.sharedInstance().appStoreId)?mt=8"
-            UIApplication.sharedApplication().openURL(NSURL(string: url)!)
+            UIApplication.shared.openURL(URL(string: url)!)
             
             Brilliant.sharedInstance().completedSurvey!.dismissAction =  "sure_rateapp"
             self.close()

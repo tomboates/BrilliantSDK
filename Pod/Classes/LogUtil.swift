@@ -12,7 +12,7 @@ import Foundation
 class LogUtil
 {
     // only print if debug flag is set
-    internal static func printDebug(string: String) {
+    internal static func printDebug(_ string: String) {
         if Brilliant.kDEBUG {
             print(string)
         }

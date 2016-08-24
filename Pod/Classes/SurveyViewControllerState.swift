@@ -10,8 +10,8 @@ import Foundation
 
 enum SurveyViewControllerState : Int
 {
-    case RatingScreen = 0
-    case CommentScreen = 1
-    case FeedbackScreen = 2
-    case RateAppScreen = 3
+    case ratingScreen = 0
+    case commentScreen = 1
+    case feedbackScreen = 2
+    case rateAppScreen = 3
 }
