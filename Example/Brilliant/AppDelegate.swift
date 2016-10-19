@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
       // Setup User Info
 //        createInstance(key: String, appStoreId: String, userEmail: String?, userType: String?, userDate: NSDate?)
-        Brilliant.createInstance("smo25b-ej7jg8ZLIufBBqkCVmbQ-b8X4U47HZPBGH7r4RAYLdkEYCFtR8z-4wLR4wLV4beGL8eo786JnXRlqnQ", appStoreId: "", userId: "", userType: "", userDate: NSDate.distantPast())
+        Brilliant.createInstance("4Mu8qv9Mc3RTXS6GAbZfzFp4cqT6IXCJZ_IG_3d2AdHpUAHxf2yuCCd-68nwUoizYiB4KVxeAPJ0RrgKsmyC4w", appStoreId: "1057019707", userId: "1", userType: "Free", userDate: NSDate.distantPast())
 //        Brilliant.sharedInstance().configureButtonColors(UIColor.redColor())
 //        Brilliant.sharedInstance().configureFontName("Times New Roman")
         
