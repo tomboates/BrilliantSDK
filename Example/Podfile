@@ -1,12 +1,15 @@
 source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, '9.0'
+inhibit_all_warnings!
+
+project 'Brilliant'
 use_frameworks!
 
-target 'Brilliant_Example', :exclusive => true do
-  pod "Brilliant", :path => "../"
+target 'Brilliant_Example' do
+    pod 'Brilliant', :path => '../'
 end
 
-target 'Brilliant_Tests', :exclusive => true do
-  pod "Brilliant", :path => "../"
-
-  
+target 'Brilliant_Tests' do
+    pod 'Brilliant', :path => '../'
 end

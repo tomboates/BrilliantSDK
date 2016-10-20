@@ -1,20 +1,22 @@
 PODS:
-  - Alamofire (2.0.2)
-  - Brilliant (0.1.8):
-    - Alamofire (~> 2.0)
-    - ReachabilitySwift (= 2.0)
-  - ReachabilitySwift (2.0)
+  - Alamofire (4.0.0)
+  - Brilliant (0.4):
+    - Alamofire (~> 4.0)
+    - ReachabilitySwift (~> 3.0)
+  - ReachabilitySwift (3)
 
 DEPENDENCIES:
   - Brilliant (from `../`)
 
 EXTERNAL SOURCES:
   Brilliant:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
-  Brilliant: 31ab7270adbb6d35461dddb0ff653ee54f0d86b1
-  ReachabilitySwift: 227b98ae7ec99e1c01148b17fb22357aa91a5675
+  Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
+  Brilliant: d29a8fe9da53196bf09dd55f94c46570dd3f5ffd
+  ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 67a98961b9d078acb1182db09cd58e374f3eaf07
+
+COCOAPODS: 1.1.1
