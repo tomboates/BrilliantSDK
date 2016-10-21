@@ -26,15 +26,15 @@ class BrilliantWebClient
             "Content-Type": "application/json",
         ]
         
-        var encoding = ParameterEncoding.url
+        var encoding = URLEncoding.default
         if (method == .post) {
-            encoding = .url
+            encoding = .default
         }
         
         // now send data to server
      
         if #available(iOS 9.0, *) {
-            Alamofire.request("\(kBaseURL)" + path, withMethod: method, parameters: params, encoding: encoding, headers: headers)
+            Alamofire.request("\(kBaseURL)" + path, method: method, parameters: params, encoding: encoding, headers: headers)
                 .responseJSON { response in
                     switch(response.result){
                     case .success:
