@@ -68,7 +68,7 @@ open class Brilliant: NSObject {
     #else
     static var kDEBUG: Bool = false
     #endif*/
-    static var kDEBUG: Bool = false
+    open static var kDEBUG: Bool = false
     
     open static func sharedInstance() -> Brilliant
     {
