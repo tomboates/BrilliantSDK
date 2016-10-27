@@ -16,13 +16,14 @@ class BrilliantWebClient
     static fileprivate let kBaseURL = "https://www.brilliantapp.com/api/"
     //  private let kBaseURL = "http://localhost:3000/api/"
     
-    static func request(_ method: HTTPMethod, appKey: String, uniqueIdentifier: UUID, path: String, params: [String: AnyObject]?, success: @escaping (AnyObject) -> Void, failure: @escaping (Void) -> Void)
+    static func request(_ method: HTTPMethod, appKey: String, userId: String, uniqueIdentifier: UUID, path: String, params: [String: AnyObject]?, success: @escaping (AnyObject) -> Void, failure: @escaping (Void) -> Void)
     {
         let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
         // set headers for auth and JSON content-type
         let headers = [
             "X-App-Key": appKey,
             "X-App-Version": appVersion,
+            "X-App-UserId": userId,
             "Content-Type": "application/json",
         ]
         

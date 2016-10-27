@@ -63,12 +63,12 @@ open class Brilliant: NSObject {
         }
     }
     
-    #if DEBUG
+    /*#if DEBUG
     static var kDEBUG: Bool = true
     #else
     static var kDEBUG: Bool = false
-    #endif
-    //static var kDEBUG: Bool = true
+    #endif*/
+    static var kDEBUG: Bool = false
     
     open static func sharedInstance() -> Brilliant
     {
@@ -179,7 +179,9 @@ open class Brilliant: NSObject {
         
         weak var weakSelf = self
         // now send data to server
-        BrilliantWebClient.request(.post, appKey: self.appKey, uniqueIdentifier: self.uniqueIdentifier, path: "surveys", params: ["nps_survey": self.completedSurvey!.serializeForSurvey() as AnyObject, "uniqueIdentifier": self.uniqueIdentifier.uuidString as AnyObject], success: { (JSON) -> Void in
+        guard let userId = userId else { return }
+        
+        BrilliantWebClient.request(.post, appKey: self.appKey, userId: userId, uniqueIdentifier: self.uniqueIdentifier, path: "surveys", params: ["nps_survey": self.completedSurvey!.serializeForSurvey() as AnyObject, "uniqueIdentifier": self.uniqueIdentifier.uuidString as AnyObject], success: { (JSON) -> Void in
             LogUtil.printDebug("Successfully saved to server.")
             
             if !Brilliant.kDEBUG {
@@ -198,7 +200,9 @@ open class Brilliant: NSObject {
     
     fileprivate func getInitialSurveyData() {
         weak var weakSelf = self
-        BrilliantWebClient.request(.get, appKey: self.appKey, uniqueIdentifier: self.uniqueIdentifier, path: "initWithAppKey", params: ["uniqueIdentifier": self.uniqueIdentifier.uuidString as AnyObject, "advertistingId" : "" as AnyObject], success: { (JSON) -> Void in
+        guard let userId = userId else { return }
+        
+        BrilliantWebClient.request(.get, appKey: self.appKey, userId: userId, uniqueIdentifier: self.uniqueIdentifier, path: "initWithAppKey", params: ["uniqueIdentifier": self.uniqueIdentifier.uuidString as AnyObject, "advertistingId" : "" as AnyObject], success: { (JSON) -> Void in
             weakSelf?.appName = JSON["name"] as? String
             
             if let eligible = JSON["eligible"] as? Bool {
