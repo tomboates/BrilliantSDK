@@ -36,11 +36,26 @@ class BrilliantWebClient
             
             switch (response.result) {
             case .success(let JSON):
+                let reachability = Reachability()
+                NotificationCenter.default.removeObserver(self, name: ReachabilityChangedNotification, object: reachability)
                 success(JSON as! AnyObject)
                 break
-            case .failure(let data):
-                print("Failure")
-                print(data)
+            case .failure(let error):
+                
+                if let error = error as? NSError {
+                    LogUtil.printDebug("BrilliantWebClient error " + error.localizedDescription)
+                }
+                
+                let reachability = Reachability()
+                
+                NotificationCenter.default.addObserver(self, selector: "reachabilityChanged:", name: ReachabilityChangedNotification, object: reachability)
+                
+                do {
+                    try reachability!.startNotifier()
+                } catch let err {
+                    LogUtil.printDebug("Failed reachability start notifier: " + err.localizedDescription)
+                }
+                
                 break
             default:
                 break
