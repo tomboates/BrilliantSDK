@@ -167,7 +167,9 @@ open class Brilliant: NSObject {
         {
             LogUtil.printDebug("Survey was not filled out")
             return
-        }        
+        }
+        
+        eligible = false
         
         // add user data
         self.completedSurvey!.customerUserId = self.userId
