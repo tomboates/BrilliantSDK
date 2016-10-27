@@ -10,18 +10,18 @@ import UIKit
 import Brilliant
 
 class ViewController: UIViewController {
-
-  @IBOutlet weak var appLabel: UILabel!
-  @IBOutlet weak var surveyButton: UIButton!
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-  }
-  
-  @IBAction func surveyButtonPressed(sender: AnyObject) {
-    Brilliant.sharedInstance().showNpsSurvey("Test Event") { (success) -> Void in
-        
+    
+    @IBOutlet weak var appLabel: UILabel!
+    @IBOutlet weak var surveyButton: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
-  }
+    
+    @IBAction func surveyButtonPressed(sender: AnyObject) {
+        Brilliant.sharedInstance().showNpsSurvey("Test Event") { (success) -> Void in
+            
+        }
+    }
 }
 

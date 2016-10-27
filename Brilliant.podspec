@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "Brilliant"
-  s.version          = "0.3"
+  s.version          = "0.4"
   s.summary          = "A library for in-app NPS Surveys"
 
 # This description is used to generate tags and improve search results.
@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/tomboates/BrilliantSDK.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/brilliantnps'
 
-  s.platform     = :ios, '8.0'
+  s.platform     = :ios, '9.0'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
@@ -35,6 +35,6 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  s.dependency 'Alamofire', '~> 2.0'
-  s.dependency 'ReachabilitySwift', '2.0'
+  s.dependency 'Alamofire', '~> 4.0.1'
+  s.dependency 'ReachabilitySwift', '~> 3'
 end

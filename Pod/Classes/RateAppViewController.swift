@@ -10,7 +10,7 @@ import Foundation
 
 protocol RateAppViewControllerDelegate: class{
     
-    func closePressed(state: SurveyViewControllerState)
+    func closePressed(_ state: SurveyViewControllerState)
     func rateAppPressed()
     func doNotRateAppPressed()
 }
@@ -26,8 +26,8 @@ class RateAppViewController: UIViewController
     
     override func viewDidLoad() {
         
-        let image = UIImage(named: "brilliant-icon-close", inBundle:Brilliant.imageBundle(), compatibleWithTraitCollection: nil)
-        self.closeButton.setImage(image, forState: .Normal)
+        let image = UIImage(named: "brilliant-icon-close", in:Brilliant.imageBundle(), compatibleWith: nil)
+        self.closeButton.setImage(image, for: UIControlState())
         self.closeButton.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 25, right: 25)
         
         self.rateLabel.font = Brilliant.sharedInstance().mainLabelFont()
@@ -41,19 +41,19 @@ class RateAppViewController: UIViewController
         self.denyButton.titleLabel?.font = Brilliant.sharedInstance().submitButtonFont()
     }
     
-    @IBAction func closePressed(sender: AnyObject) {
-        self.delegate?.closePressed(.RateAppScreen)
+    @IBAction func closePressed(_ sender: AnyObject) {
+        self.delegate?.closePressed(.rateAppScreen)
     }
     
-    @IBAction func denyPressed(sender: AnyObject) {
+    @IBAction func denyPressed(_ sender: AnyObject) {
         self.delegate?.doNotRateAppPressed()
     }
     
-    @IBAction func starsPressed(sender: AnyObject) {
+    @IBAction func starsPressed(_ sender: AnyObject) {
         self.delegate?.rateAppPressed()
     }
     
-    @IBAction func confirmPressed(sender: AnyObject) {
+    @IBAction func confirmPressed(_ sender: AnyObject) {
         self.delegate?.rateAppPressed()
     }
 }

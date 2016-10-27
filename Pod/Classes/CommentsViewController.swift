@@ -10,7 +10,7 @@ import Foundation
 
 protocol CommentsViewControllerDelegate: class{
     
-    func closePressed(state: SurveyViewControllerState)
+    func closePressed(_ state: SurveyViewControllerState)
     func submitFeedbackPressed()
     func doNotSubmitFeedbackPressed()
 }
@@ -29,8 +29,8 @@ class CommentsViewController: UIViewController
     internal weak var delegate : CommentsViewControllerDelegate?
     
     override func viewDidLoad() {
-        let image = UIImage(named: "brilliant-icon-close", inBundle:Brilliant.imageBundle(), compatibleWithTraitCollection: nil)
-        self.closeButton.setImage(image, forState: .Normal)
+        let image = UIImage(named: "brilliant-icon-close", in:Brilliant.imageBundle(), compatibleWith: nil)
+        self.closeButton.setImage(image, for: UIControlState())
         self.closeButton.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 25, right: 25)
         
         self.commentDescriptionLabel.textColor = Brilliant.sharedInstance().mainLabelColor()
@@ -57,19 +57,19 @@ class CommentsViewController: UIViewController
         self.submitButton.titleLabel?.font = Brilliant.sharedInstance().submitButtonFont()
         self.noThanksButton.titleLabel?.font = Brilliant.sharedInstance().submitButtonFont()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(adjustForKeyboard), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(adjustForKeyboard), name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
-    func adjustForKeyboard(notification: NSNotification) {
-        var userInfo = notification.userInfo!
+    func adjustForKeyboard(_ notification: Notification) {
+        var userInfo = (notification as NSNotification).userInfo!
         
-        let keyboardScreenEndFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue()
-        let keyboardViewEndFrame = view.convertRect(keyboardScreenEndFrame, toView: view.window)
+        let keyboardScreenEndFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, to: view.window)
         
         self.view.translatesAutoresizingMaskIntoConstraints = true
         
-        let screenHeight = UIScreen.mainScreen().bounds.height
+        let screenHeight = UIScreen.main.bounds.height
         let height = self.comments.frame.height + self.comments.frame.origin.y
         let diffHeight = CGFloat(screenHeight) - height
     
@@ -85,39 +85,39 @@ class CommentsViewController: UIViewController
             offset = abs(moveHeight!) - comments.frame.origin.y - 5
         }
         
-        if notification.name == UIKeyboardWillHideNotification {
-            UIView.animateWithDuration(1.0, animations: {
+        if notification.name == NSNotification.Name.UIKeyboardWillHide {
+            UIView.animate(withDuration: 1.0, animations: {
                 self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
             })
         } else {
-            UIView.animateWithDuration(1.0, animations: {
+            UIView.animate(withDuration: 1.0, animations: {
                 self.view.frame = CGRect(x: 0, y: moveHeight! + offset! - 5, width: self.view.frame.width, height: self.view.frame.height)
             })
         }
     }
     
-    func textFieldValue(notification: NSNotification){
+    func textFieldValue(_ notification: Notification){
         if comments.text.isEmpty {
-            UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+            UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveEaseIn, animations: {
                 self.noThanksButton.alpha = 1
                 self.submitButton.alpha = 0
                 }, completion: nil)
         } else {
-            UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+            UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveEaseIn, animations: {
                 self.noThanksButton.alpha = 0
                 self.submitButton.alpha = 1
                 }, completion: nil)
         }
     }
     
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    func textView(_ textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if(text == "\n") {
             
             if comments.text.isEmpty {
                 
                 textView.resignFirstResponder()
                 
-                UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveEaseIn, animations: {
                     self.noThanksButton.alpha = 1
                     self.submitButton.alpha = 0
                     }, completion: nil)
@@ -125,7 +125,7 @@ class CommentsViewController: UIViewController
                 return false
                 
             } else {
-                UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveEaseIn, animations: {
                     self.noThanksButton.alpha = 0
                     self.submitButton.alpha = 1
                     }, completion: nil)
@@ -136,13 +136,13 @@ class CommentsViewController: UIViewController
         return true
     }
     
-    func textFieldDidReturn(textField: UITextField!) {
+    func textFieldDidReturn(_ textField: UITextField!) {
         textField.resignFirstResponder()
         // Execute additional code
     }
     
     
-    func keyboardWasShown(notification: NSNotification)
+    func keyboardWasShown(_ notification: Notification)
     {
         //Need to calculate keyboard exact size due to Apple suggestions
 //        npsView.scrollEnabled = true
@@ -168,7 +168,7 @@ class CommentsViewController: UIViewController
         
     }
     
-    func keyboardWillBeHidden(notification: NSNotification)
+    func keyboardWillBeHidden(_ notification: Notification)
     {
         //Once keyboard disappears, restore original positions
 //        let info : NSDictionary = notification.userInfo!
@@ -182,20 +182,20 @@ class CommentsViewController: UIViewController
         
     }
     
-    @IBAction func submitPressed(sender: AnyObject) {
+    @IBAction func submitPressed(_ sender: AnyObject) {
         Brilliant.sharedInstance().completedSurvey!.comment = self.comments.text
         self.delegate?.submitFeedbackPressed()
     }
     
-    @IBAction func noThanksPressed(sender: AnyObject) {
+    @IBAction func noThanksPressed(_ sender: AnyObject) {
         self.delegate?.doNotSubmitFeedbackPressed()
     }
     
-    @IBAction func closePressed(sender: AnyObject) {
-        self.delegate?.closePressed(.CommentScreen)
+    @IBAction func closePressed(_ sender: AnyObject) {
+        self.delegate?.closePressed(.commentScreen)
     }
     
-    @IBAction func keyboardDoneClicked(sender: AnyObject) {
+    @IBAction func keyboardDoneClicked(_ sender: AnyObject) {
         self.comments.resignFirstResponder()
     }
 }

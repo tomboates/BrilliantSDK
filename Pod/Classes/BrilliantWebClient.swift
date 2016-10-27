@@ -13,12 +13,12 @@ import ReachabilitySwift
 class BrilliantWebClient
 {
     //  need to use herokuapp subdomain in order have insecure POST requests (https solves this)
-    static private let kBaseURL = "https://www.brilliantapp.com/api/"
+    static fileprivate let kBaseURL = "https://www.brilliantapp.com/api/"
     //  private let kBaseURL = "http://localhost:3000/api/"
     
-    static func request(method: Alamofire.Method, appKey: String, uniqueIdentifier: NSUUID, path: String, params: [String: AnyObject]?, success: (AnyObject) -> Void, failure: (Void) -> Void)
+    static func request(_ method: HTTPMethod, appKey: String, uniqueIdentifier: UUID, path: String, params: [String: AnyObject]?, success: @escaping (AnyObject) -> Void, failure: @escaping (Void) -> Void)
     {
-        let appVersion = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleVersion") as! String
+        let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
         // set headers for auth and JSON content-type
         let headers = [
             "X-App-Key": appKey,
@@ -26,13 +26,28 @@ class BrilliantWebClient
             "Content-Type": "application/json",
         ]
         
-        var encoding = ParameterEncoding.URL
-        if (method == .POST) {
-            encoding = .JSON
+        var encoding: ParameterEncoding = URLEncoding()
+        if method == .post {
+            encoding = JSONEncoding()
+        }
+        
+        Alamofire.request("\(kBaseURL)" + path, method: method, parameters: params, encoding: encoding, headers: headers).responseJSON { (response) in
+            
+            switch (response.result) {
+            case .success(let JSON):
+                success(JSON as! AnyObject)
+                break
+            case .failure(let data):
+                print("Failure")
+                print(data)
+                break
+            default:
+                break
+            }
         }
         
         // now send data to server
-        Alamofire.request(method, "\(kBaseURL)" + path, headers: headers, parameters: params, encoding: encoding)
+        /*Alamofire.request(method, "\(kBaseURL)" + path, headers: headers, parameters: params, encoding: encoding)
             .responseJSON(completionHandler: { (request, ResponseSerializer, result) -> Void in
                 
                 switch(result)
@@ -65,6 +80,6 @@ class BrilliantWebClient
                     failure()
                     break
                 }
-        })
+        })*/
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 
 protocol NegativeFeedbackCompleteViewControllerDelegate: class{
     
-    func closePressed(state: SurveyViewControllerState)
+    func closePressed(_ state: SurveyViewControllerState)
     func doneWithFeedbackPressed()
     func autoDismissFeedbackComplete()
 }
@@ -25,9 +25,9 @@ class NegativeFeedbackCompleteViewController: UIViewController
     
     override func viewDidLoad() {
         
-        let image = UIImage(named: "brilliant-icon-close", inBundle:Brilliant.imageBundle(), compatibleWithTraitCollection: nil)
-        let commentImage = UIImage(named: "commentBubble", inBundle: Brilliant.imageBundle(), compatibleWithTraitCollection: nil)
-        self.closeButton.setImage(image, forState: .Normal)
+        let image = UIImage(named: "brilliant-icon-close", in:Brilliant.imageBundle(), compatibleWith: nil)
+        let commentImage = UIImage(named: "commentBubble", in: Brilliant.imageBundle(), compatibleWith: nil)
+        self.closeButton.setImage(image, for: UIControlState())
         self.closeButton.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 25, right: 25)
         
         self.explanationLabel.font = Brilliant.sharedInstance().mainLabelFont()
@@ -38,18 +38,18 @@ class NegativeFeedbackCompleteViewController: UIViewController
         self.doneButton.titleLabel?.font = Brilliant.sharedInstance().submitButtonFont()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
 //        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Double(NSEC_PER_SEC)))
 //        dispatch_after(delayTime, dispatch_get_main_queue()) {
 //            self.delegate?.autoDismissFeedbackComplete()
 //        }
     }
     
-    @IBAction func closePressed(sender: AnyObject) {
-        self.delegate?.closePressed(.FeedbackScreen)
+    @IBAction func closePressed(_ sender: AnyObject) {
+        self.delegate?.closePressed(.feedbackScreen)
     }
     
-    @IBAction func donePressed(sender: AnyObject) {
+    @IBAction func donePressed(_ sender: AnyObject) {
         self.delegate?.doneWithFeedbackPressed()
     }
 }
