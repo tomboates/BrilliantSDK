@@ -46,12 +46,12 @@ class BrilliantWebClient
                     LogUtil.printDebug("BrilliantWebClient error " + error.localizedDescription)
                 }
                 
-                let reachability = Reachability()
+                let reachability = Reachability.init()
                 
-                NotificationCenter.default.addObserver(self, selector: "reachabilityChanged:", name: ReachabilityChangedNotification, object: reachability)
+                NotificationCenter.default.addObserver(Brilliant.sharedInstance(), selector: "reachabilityChanged:", name: ReachabilityChangedNotification, object: reachability)
                 
                 do {
-                    try reachability!.startNotifier()
+                    try reachability?.startNotifier()
                 } catch let err {
                     LogUtil.printDebug("Failed reachability start notifier: " + err.localizedDescription)
                 }
