@@ -18,8 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let devKey = "jZb5h7o_KQwFgKwa7c90yrEV3ibSahqjwYm1rrkYHdZdXcM6fiVADOzC5-CVe7sOKR9YZV8QI_M6L_AJg7w-6Q"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-      // Setup User Info
-        Brilliant.createInstance(prodKey, appStoreId: "1057019707", userId: "5", userType: "Free", userDate: Date.distantPast)
+        // Setup User Info
+        Brilliant.createInstance(devKey, appStoreId: "1057019707", userId: "11", userType: "Free", userDate: Date.distantPast)
+        Brilliant.kDEBUG = true
         
 //        Brilliant.sharedInstance().configureButtonColors(UIColor.redColor())
 //        Brilliant.sharedInstance().configureFontName("Times New Roman")

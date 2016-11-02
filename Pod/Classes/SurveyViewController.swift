@@ -57,25 +57,39 @@ class SurveyViewController: UIViewController, NPSScoreViewControllerDelegate, Co
         
         //only apply the blur if the user hasn't disabled transparency effects
         if !UIAccessibilityIsReduceTransparencyEnabled() {
-            self.view.backgroundColor = UIColor.clear
-            blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark);
-            blurEffectView = UIVisualEffectView(effect: blurEffect);
-            
-            blurEffectView!.frame = CGRect(x: 0, y: 0, width: 2732, height: 2732)
-            
-            self.view.addSubview(blurEffectView!)
-        }
-        else
-        {
-            self.view.backgroundColor = UIColor.black
+            showBlurredWindowImage()
+        } else {
+            self.view.backgroundColor = .black
         }
         
         Brilliant.sharedInstance().completedSurvey?.triggerTimestamp = Date()
         
         self.npsScoreVC = NPSScoreViewController(nibName: "NPSScoreViewController", bundle: Brilliant.xibBundle())
-        self.npsScoreVC!.delegate = self
-        self.addFullScreenSubViewController(self.npsScoreVC!)
-        
+        self.npsScoreVC?.delegate = self
+        self.addFullScreenSubViewController(npsScoreVC!)
+    }
+    
+    fileprivate func showBlurredWindowImage() {
+        if let windowImage = getWindowImage() {
+            let imageView = UIImageView(image: windowImage)
+            view.addSubview(imageView)
+            
+            let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+            blurView.frame = imageView.bounds
+            imageView.addSubview(blurView)
+        } else {
+            self.view.backgroundColor = .black
+        }
+    }
+    
+    fileprivate func getWindowImage() -> UIImage? {
+        if let keyWindow = UIApplication.shared.keyWindow {
+            UIGraphicsBeginImageContextWithOptions(keyWindow.frame.size, keyWindow.isOpaque, 0)
+            keyWindow.layer.render(in: UIGraphicsGetCurrentContext()!)
+            let image = UIGraphicsGetImageFromCurrentImageContext()
+            return image
+        }
+        return nil
     }
     
     func addFullScreenSubViewController(_ subViewController: UIViewController)
@@ -84,8 +98,8 @@ class SurveyViewController: UIViewController, NPSScoreViewControllerDelegate, Co
         self.view.addSubview(subViewController.view)
         subViewController.view.translatesAutoresizingMaskIntoConstraints = false
         
-        let hConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[subViewController]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["subViewController" : subViewController.view])
-        let vConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[subViewController]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["subViewController" : subViewController.view])
+        let hConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[subViewController]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["subViewController" : subViewController.view])
+        let vConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|[subViewController]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["subViewController" : subViewController.view])
         self.view.addConstraints(hConstraints)
         self.view.addConstraints(vConstraints)
     }

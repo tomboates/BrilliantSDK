@@ -17,9 +17,7 @@ open class Brilliant: NSObject {
     fileprivate static let completedSurveyKey = "completedSurvey"
     fileprivate static let uniqueIdentifierKey = "uniqueIdentifier"
     
-    //  public static let sharedInstance = Brilliant()
     fileprivate static var instanceVar: Brilliant?
-    fileprivate static var onceToken: Int = 0
     
     open let appKey: String
     open let appStoreId: String?
@@ -72,6 +70,9 @@ open class Brilliant: NSObject {
     
     open static func sharedInstance() -> Brilliant
     {
+        if instanceVar == nil {
+            print("Before you can show an NPS survey, you will need to call the 'createInstance' initializer.")
+        }
         return instanceVar!
     }
     
@@ -82,17 +83,17 @@ open class Brilliant: NSObject {
         // if a pending survey is saved, load and attempt to resend
         if let surveyMap = UserDefaults.standard.object(forKey: Brilliant.completedSurveyKey) as? [String : String]
         {
-            Brilliant.sharedInstance().completedSurvey = Survey(map: surveyMap as [String : AnyObject])
-            Brilliant.sharedInstance().pendingSurvey = true
-            Brilliant.sharedInstance().sendCompletedSurvey()
+            instanceVar?.completedSurvey = Survey(map: surveyMap as [String : AnyObject])
+            instanceVar?.pendingSurvey = true
+            instanceVar?.sendCompletedSurvey()
         }
         else
         {
-            Brilliant.sharedInstance().pendingSurvey = false
+            instanceVar?.pendingSurvey = false
         }
         
         // pull data from server (for now just app name to display)
-        Brilliant.sharedInstance().getInitialSurveyData()
+        instanceVar?.getInitialSurveyData()
     }
     
     fileprivate init(key: String, appStoreId: String?, userId: String?, userType: String?, userDate: Date?) {
@@ -138,7 +139,7 @@ open class Brilliant: NSObject {
             let surveyVC = SurveyViewController(nibName: "SurveyViewController", bundle: Brilliant.xibBundle())
             let modalStyle = UIModalTransitionStyle.crossDissolve
             surveyVC.modalTransitionStyle = modalStyle
-            surveyVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+            //surveyVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
             rootVC!.present(surveyVC, animated: true, completion: nil)
         }
         else
@@ -222,7 +223,7 @@ open class Brilliant: NSObject {
     
     func reachabilityChanged(_ note: Notification) {
         
-        let reachability = note.object as! Reachability
+        guard let reachability = note.object as? Reachability else { return }
         
         if reachability.isReachable {
             if self.pendingSurvey == true {
@@ -399,7 +400,7 @@ open class Brilliant: NSObject {
     {
         button.layer.cornerRadius = 4
         button.tintColor = UIColor.white
-        button.backgroundColor = Brilliant.sharedInstance().submitCommentsColor()
+        button.backgroundColor = submitCommentsColor()
     }
     
 }
