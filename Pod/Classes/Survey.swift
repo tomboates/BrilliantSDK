@@ -10,16 +10,16 @@ import Foundation
 
 class Survey: NSObject
 {
-    var surveyId: NSUUID!
+    var surveyId: UUID!
     
     var dismissAction: String?
-    var userAccountCreation: NSDate?
-    var triggerTimestamp : NSDate?
+    var userAccountCreation: Date?
+    var triggerTimestamp : Date?
     var event: String?
     var comment: String?
     var customerUserId: String?
     var userType: String?
-    var completedTimestamp: NSDate?
+    var completedTimestamp: Date?
     var npsRating: Int?
     
     static let triggerTimestampKey = "trigger_timestamp"
@@ -33,38 +33,38 @@ class Survey: NSObject
     static let userTypeKey = "user_type"
     static let surveyIdKey = "survey_id"
     
-    init(surveyId: NSUUID){
+    init(surveyId: UUID){
         self.surveyId = surveyId
     }
     
     init(map:[String: AnyObject])
     {
-        self.triggerTimestamp = map[Survey.triggerTimestampKey] as? NSDate
+        self.triggerTimestamp = map[Survey.triggerTimestampKey] as? Date
         self.dismissAction = map[Survey.dismissActionKey] as? String
-        self.completedTimestamp = map[Survey.completedTimestampKey] as? NSDate
+        self.completedTimestamp = map[Survey.completedTimestampKey] as? Date
         self.npsRating = map[Survey.npsRatingKey] as? Int
         self.comment = map[Survey.commentsKey] as? String
-        self.userAccountCreation = map[Survey.userAccountCreationKey] as? NSDate
+        self.userAccountCreation = map[Survey.userAccountCreationKey] as? Date
         self.event = map[Survey.eventKey] as? String
         self.customerUserId = map[Survey.customerUserIdKey] as? String
         self.userType = map[Survey.userTypeKey] as? String
-        self.surveyId = NSUUID(UUIDString: map[Survey.surveyIdKey] as! String)
+        self.surveyId = UUID(uuidString: map[Survey.surveyIdKey] as! String)
     }
     
     func serialize() -> [String: AnyObject]
     {
         var map = [String: AnyObject]()
         
-        map[Survey.triggerTimestampKey] = self.triggerTimestamp
-        map[Survey.dismissActionKey] = self.dismissAction
-        map[Survey.completedTimestampKey] = self.completedTimestamp
-        map[Survey.npsRatingKey] = self.npsRating
-        map[Survey.commentsKey] = self.comment
-        map[Survey.userAccountCreationKey] = self.userAccountCreation
-        map[Survey.eventKey] = self.event
-        map[Survey.customerUserIdKey] = self.customerUserId
-        map[Survey.userTypeKey] = self.userType
-        map[Survey.surveyIdKey] = self.surveyId.UUIDString
+        map[Survey.triggerTimestampKey] = self.triggerTimestamp as AnyObject?
+        map[Survey.dismissActionKey] = self.dismissAction as AnyObject?
+        map[Survey.completedTimestampKey] = self.completedTimestamp as AnyObject?
+        map[Survey.npsRatingKey] = self.npsRating as AnyObject?
+        map[Survey.commentsKey] = self.comment as AnyObject?
+        map[Survey.userAccountCreationKey] = self.userAccountCreation as AnyObject?
+        map[Survey.eventKey] = self.event as AnyObject?
+        map[Survey.customerUserIdKey] = self.customerUserId as AnyObject?
+        map[Survey.userTypeKey] = self.userType as AnyObject?
+        map[Survey.surveyIdKey] = self.surveyId.uuidString as AnyObject?
         
         return map
     }
@@ -100,7 +100,7 @@ class Survey: NSObject
         map[Survey.eventKey] = self.event
         map[Survey.customerUserIdKey] = self.customerUserId
         map[Survey.userTypeKey] = self.userType
-        map[Survey.surveyIdKey] = self.surveyId.UUIDString
+        map[Survey.surveyIdKey] = self.surveyId.uuidString
         
         return map
     }

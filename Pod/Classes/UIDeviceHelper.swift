@@ -13,19 +13,19 @@ class UIDeviceHelper
 {
     static func deviceWidth() -> ScreenSize
     {
-        let width = UIScreen.mainScreen().bounds.width
+        let width = UIScreen.main.bounds.width
         
         if width <= 375
         {
-            return .Small
+            return .small
         }
         else if width <= 414
         {
-            return .Medium
+            return .medium
         }
         else
         {
-            return .Large
+            return .large
         }
     }
 }

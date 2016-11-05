@@ -1,19 +1,25 @@
 {
   "name": "Brilliant",
-  "version": "0.1.8",
-  "summary": "A library for in-app User Surveys",
-  "description": "Brilliant is a library for in-app user surveys",
+  "version": "0.3",
+  "summary": "A library for in-app NPS Surveys",
+  "description": "Brilliant is a library for in-app nps (net promoter score) surveys",
   "homepage": "https://github.com/tomboates/BrilliantSDK",
+  "screenshots": [
+    "http://www.brilliant-llc.com/nps.png",
+    "http://www.brilliant-llc.com/comments.png",
+    "http://www.brilliant-llc.com/rating.png"
+  ],
   "license": "MIT",
   "authors": {
-    "Paul Berry": "pdbthefifth@gmail.com"
+    "Tom Boates": "tom.boates@me.com"
   },
   "source": {
     "git": "https://github.com/tomboates/BrilliantSDK.git",
-    "tag": "0.1.8"
+    "tag": "0.3"
   },
+  "social_media_url": "https://twitter.com/brilliantnps",
   "platforms": {
-    "ios": "8.0"
+    "ios": "9.0"
   },
   "requires_arc": true,
   "source_files": "Pod/Classes/**/*",
@@ -25,10 +31,10 @@
   },
   "dependencies": {
     "Alamofire": [
-      "~> 2.0"
+      "~> 4.0.1"
     ],
     "ReachabilitySwift": [
-      "2.0"
+      "~> 3"
     ]
   }
 }
