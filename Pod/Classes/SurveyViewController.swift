@@ -72,7 +72,6 @@ class SurveyViewController: UIViewController, NPSScoreViewControllerDelegate, Co
     lazy var blurredBackgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFill
         imageView.addSubview(self.blurVisualEffectView)
         return imageView
     }()
@@ -84,11 +83,11 @@ class SurveyViewController: UIViewController, NPSScoreViewControllerDelegate, Co
         if let windowImage = getWindowImage() {
             blurredBackgroundImageView.backgroundColor = .red
             view.addSubview(blurredBackgroundImageView)
-            blurredBackgroundImageView.image = windowImage
             blurredBackgroundImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
             blurredBackgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
             blurredBackgroundImageView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
             blurredBackgroundImageView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+            blurredBackgroundImageView.image = windowImage
             
             blurVisualEffectView.frame = keyWindow.frame
         } else {
@@ -96,13 +95,14 @@ class SurveyViewController: UIViewController, NPSScoreViewControllerDelegate, Co
         }
     }
     
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         guard let keyWindow = UIApplication.shared.keyWindow else { return }
-        blurVisualEffectView.frame = CGRect(x: 0, y: 0, width: keyWindow.frame.height, height: keyWindow.frame.width)
-    }
-    
-    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
-        
+        let orientation = UIDevice.current.orientation
+        if orientation == .portrait || orientation == .portraitUpsideDown {
+            blurVisualEffectView.frame = CGRect(x: 0, y: 0, width: keyWindow.frame.height, height: keyWindow.frame.width)
+        } else {
+            blurVisualEffectView.frame = CGRect(x: 0, y: 0, width: keyWindow.frame.height, height: keyWindow.frame.height)
+        }
     }
     
     fileprivate func getWindowImage() -> UIImage? {
