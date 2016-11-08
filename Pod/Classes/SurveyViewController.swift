@@ -69,17 +69,40 @@ class SurveyViewController: UIViewController, NPSScoreViewControllerDelegate, Co
         self.addFullScreenSubViewController(npsScoreVC!)
     }
     
+    lazy var blurredBackgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        imageView.addSubview(self.blurVisualEffectView)
+        return imageView
+    }()
+    let blurVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+    
     fileprivate func showBlurredWindowImage() {
+        guard let keyWindow = UIApplication.shared.keyWindow else { return }
+        
         if let windowImage = getWindowImage() {
-            let imageView = UIImageView(image: windowImage)
-            view.addSubview(imageView)
+            blurredBackgroundImageView.backgroundColor = .red
+            view.addSubview(blurredBackgroundImageView)
+            blurredBackgroundImageView.image = windowImage
+            blurredBackgroundImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+            blurredBackgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+            blurredBackgroundImageView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+            blurredBackgroundImageView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
             
-            let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
-            blurView.frame = imageView.bounds
-            imageView.addSubview(blurView)
+            blurVisualEffectView.frame = keyWindow.frame
         } else {
             self.view.backgroundColor = .black
         }
+    }
+    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        guard let keyWindow = UIApplication.shared.keyWindow else { return }
+        blurVisualEffectView.frame = CGRect(x: 0, y: 0, width: keyWindow.frame.height, height: keyWindow.frame.width)
+    }
+    
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+        
     }
     
     fileprivate func getWindowImage() -> UIImage? {
