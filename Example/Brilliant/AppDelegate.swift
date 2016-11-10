@@ -14,16 +14,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    let prodKey = "ZoNY4M9uqp6PMjbPm6zAee-bVLqkKwelovjOMxxY5xe0CheM71HRtLYBgFNzYMRCtnHKHAq3OTFKcw8hoKCpjQ"
-    let devKey = "jZb5h7o_KQwFgKwa7c90yrEV3ibSahqjwYm1rrkYHdZdXcM6fiVADOzC5-CVe7sOKR9YZV8QI_M6L_AJg7w-6Q"
+    let prodKey = "fUreZRv02QzsEQWysrcJwx8wMFatAJPcqx3Sz54SKtYis8GKHNa7LqoJmBRr11113MZqmXgFRS4l8PjtrRKlcw"
+    let devKey = "aeaCDTJMPFn6fHYCZ3Dpp3GKOkz3H8c8ivcNHIsGDLaJsOwHql-hbzxAi24R4Jy7vc9LbjvYsqmoSC_4TBvBtQ"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         // Setup User Info
-        Brilliant.createInstance(devKey, appStoreId: "1057019707", userId: "11", userType: "Free", userDate: Date.distantPast)
+        Brilliant.createInstance(prodKey, appStoreId: "1057019707", userId: "9999399399999399339993993393966397657659339aa3939399399399399", userType: "Free", userDate: Date.distantPast)
         Brilliant.kDEBUG = true
         
-//        Brilliant.sharedInstance().configureButtonColors(UIColor.redColor())
-//        Brilliant.sharedInstance().configureFontName("Times New Roman")
+        Brilliant.sharedInstance().configureButtonColors(UIColor(red: 0.456, green: 0.864, blue: 0.449, alpha: 1.000))
+        Brilliant.sharedInstance().configureFontName("Avenir")
         
         return true
     }
