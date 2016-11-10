@@ -29,7 +29,7 @@ class Survey: NSObject
     static let commentsKey = "comments"
     static let userAccountCreationKey = "user_account_creation"
     static let eventKey = "event"
-    static let customerUserIdKey = "customer_user_id"
+    static let customerUserIdKey = "user_id"
     static let userTypeKey = "user_type"
     static let surveyIdKey = "survey_id"
     

@@ -205,7 +205,7 @@ open class Brilliant: NSObject {
         weak var weakSelf = self
         guard let userId = userId else { return }
         
-        BrilliantWebClient.request(.get, appKey: self.appKey, userId: userId, uniqueIdentifier: self.uniqueIdentifier, path: "initWithAppKey", params: ["uniqueIdentifier": self.uniqueIdentifier.uuidString as AnyObject, "advertistingId" : "" as AnyObject], success: { (JSON) -> Void in
+        BrilliantWebClient.request(.get, appKey: self.appKey, userId: userId, uniqueIdentifier: self.uniqueIdentifier, path: "initWithAppKey", params: ["uniqueIdentifier": self.uniqueIdentifier.uuidString as AnyObject, "advertistingId" : "" as AnyObject, "userId": userId as AnyObject], success: { (JSON) -> Void in
             weakSelf?.appName = JSON["name"] as? String
             
             if let eligible = JSON["eligible"] as? Bool {

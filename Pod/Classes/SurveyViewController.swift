@@ -69,16 +69,39 @@ class SurveyViewController: UIViewController, NPSScoreViewControllerDelegate, Co
         self.addFullScreenSubViewController(npsScoreVC!)
     }
     
+    lazy var blurredBackgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.addSubview(self.blurVisualEffectView)
+        return imageView
+    }()
+    let blurVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+    
     fileprivate func showBlurredWindowImage() {
+        guard let keyWindow = UIApplication.shared.keyWindow else { return }
+        
         if let windowImage = getWindowImage() {
-            let imageView = UIImageView(image: windowImage)
-            view.addSubview(imageView)
+            blurredBackgroundImageView.backgroundColor = .red
+            view.addSubview(blurredBackgroundImageView)
+            blurredBackgroundImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+            blurredBackgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+            blurredBackgroundImageView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+            blurredBackgroundImageView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+            blurredBackgroundImageView.image = windowImage
             
-            let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
-            blurView.frame = imageView.bounds
-            imageView.addSubview(blurView)
+            blurVisualEffectView.frame = keyWindow.frame
         } else {
             self.view.backgroundColor = .black
+        }
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        guard let keyWindow = UIApplication.shared.keyWindow else { return }
+        let orientation = UIDevice.current.orientation
+        if orientation == .portrait || orientation == .portraitUpsideDown {
+            blurVisualEffectView.frame = CGRect(x: 0, y: 0, width: keyWindow.frame.height, height: keyWindow.frame.width)
+        } else {
+            blurVisualEffectView.frame = CGRect(x: 0, y: 0, width: keyWindow.frame.height, height: keyWindow.frame.height)
         }
     }
     

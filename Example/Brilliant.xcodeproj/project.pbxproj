@@ -216,10 +216,11 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 5LMQ78DL6T;
+						DevelopmentTeam = VXD6RTU6MW;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = VXD6RTU6MW;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
@@ -496,7 +497,7 @@
 			baseConfigurationReference = 5F1A69B8BDC8D0BC928F2990 /* Pods-Brilliant_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5LMQ78DL6T;
+				DEVELOPMENT_TEAM = VXD6RTU6MW;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/Alamofire\"",
@@ -519,7 +520,7 @@
 			baseConfigurationReference = 12D588DDB16D0B3AEC7377B2 /* Pods-Brilliant_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5LMQ78DL6T;
+				DEVELOPMENT_TEAM = VXD6RTU6MW;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = Brilliant/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -537,6 +538,7 @@
 			baseConfigurationReference = 2B2DFB52491568E8D32D415E /* Pods-Brilliant_Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = VXD6RTU6MW;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -559,6 +561,7 @@
 			baseConfigurationReference = E71E7C54D02537A445F1F5D4 /* Pods-Brilliant_Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = VXD6RTU6MW;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

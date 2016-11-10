@@ -13,7 +13,7 @@ import ReachabilitySwift
 class BrilliantWebClient
 {
     //  need to use herokuapp subdomain in order have insecure POST requests (https solves this)
-    static fileprivate let kBaseURL = "https://www.brilliantapp.com/api/"
+    static fileprivate let kBaseURL = "https://api.brilliantappstaging.com/"
     //  private let kBaseURL = "http://localhost:3000/api/"
     
     static func request(_ method: HTTPMethod, appKey: String, userId: String, uniqueIdentifier: UUID, path: String, params: [String: AnyObject]?, success: @escaping (AnyObject) -> Void, failure: @escaping (Void) -> Void)
@@ -23,7 +23,6 @@ class BrilliantWebClient
         let headers = [
             "X-App-Key": appKey,
             "X-App-Version": appVersion,
-            "X-App-UserId": userId,
             "Content-Type": "application/json",
         ]
         
