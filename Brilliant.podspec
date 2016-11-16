@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "Brilliant"
-  s.version          = "0.4.2"
+  s.version          = "0.4.4"
   s.summary          = "A library for in-app NPS Surveys"
 
 # This description is used to generate tags and improve search results.
